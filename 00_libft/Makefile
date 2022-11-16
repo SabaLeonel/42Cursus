@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/14 15:41:45 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/11/16 11:44:10 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,15 @@ SRC	= ft_toupper.c \
 	ft_strlcat.c \
 	ft_strnstr.c \
 	ft_memchr.c \
-	# ft_memmove.c \
-	# ft_memcmp.c \
-	# ft_calloc.c \
-	# strdup.c \
+	ft_memmove.c \
+	ft_memcmp.c \
+	ft_calloc.c \
+	ft_strdup.c \
+	ft_strjoin.c \
+	ft_itoa.c \
 	# ft_substr.c \
-	# strjoin.c \
 	# ft_strtrim.c \
 	# ft_split.c \
-	# ft_itoa.c \
 	# ft_strmapi.c \
 	# ft_striteri.c \
 	# ft_putchar_fd.c \
