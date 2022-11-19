@@ -6,38 +6,47 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:47:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/16 17:05:05 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:17:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static  long int	ft_len(int num)
+static long int	ft_len(int num)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (num <= 0)
-		return (1);
+		i = 1;
 	while (num != 0)
 	{
-		
 		i ++;
 		num /= 10;
 	}
 	return (i);
 }
 
+static char	*ft_change(unsigned int num, long int len, char *t)
+{
+	while (num > 0)
+	{
+		t[len--] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (t);
+}
+
 char	*ft_itoa(int n)
 {
-	char			*tab;
+	char		*tab;
 	long int	i;
 
 	i = ft_len(n);
 	tab = malloc((sizeof(char) * i) + 1);
 	if (!tab)
-		return (NULL);
-	tab[i--] = '\0';
+		return (0);
+	tab[i--] = 0;
 	if (n == 0)
 		tab[0] = '0';
 	if (n < 0)
@@ -45,11 +54,6 @@ char	*ft_itoa(int n)
 		n *= -1;
 		tab[0] = '-';
 	}
-	
-	while (n > 0)
-	{
-		tab[i--] = (n % 10) + '0';
-		n = n / 10;
-	}
-	return (tab);	
+	ft_change(n, i, tab);
+	return (tab);
 }
