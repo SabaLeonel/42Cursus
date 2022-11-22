@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:51:10 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/01 10:21:13 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:37:27 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	char	cherche;
+	char	find;
 	char	*tab;
 
 	i = 0;
-	cherche = c;
+	find = c;
 	tab = (char *)s;
 	while (tab[i])
 	{
-		if (tab[i] == cherche)
+		if (tab[i] == find)
 			return (&tab[i]);
 		i++;
 	}
-	if (cherche == 0)
+	if (find == 0)
 		return (&tab[i]);
 	return (NULL);
 }

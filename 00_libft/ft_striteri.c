@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 11:36:27 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/22 11:38:02 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2022/11/22 13:54:02 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2022/11/22 14:43:55 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int		i;
-	char	search;
-	char	*tab;
+	size_t	i;
 
-	i = ft_strlen(s);
-	search = c;
-	tab = (char *)s;
-	while (i >= 0)
+	i = 0;
+	if (s != NULL)
 	{
-		if (tab[i] == search)
-			return (&tab[i]);
-		i--;
+		while (i < ft_strlen(s))
+		{
+			f(i, &s[i]);
+			i ++;
+		}
 	}
-	if (search == 0)
-		return (&tab[i]);
-	return (NULL);
+	return (0);
 }

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 11:36:27 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/22 11:38:02 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2022/11/22 14:12:53 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2022/11/22 14:40:38 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	char	search;
 	char	*tab;
+	size_t	i;
+	size_t	len;
 
-	i = ft_strlen(s);
-	search = c;
-	tab = (char *)s;
-	while (i >= 0)
+	i = 0;
+	len = ft_strlen(s);
+	if (!s || !f)
+		return (NULL);
+	tab = (char *)malloc(sizeof(char) * (len + 1));
+	if (!tab)
+		return (NULL);
+	while (i < len)
 	{
-		if (tab[i] == search)
-			return (&tab[i]);
-		i--;
+		tab[i] = f(i, s[i]);
+		i ++;
 	}
-	if (search == 0)
-		return (&tab[i]);
-	return (NULL);
+	tab[i] = '\0';
+	return (tab);
 }

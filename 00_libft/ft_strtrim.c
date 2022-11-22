@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:31:59 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/20 15:03:34 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:01:02 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	gstart(char const *s1, char const *set)
 	while (i < len)
 	{
 		if (ft_strchr(set, s1[i]) == 0)
-			break;
+			break ;
 		i ++;
 	}
 	return (i);
@@ -38,7 +38,7 @@ static int	gend(char const *s1, char const *set)
 	while (i < len)
 	{
 		if (ft_strchr(set, s1[len - i - 1]) == 0)
-			break;
+			break ;
 		i ++;
 	}
 	return (len - i);
@@ -55,8 +55,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!set)
 		return (ft_strdup(s1));
 	start = gstart(s1, set);
-	end = gend(s1, set); 
-	if (start >= end)
+	end = gend(s1, set);
+	if (end == 0)
 		return (ft_strdup(""));
 	tab = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!tab)

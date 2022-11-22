@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 11:36:27 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/22 11:38:02 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2022/11/22 12:13:42 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2022/11/22 12:30:41 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		i;
-	char	search;
-	char	*tab;
-
-	i = ft_strlen(s);
-	search = c;
-	tab = (char *)s;
-	while (i >= 0)
-	{
-		if (tab[i] == search)
-			return (&tab[i]);
-		i--;
-	}
-	if (search == 0)
-		return (&tab[i]);
-	return (NULL);
+	write(fd, &c, 1);
 }

@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/19 18:15:35 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/11/22 14:12:27 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,13 @@ SRC	= ft_toupper.c \
 	ft_itoa.c \
 	ft_substr.c \
 	ft_strtrim.c \
-	# ft_split.c \
-	# ft_strmapi.c \
-	# ft_striteri.c \
-	# ft_putchar_fd.c \
-	# ft_putstr_fd.c \
-	# ft_putendl_fd.c \
-	# ft_putnbr_fd.c 
+	ft_split.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
+	ft_striteri.c \
+	ft_strmapi.c \
 
 OBJ	= $(SRC:.c=.o)
 
