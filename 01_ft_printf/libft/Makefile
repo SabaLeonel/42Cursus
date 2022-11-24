@@ -6,13 +6,46 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/24 11:47:01 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/11/22 14:12:27 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME	= libft.a
 
-SRC	= ft_printf.c
+SRC	= ft_toupper.c \
+	ft_tolower.c \
+	ft_strlen.c \
+	ft_isascii.c \
+	ft_isalpha.c \
+	ft_isprint.c \
+	ft_isdigit.c \
+	ft_isalnum.c \
+	ft_bzero.c \
+	ft_memset.c \
+	ft_strncmp.c \
+	ft_memcpy.c \
+	ft_strchr.c \
+	ft_atoi.c \
+	ft_strrchr.c \
+	ft_strlcpy.c \
+	ft_strlcat.c \
+	ft_strnstr.c \
+	ft_memchr.c \
+	ft_memmove.c \
+	ft_memcmp.c \
+	ft_calloc.c \
+	ft_strdup.c \
+	ft_strjoin.c \
+	ft_itoa.c \
+	ft_substr.c \
+	ft_strtrim.c \
+	ft_split.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
+	ft_striteri.c \
+	ft_strmapi.c \
 
 OBJ	= $(SRC:.c=.o)
 
@@ -28,12 +61,10 @@ RM	= rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cd libft/ && make && cp -v libft.a ../$(NAME)
 	ar rcs  $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	${MAKE} -C libft clean
 
 fclean : clean
 	rm -f $(NAME)
