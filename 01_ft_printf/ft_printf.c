@@ -6,21 +6,38 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:49:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/24 17:00:40 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:15:33 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
 int	check_arg(va_list args, char arg)
 {
-	int num;
-	
-	i = 0;
-	if (arg == 'i' || arg == 'd')
-		num += ft_putnbr_fd(va_arg(args), int));
-}
+	int	num;
 
-int ft_printf(const char *format, ...)
+	num = 0;
+	if (arg == 'i' || arg == 'd')
+		num += ft_printnb(va_arg(args, int));
+	if (arg == 'c' )
+		num += ft_printchar(va_arg(args, int));
+	if (arg == 's')
+		num += ft_printstr(va_arg(args, char *));
+	if (arg == '%')
+		num += ft_printpercent();
+	if (arg == 'x' || arg == 'X')
+		num += ft_printhex(va_arg(args, unsigned long long), arg);
+	if (arg == 'p')
+	{
+		num += write(1, "0x", 2);
+		num += ft_printptr(va_arg(args, unsigned long long));
+	}
+	if (arg == 'u')
+		num += ft_print_unsigned(va_arg(args, unsigned int));
+	return (num);
+}		
+
+int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		i;
@@ -29,7 +46,7 @@ int ft_printf(const char *format, ...)
 	va_start(args, format);
 	i = 0;
 	len = 0;
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
@@ -37,7 +54,9 @@ int ft_printf(const char *format, ...)
 			i ++;
 		}
 		else
-			len += ft_putchar_fd(format[i], 1);
+			len += ft_putchar(format[i]);
 		i ++;
 	}
+	va_end(args);
+	return (len);
 }
