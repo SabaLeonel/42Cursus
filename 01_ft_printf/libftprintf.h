@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/24 12:00:22 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/24 16:45:46 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdarg.h>
 # include "libft/libft.h"
 
-int	ft_printf(const char *str, ...);
+int	ft_printf(const char *format, ...);
 
 #endif
