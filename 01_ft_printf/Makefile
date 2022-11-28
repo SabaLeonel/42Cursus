@@ -6,13 +6,14 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/24 16:21:29 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/11/25 18:39:56 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 
-SRC	= ft_printf.c
+SRC	= ft_printf.c \
+	ft_printfutils.c \
 
 OBJ	= $(SRC:.c=.o)
 
