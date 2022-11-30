@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:49:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/25 23:34:17 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:51:05 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ int	check_arg(va_list args, char arg)
 		num += ft_printstr(va_arg(args, char *));
 	else if (arg == '%')
 		num += ft_printpercent();
-/*	if (arg == 'x' || arg == 'X')
-		num += ft_printhex(va_arg(args, unsigned long long), arg);
-	if (arg == 'p')
+	else if (arg == 'p')
 	{
-		num += write(1, "0x", 2);
 		num += ft_printptr(va_arg(args, unsigned long long));
 	}
+/*	if (arg == 'x' || arg == 'X')
+		num += ft_printhex(va_arg(args, unsigned long long), arg);
 	if (arg == 'u')
 		num += ft_print_unsigned(va_arg(args, unsigned int));
 */
