@@ -6,15 +6,16 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/28 17:55:23 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/11/30 16:41:46 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libftprintf.a
+NAME	= printf
 
 SRC	= ft_printf.c \
 	ft_printfutils.c \
 	ft_printptr.c \
+	ft_printhex.c \
 
 OBJ	= $(SRC:.c=.o)
 

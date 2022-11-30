@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:10:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/25 23:27:07 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:04:07 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_printnb(int num)
 {
-	int	i;
-	char *tab;
+	int		i;
+	char	*tab;
 
 	i = 0;
 	tab = ft_itoa(num);

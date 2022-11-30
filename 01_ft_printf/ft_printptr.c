@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:07:58 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/28 18:00:34 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:52:08 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_putptr(unsigned long num)
 		ft_putptr(num / 16);
 		ft_putptr(num % 16);
 	}
-	else 
+	else
 	{
 		if (num <= 9)
 			ft_putchar_fd(num + '0', 1);
