@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:07:58 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/30 14:52:08 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/12/02 19:11:44 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,30 @@ int	ft_lenptr(unsigned long num)
 	return (i);
 }
 
-void	ft_putptr(unsigned long num)
+void	ft_putptr(unsigned long num, int *count)
 {
 	if (num >= 16)
 	{
-		ft_putptr(num / 16);
-		ft_putptr(num % 16);
+		ft_putptr(num / 16, count);
+		ft_putptr(num % 16, count);
 	}
 	else
 	{
 		if (num <= 9)
-			ft_putchar_fd(num + '0', 1);
+			ft_printchar(num + '0', count);
 		else
-			ft_putchar_fd(num - 10 + 'a', 1);
+			ft_printchar(num - 10 + 'a', count);
 	}
 }
 
-int	ft_printptr(unsigned long long num)
+void	ft_printptr(unsigned long long num, int *count)
 {
 	int	len;
 
 	len = 0;
-	len += write(1, "0x", 2);
+	ft_printstr("0x", count);
 	if (num == 0)
-		len += write(1, "0", 1);
-	else
-	{		
-		ft_putptr(num);
-		len += ft_lenptr(num);
-	}
-	return (len);
+		ft_printchar('0', count);
+	else	
+		ft_putptr(num, count);
 }

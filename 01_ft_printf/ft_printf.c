@@ -6,38 +6,35 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:49:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/30 17:57:30 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/12/02 19:13:11 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	check_arg(va_list args, char arg)
+#include <stdio.h>
+void	check_arg(va_list args, char arg, int *count)
 {
-	int		num;
-	char	*basehex;
-	char	*basehexmaj;
-
-	num = 0;
-	basehex = "0123456789abcdef";
-	basehexmaj = "0123456789ABCDEF";
-	if (arg == 'i' || arg == 'd')
-		num += ft_printhex(va_arg(args, unsigned long long), "0123456789", 10);
+	if (arg == 'i' || arg == 'd') {
+		//int test = va_arg(args, int);
+		//printf("Hellowwwwwww %d\n", test);
+		ft_printbase(va_arg(args, int), "0123456789", 10, count);
+	}
 	else if (arg == 'c' )
-		num += ft_printchar(va_arg(args, int));
+		ft_printchar(va_arg(args, int), count);
 	else if (arg == 's')
-		num += ft_printstr(va_arg(args, char *));
+		ft_printstr(va_arg(args, char *), count);
 	else if (arg == '%')
-		num += ft_printpercent();
+		ft_printchar('%', count);
 	else if (arg == 'p')
-		num += ft_printptr(va_arg(args, unsigned long long));
+		ft_printptr(va_arg(args, unsigned long long), count);
 	else if (arg == 'x')
-		num += ft_printhex(va_arg(args, unsigned long long), basehex, 16);
+		ft_printbase(va_arg(args, unsigned long long),
+			"0123456789abcdef", 16, count);
 	else if (arg == 'X')
-		num += ft_printhex(va_arg(args, unsigned long long), basehexmaj, 16);
+		ft_printbase(va_arg(args, unsigned long long), 
+			"0123456789ABCDEF", 16, count);
 	if (arg == 'u')
-		num += ft_print_unsigned(va_arg(args, unsigned int));
-	return (num);
+		ft_print_unsigned(va_arg(args, unsigned int), count);
 }		
 
 int	ft_printf(const char *format, ...)
@@ -53,20 +50,23 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			len += check_arg(args, format[i + 1]);
+			check_arg(args, format[i + 1], &len);
 			i ++;
 		}
 		else
-			len += ft_printchar(format[i]);
+			ft_printchar(format[i], &len);
 		i ++;
 	}
 	va_end(args);
 	return (len);
 }
 /*
-int main(int ac, char **av) {
+int main (int ac, char **av) {
 	(void) ac;
-	ft_printf("salut %X", ft_atoi(av[1]));
+	//(void) ac;
+	//printf("Hello\n");
+	//printf("\nLEN %d\n", ft_printf("%d", -200000));
+	printf("Carac [%d]", ft_printf("%d", ft_atoi(av[1])));
+	//printf("%d\n", ft_printf("%X\n", ft_atoi(av[1])));
 	return (0);
-}
-*/
+}*/
