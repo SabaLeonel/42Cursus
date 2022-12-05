@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/12/05 14:34:15 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2022/12/05 19:31:43 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,12 @@ RM	= rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	cd libft/ && make && cp -v libft.a ../$(NAME)
 	ar rcs  $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	${MAKE} -C libft clean
 
 fclean : clean
 	rm -f $(NAME)
-	
+
 re: fclean all
