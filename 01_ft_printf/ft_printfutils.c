@@ -6,62 +6,64 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:10:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/12/02 19:13:34 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:33:09 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*int	ft_printnb(int num)
-{
-	int		i;
-	char	*tab;
-
-	i = 1;
-	tab = ft_itoa(num);
-	i = ft_printstr(tab);
-	free (tab);
-	return (i);
-}*/
-
-void	ft_printchar(int c, int *count)
+void	ft_printchar(int c, int *len)
 {
 	write(1, &c, 1);
-	*count += 1;
+	(*len)++;
 }
-/*
-int	ft_printpercent(void)
-{
-	ft_printchar('%');
-	return (1);
-}
-*/
-void	ft_printstr(char *str, int *count)
+
+void	ft_printstr(char *str, int *len)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
-		ft_printstr("(null)", count);
+	{
+		write(1, "(null)", 6);
+		(*len) += 6;
+		return ;
+	}
 	while (str[i])
 	{
-		ft_printchar(str[i], count);
+		ft_printchar(str[i], len);
 		i ++;
 	}
 }
 
-void	ft_print_unsigned(unsigned int num, int *count)
+void	ft_print_unsigned(unsigned int num, int *len)
 {
-	int		i;
-	char	*tab;
+	if (num >= 10)
+		ft_print_unsigned(num / 10, len);
+	ft_printchar(num % 10 + '0', len);
+}
 
-	i = 0;
-	if (num == 0)
-		ft_printchar('0', count);
-	else
-	{	
-		tab = ft_itoa(num);
-		ft_printstr(tab, count);
-		free (tab);
+void	ft_putptr(size_t num, int *len)
+{
+	if (num >= 16)
+	{
+		ft_putptr(num / 16, len);
+		ft_putptr(num % 16, len);
 	}
+	else
+	{
+		if (num <= 9)
+			ft_printchar(num + '0', len);
+		else
+			ft_printchar(num - 10 + 'a', len);
+	}
+}
+
+void	ft_printptr(size_t num, int *len)
+{
+	ft_printstr("0x", len);
+	if (num == 0)
+		ft_printchar('0', len);
+	else
+		ft_putptr(num, len);
 }

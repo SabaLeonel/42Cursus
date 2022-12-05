@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printhex.c                                      :+:      :+:    :+:   */
+/*   ft_printbase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:08:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/12/02 19:12:26 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:27:12 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-/*
-int	ft_lenhex(int num, int base)
-{
-	int	len;
 
-	len = 0;
-	while (num != 0)
-	{
-		num /= base;
-		len ++;
-	}
-	return (len);
-}
-*/
-void	ft_printbase(int num, char *format, int base, int *count)
+void	ft_printbase(long long int num, char *format, int base, int *len)
 {
-	//printf("Num -> %d\n", num);
-	if (num < 0) {
-		ft_printchar('-', count);
-		ft_printbase((num * -1), format, base, count);
-	}
-	else if (num >= (int)base)
+	if (num == -2147483648)
 	{
-		ft_printbase(num / base, format, base, count);
-		ft_printbase(num % base, format, base, count);
+		ft_printstr("-2147483648", len);
+		return ;
 	}
-	else if (num < (int)base)
-		ft_printchar(format[num], count);
+	if (num == 0)
+	{
+		ft_printchar('0', len);
+		return ;
+	}
+	if (num < 0)
+	{
+		ft_printchar('-', len);
+		ft_printbase((num * -1), format, base, len);
+	}
+	else if (num >= (unsigned int)base)
+	{
+		ft_printbase(num / base, format, base, len);
+		ft_printbase(num % base, format, base, len);
+	}
+	else if (num < (unsigned int)base)
+		ft_printchar(format[num], len);
 }
