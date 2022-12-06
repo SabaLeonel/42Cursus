@@ -1,3 +1,11 @@
  # 42cursus 💻
+ 
+## Project List
+### Common Circle
 
-[![lsaba-qu's 42 stats](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/stats?cursusId=21&coalitionId=191)](https://github.com/JaeSeoKim/badge42)
+| **CIRCLE** | **PROJECT**   | **LANGUAGE** | **TOPICS**                                                               | **Date of completion** |
+|:----------:|:-------------:|:------------:|:------------------------------------------------------------------------:|:----------------------:|
+| 00         | [Libft](./00_Libft)         | C            | `Library` `Makefile`                                                     | 22-11-2022             |
+| 01         | [ft_printf](./01_ft_printf)     | C            | `Variadic` `arguments` `character parsing` `Library` `Makefile` `BigInt` | 07-12-2022             |
+| 01         | [get_next_line](./01_get_next_line) | C            | `file descriptor`                                                        | pending                |
+
