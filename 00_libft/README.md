@@ -1,4 +1,5 @@
 # Libft
+[![lsaba-qu's 42 Libft Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2848830)](https://github.com/JaeSeoKim/badge42)
 > "The project is to code a C library with basic functions that will be the fondation used for futur projects"
 
 ## Content
