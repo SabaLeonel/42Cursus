@@ -6,13 +6,13 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 10:49:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/12/05 14:25:57 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:51:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	check_arg(va_list *args, char arg, int *count, int *len)
+void	check_arg(va_list *args, char arg, int *len)
 {
 	if (arg == 'i' || arg == 'd')
 		ft_printbase(va_arg(*args, int), "0123456789", 10, len);
@@ -32,8 +32,6 @@ void	check_arg(va_list *args, char arg, int *count, int *len)
 			"0123456789ABCDEF", 16, len);
 	else if (arg == 'u')
 		ft_print_unsigned(va_arg(*args, unsigned int), len);
-	else
-		(*count)--;
 }		
 
 int	ft_printf(const char *format, ...)
@@ -50,7 +48,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i ++;
-			check_arg(&args, format[i], &i, &len);
+			check_arg(&args, format[i], &len);
 			i ++;
 		}
 		else
