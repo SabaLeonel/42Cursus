@@ -1,7 +1,8 @@
-NAME	= pushswap.a
+NAME	= pushswap
+
+LIBFT = ./libft/libft.a
 
 SRC	= main.c \
-
 
 OBJ	= $(SRC:.c=.o)
 
@@ -17,12 +18,16 @@ RM	= rm -f
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs  $(NAME) $(OBJ)
+	make -C ./libft
+	cp ./libft/libft.a $(NAME)
+	$(CC) -o $(NAME) $(OBJ) -L ./libft -lft
 
 clean:
+	make clean -C ./libft
 	rm -f $(OBJ)
 
 fclean : clean
+	make fclean -C ./libft
 	rm -f $(NAME)
 
 re: fclean all
