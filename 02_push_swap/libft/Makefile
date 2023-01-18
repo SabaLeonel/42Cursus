@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/22 14:12:27 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/01/18 12:04:13 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,9 @@ SRC	= ft_toupper.c \
 	ft_putnbr_fd.c \
 	ft_striteri.c \
 	ft_strmapi.c \
+	ft_printbase.c \
+	ft_printf.c \
+	ft_printfutils.c \
 
 OBJ	= $(SRC:.c=.o)
 

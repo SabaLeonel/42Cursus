@@ -6,12 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 19:08:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/12/05 14:27:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:06:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "libft.h"
 
 void	ft_printbase(long long int num, char *format, int base, int *len)
 {

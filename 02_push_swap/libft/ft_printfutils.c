@@ -6,11 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:10:08 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/12/05 14:33:09 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/01/18 12:06:28 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_printchar(int c, int *len)
 {

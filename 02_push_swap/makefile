@@ -19,15 +19,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	cp ./libft/libft.a $(NAME)
-	$(CC) -o $(NAME) $(OBJ) -L ./libft -lft
+	cp ./libft/libft.a .
+	$(CC) -o $(NAME) $(OBJ) -L libft -lft
 
 clean:
-	make clean -C ./libft
+	make clean -C libft
 	rm -f $(OBJ)
 
 fclean : clean
-	make fclean -C ./libft
+	make fclean -C libft
 	rm -f $(NAME)
 
 re: fclean all
