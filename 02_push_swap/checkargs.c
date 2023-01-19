@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checkargs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/19 12:32:06 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/19 12:03:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft/libft.h"
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-
-typedef struct s_stack
+int	ft_initStack(int argc, char **argv, char *stackA)
 {
-	int		size;
-	int		*tab;
-    //	int top;
-	// char	type;	
-} 					t_stack;
-
-int		main(int argc, char **argv);
-int	ft_initStack(int argc, char **argv, char *stackA);
-
-#endif
+	char	**tab;
+	int		i;
+	int		len;
+	char	*numbers;
+	
+	if (argc < 2)
+		return (-1);
+	else if (argc == 2)
+	{
+		tab = ft_split(argv[1], ' ');
+		len = ft_strlen()
+	}
+	else 
+	{
+		
+	}
+	// gerer un seul argument
+	ft_atoi(
+	//split array compter le nb de mots dans arg detect duplicata
+}
