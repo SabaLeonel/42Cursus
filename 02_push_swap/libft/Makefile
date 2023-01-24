@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/01/18 12:04:13 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/01/24 15:24:53 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,14 @@ SRC	= ft_toupper.c \
 	ft_printbase.c \
 	ft_printf.c \
 	ft_printfutils.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c \
 
 OBJ	= $(SRC:.c=.o)
 
@@ -73,3 +81,5 @@ fclean : clean
 	rm -f $(NAME)
 	
 re: fclean all
+
+.PHONY: all clean fclean re

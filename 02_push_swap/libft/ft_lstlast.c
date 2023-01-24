@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:26:55 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/24 14:21:10 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/24 14:27:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	int		checkflag;
-	t_stack	*stackA;
-
-	checkflag = ft_initStack(argc, argv, &stackA);
-	if (checkflag == -1)
-		exit (0);
-	if ()
-	{
-		// gerer un seul argument
-		//split array compter le nb de mots dans arg detect duplicata
-	}
-	// gerer plusieurs arguments 
-	// checker duplicate
-	return (0);
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

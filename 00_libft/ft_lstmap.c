@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:26:55 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/24 14:54:03 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/24 15:09:44 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		checkflag;
-	t_stack	*stackA;
+	t_list	*head;
+	t_list	*tmp;
 
-	checkflag = ft_initStack(argc, argv, &stackA);
-	if (checkflag == -1)
-		exit (0);
-	if ()
+	head = NULL;
+	while (lst)
 	{
-		// gerer un seul argument
-		//split array compter le nb de mots dans arg detect duplicata
+		tmp = ft_lstnew((*f)(lst->content));
+		if (!tmp)
+		{
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, tmp);
+		lst = lst->next;
 	}
-	// gerer plusieurs arguments 
-	// checker duplicate
-	return (0);
+	return (head);
 }

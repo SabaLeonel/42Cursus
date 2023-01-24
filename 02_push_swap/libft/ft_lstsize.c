@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:26:55 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/24 14:18:33 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/24 15:11:47 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_lstsize(t_list *lst)
 {
-	int		checkflag;
-	t_stack	*stackA;
+	int	i;
 
-	checkflag = ft_initStack(argc, argv, &stackA);
-	if (checkflag == -1)
-		exit (0);
-	if ()
+	i = 0;
+	while (lst)
 	{
-		// gerer un seul argument
-		//split array compter le nb de mots dans arg detect duplicata
+		lst = lst->next;
+		i ++;
 	}
-	// gerer plusieurs arguments 
-	// checker duplicate
-	return (0);
+	return (i);
 }

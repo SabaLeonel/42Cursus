@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/19 12:32:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:22:27 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ typedef struct s_stack
 {
 	int		size;
 	int		*tab;
-    //	int top;
-	// char	type;	
+    int		top;
+	char	type;	
 } 					t_stack;
 
-int		main(int argc, char **argv);
-int	ft_initStack(int argc, char **argv, char *stackA);
+int		ft_initStack(int *tab, int size, char type);
 
 #endif

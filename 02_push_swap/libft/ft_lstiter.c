@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:26:55 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/24 14:51:01 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/24 14:53:53 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int		checkflag;
-	t_stack	*stackA;
-
-	checkflag = ft_initStack(argc, argv, &stackA);
-	if (checkflag == -1)
-		exit (0);
-	if ()
+	while (lst)
 	{
-		// gerer un seul argument
-		//split array compter le nb de mots dans arg detect duplicata
+		(*f)(lst->content);
+		lst = lst->next;
 	}
-	// gerer plusieurs arguments 
-	// checker duplicate
-	return (0);
 }

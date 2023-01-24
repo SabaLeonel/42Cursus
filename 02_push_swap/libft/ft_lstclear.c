@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:26:55 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/01/24 14:44:13 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/01/24 14:48:05 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int		checkflag;
-	t_stack	*stackA;
+	t_list	*head;
+	t_list	*tmp;
 
-	checkflag = ft_initStack(argc, argv, &stackA);
-	if (checkflag == -1)
-		exit (0);
-	if ()
+	head = *lst;
+	while (head)
 	{
-		// gerer un seul argument
-		//split array compter le nb de mots dans arg detect duplicata
+		tmp = head->next;
+		(*del)(head->content);
+		free(head);
+		head = tmp;
 	}
-	// gerer plusieurs arguments 
-	// checker duplicate
-	return (0);
+	*lst = NULL;
 }

@@ -6,11 +6,11 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2022/11/22 14:12:27 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/01/24 15:17:12 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= libft.a
+NAME = libft.a
 
 SRC	= ft_toupper.c \
 	ft_tolower.c \
@@ -47,7 +47,19 @@ SRC	= ft_toupper.c \
 	ft_striteri.c \
 	ft_strmapi.c \
 
+SRC_BONUS = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c \
+
 OBJ	= $(SRC:.c=.o)
+
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -63,10 +75,15 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs  $(NAME) $(OBJ)
 
+bonus : $(OBJ) $(OBJS_BONUS)
+	ar rcs  $(NAME) $(OBJ) $(OBJS_BONUS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJS_BONUS)
 
 fclean : clean
 	rm -f $(NAME)
 	
 re: fclean all
+
+.PHONY: all clean fclean re

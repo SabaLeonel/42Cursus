@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/19 12:03:19 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/01/24 11:06:42 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_initStack(int argc, char **argv, char *stackA)
 	else if (argc == 2)
 	{
 		tab = ft_split(argv[1], ' ');
-		len = ft_strlen()
+		
 	}
 	else 
 	{
