@@ -6,31 +6,32 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 11:06:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:18:59 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_initStack(int argc, char **argv, char *stackA)
+int	init_stack_a(int argc, char **argv, t_head_tail *stack_a, int start)
 {
-	char	**tab;
+	t_stack	*new;
+	t_stack	*n;
 	int		i;
-	int		len;
-	char	*numbers;
-	
-	if (argc < 2)
-		return (-1);
-	else if (argc == 2)
+	i = start;
+	new = init_lst(argv[i++], stack_a->head);
+	if (!new)
+		return (0);
+	stack_a->head = new;
+	while (i != argc)
 	{
-		tab = ft_split(argv[1], ' ');
-		
+		n = init_lst(argv[i], stack_a->head);
+		if (!n)
+			return (0);
+		new->next = n;
+		n->last = new;
+		new = n;
+		i++;
 	}
-	else 
-	{
-		
-	}
-	// gerer un seul argument
-	ft_atoi(
-	//split array compter le nb de mots dans arg detect duplicata
+	stack_a->tail = new;
+	return (1);
 }
