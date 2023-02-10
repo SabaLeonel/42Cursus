@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 15:33:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:37:03 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 }	t_stack;
 
 
-int		ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
-void	counter(int mode);
+void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
+int		ft_is_valid(t_stack a, char **argv);
 
 #endif

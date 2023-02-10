@@ -6,13 +6,13 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 14:57:00 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:36:53 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	init_stack_a(t_stack *a, t_stack *b, int argc, char **argv)
+void	init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int	i;
 
@@ -32,6 +32,6 @@ int	init_stack_a(t_stack *a, t_stack *b, int argc, char **argv)
 	}
 	a->size = argc - 1;
 	b->size = 0;
-	if (!is_valid(*a, argv) || i == MAXINT)
+	if (!ft_is_valid(*a, argv) || i == MAXINT)
 		ft_garbage_collector(0, 1, 1);
 }
