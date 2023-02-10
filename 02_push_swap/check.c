@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 14:12:53 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/22 14:40:38 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/10 15:06:36 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int	ft_is_valid(t_stack a, char **argv)
 {
-	char	*tab;
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(s);
-	if (!s || !f)
-		return (NULL);
-	tab = (char *)malloc(sizeof(char) * (len + 1));
-	if (!tab)
-		return (NULL);
-	while (i < len)
+	if (ft_doublons_ia(a.data, a.size))
 	{
-		tab[i] = f(i, s[i]);
-		i ++;
+		ft_putendl_fd("Error", 1);
+		return (0);
 	}
-	tab[i] = '\0';
-	return (tab);
+	if (ft_all_are_num(&argv[1]))
+	{
+		ft_putendl_fd("Error", 1);
+		return (0);
+	}
+	return (1);
 }

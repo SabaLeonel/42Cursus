@@ -3,7 +3,8 @@ NAME	= pushswap
 LIBFT = ./libft/libft.a
 
 SRC	= main.c \
-	checkargs.c \
+	init_stack.c \
+	check.c \
 
 OBJ	= $(SRC:.c=.o)
 

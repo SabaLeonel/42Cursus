@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_garbage_collector.c                              :+:      :+:    :+:   */
+/*   ft_doublons_ia.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 11:37:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 11:37:51 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/10 15:07:01 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/10 15:11:11 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_garbage_collector(void *ptr, int mode, int _exit)
+int	ft_doublons_ia(int *tab, int size)
 {
-	static t_list 	*garbage;
-	t_list			*element;
+	int	x;
+	int	y;
 
-	if (mode == 0)
+	x = -1;
+	while (++x < size - 1)
 	{
-		if (ptr == 0 && _exit)
-			ft_garbage_collector(0, 1, _exit);
-		element = ft_lstnew(ptr);
-		if (element == 0 & _exit)
-			ft_garbage_collector(0, 1, _exit);
-		ft_lstadd_back(&garbage, element);
+		y = x;
+		while (++y < size)
+		{
+			if (tab[x] == tab[y])
+				return (1);
+		}	
 	}
-	else
-	{
-		ft_lstclear(&garbage, free);
-		if (_exit)
-			exit (0);
-	}
+	return (0);
 }

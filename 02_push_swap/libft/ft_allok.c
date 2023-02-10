@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_garbage_collector.c                              :+:      :+:    :+:   */
+/*   ft_allok.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 11:37:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 11:37:51 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/10 14:30:57 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/10 14:48:14 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_garbage_collector(void *ptr, int mode, int _exit)
+void	*ft_allok(int num, int size, int exit_on_null)
 {
-	static t_list 	*garbage;
-	t_list			*element;
+	void *res;
 
-	if (mode == 0)
-	{
-		if (ptr == 0 && _exit)
-			ft_garbage_collector(0, 1, _exit);
-		element = ft_lstnew(ptr);
-		if (element == 0 & _exit)
-			ft_garbage_collector(0, 1, _exit);
-		ft_lstadd_back(&garbage, element);
-	}
+	res = ft_calloc(num, size);
+	if (res == 0 && exit_on_null)
+		ft_garbage_collector(res, 1, 1);
 	else
-	{
-		ft_lstclear(&garbage, free);
-		if (_exit)
-			exit (0);
-	}
+		ft_garbage_collector(res, 0, 0);
+	return (res);
 }

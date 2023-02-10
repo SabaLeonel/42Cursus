@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 22:20:28 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/10/27 18:43:45 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/10 15:18:01 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/10 15:21:04 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_isnum(char *str)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	else
-		return (c);
+	if (*str == '-')
+		str++;
+	while (ft_isdigit(*str))
+		str++;
+	if (*str == 0)
+		return (1);
+	return (0);
 }
-
-// #include <stdio.h>
-// int main ()
-// {
-// 	int e = 0;
-// 	int test= 'a';
-
-// 	e = ft_toupper(test);
-
-// 	printf("%d", e);
-// }

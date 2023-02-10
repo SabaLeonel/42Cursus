@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 11:33:38 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/10 15:26:38 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ void	ft_printptr(size_t ptr, int *len);
 void	ft_print_unsigned(unsigned int num, int *len);
 void	check_arg(va_list *args, char arg, int *len);
 void	ft_printbase(long long int num, char *format, int base, int *len);
-
+void	ft_garbage_collector(void *ptr, int mode, int _exit);
+void	*ft_allok(int num, int size, int exit_on_null);
+int		ft_doublons_ia(int *tab, int size);
+int		ft_isnum(char *str);
+int		ft_all_are_num(char **tab);
 typedef struct s_list
 {
 	void			*data;

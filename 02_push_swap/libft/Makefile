@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/01/24 15:24:53 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/02/10 15:27:54 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,11 @@ SRC	= ft_toupper.c \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
+	ft_garbage_collector.c \
+	ft_allok.c \
+	ft_doublons_ia.c \
+	ft_all_are_num.c \
+	ft_isnum.c \
 
 OBJ	= $(SRC:.c=.o)
 
