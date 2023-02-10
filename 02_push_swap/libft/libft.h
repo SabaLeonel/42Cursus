@@ -6,12 +6,14 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/01/24 15:23:37 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/10 11:33:38 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define MININT		-2147483648
+# define MAXINT		2147483647
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -63,11 +65,11 @@ void	ft_printbase(long long int num, char *format, int base, int *len);
 
 typedef struct s_list
 {
-	void			*content;
+	void			*data;
 	struct s_list	*next;
 }				t_list;
 
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(void *data);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

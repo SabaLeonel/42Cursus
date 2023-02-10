@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_garbage_collector.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 14:40:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 11:34:14 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/10 11:37:50 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/10 11:37:51 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_garbage_collector(void *ptr, int mode, int _exit)
 {
-	(*del)(lst->data);
-	free(lst);
+	static t_list 	*garbage;
+	t_list			*element;
+
+	if (mode == 0)
+	{
+		if (ptr == 0 && _exit)
+			ft_garbage_collector(0, 1, _exit);
+		element = ft_lstnew(ptr);
+		if (element == 0 & _exit)
+			ft_garbage_collector(0, 1, _exit);
+		
+	}
 }

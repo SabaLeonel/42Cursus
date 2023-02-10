@@ -6,32 +6,31 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/09 16:18:59 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:45:10 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	init_stack_a(int argc, char **argv, t_head_tail *stack_a, int start)
+void	*allok(int num, int size, int exit_on_null)
 {
-	t_stack	*new;
-	t_stack	*n;
-	int		i;
-	i = start;
-	new = init_lst(argv[i++], stack_a->head);
-	if (!new)
-		return (0);
-	stack_a->head = new;
-	while (i != argc)
+	void	*res;
+
+	res = ft_calloc(num, size);
+	if (res)
+}
+
+int	init_stack_a(t_stack *a, t_stack *b, int argc, char **argv);
+{
+	int	i;
+
+	i = -1;
+	while (++i < argc -1)
 	{
-		n = init_lst(argv[i], stack_a->head);
-		if (!n)
-			return (0);
-		new->next = n;
-		n->last = new;
-		new = n;
-		i++;
+		a->name = 'a';
+		b->name = 'b';
+		a->nname = 'b';
+		b->nname = 'a';
+		a->data = allok
 	}
-	stack_a->tail = new;
-	return (1);
 }
