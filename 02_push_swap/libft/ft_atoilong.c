@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_all_are_num.c                                   :+:      :+:    :+:   */
+/*   ft_atoilong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 15:11:46 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/14 15:34:40 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/14 15:08:05 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/14 15:09:44 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_all_are_num(char **tab)
+long int	ft_atoilong(const char *str)
 {
-	int	i;
+	long int	i;
+	long int	res;
+	long int	signe;
 
-	i = -1;
-	while (tab[++i])
+	i = 0;
+	res = 0;
+	signe = 1;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i ++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (ft_isnum(tab[i]))
-			return (0);
+		if (str[i] == '-')
+			signe = -1;
+		i ++;
 	}
-	return (1);
+	while (ft_isdigit(str[i]))
+	{
+		res = res * 10 + str[i] - '0';
+		i ++;
+	}
+	return (res * signe);
 }

@@ -6,14 +6,13 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/02/10 15:27:54 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/02/14 16:46:05 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
 
-SRC	= ft_toupper.c \
-	ft_tolower.c \
+SRC	= ft_tolower.c \
 	ft_strlen.c \
 	ft_isascii.c \
 	ft_isalpha.c \
@@ -45,11 +44,11 @@ SRC	= ft_toupper.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	ft_striteri.c \
-	ft_strmapi.c \
 	ft_printbase.c \
 	ft_printf.c \
 	ft_printfutils.c \
 	ft_lstadd_front.c \
+	ft_lstnew.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
 	ft_lstadd_back.c \
@@ -62,6 +61,9 @@ SRC	= ft_toupper.c \
 	ft_doublons_ia.c \
 	ft_all_are_num.c \
 	ft_isnum.c \
+	ft_atoilong.c \
+	ft_putchar.c \
+	ft_putstr.c \
 
 OBJ	= $(SRC:.c=.o)
 

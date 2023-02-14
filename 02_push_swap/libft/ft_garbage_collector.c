@@ -22,7 +22,7 @@ void	ft_garbage_collector(void *ptr, int mode, int _exit)
 		if (ptr == 0 && _exit)
 			ft_garbage_collector(0, 1, _exit);
 		element = ft_lstnew(ptr);
-		if (element == 0 & _exit)
+		if (element == 0 && _exit)
 			ft_garbage_collector(0, 1, _exit);
 		ft_lstadd_back(&garbage, element);
 	}

@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_all_are_num.c                                   :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 15:11:46 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/14 15:34:40 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/14 16:43:59 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/14 16:45:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_all_are_num(char **tab)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = -1;
-	while (tab[++i])
-	{
-		if (ft_isnum(tab[i]))
-			return (0);
-	}
-	return (1);
+	write(1, &c, 1);
 }
