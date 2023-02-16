@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/14 16:55:37 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:22:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ long int	ft_atoilong(const char *str);
 void		ft_putstr(char *s);
 void		ft_putchar(char c);
 void		ft_putnbr(long int num);
+void		ft_putendl(char *s);
+void		ft_putnbrendl(long int num);
+void		ft_swap(char *a, char *b);
+int			ft_strcmp(char *s1, char *s2);
 
 typedef struct s_list
 {
