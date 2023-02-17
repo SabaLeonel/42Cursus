@@ -6,12 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/16 17:28:48 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:58:57 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	rrotate(t_stack *a)
 {
@@ -32,14 +31,14 @@ void	rotate(t_stack *a)
 	i = -1;
 	ft_swap(&a->data[0], &a->data[a->size - 1]);
 	while (i++ < a->size - 2)
-		ft_swap(&a->data[a->size -1 -i], &a->data[a->size -2 -i]);
+		ft_swap(&a->data[a->size -1 - i], &a->data[a->size -2 - i]);
 }
 
-void	counter (int mode)
+void	counter(int mode)
 {
 	static int	count;
 
-	if(mode)
+	if (mode)
 	{
 		ft_putnbrendl(count);
 		return ;
@@ -48,10 +47,24 @@ void	counter (int mode)
 		count++;
 }
 
-void	apply(t_stack *a, t_stack *b, char *action, char *print)
+void	apply(char *action, char *print, t_stack *a, t_stack *b)
 {
-	if (!ft_strcmp(action, "sa") || !ft_strcmp(action, "ss") && a->size > 1)
-		ft_swap(&a->data[a->size - 2], &a->data[a->size -1]);
+	if ((!ft_strcmp(action, "sa") || !ft_strcmp(action, "ss")) && a->size > 1)
+		ft_swap(&a->data[a->size - 2], &a->data[a->size - 1]);
+	if ((!ft_strcmp(action, "sb") || !ft_strcmp(action, "ss")) && b->size > 1)
+		ft_swap(&b->data[b->size - 2], &b->data[b->size - 1]);
+	if (!ft_strcmp(action, "pa") && b->size)
+		ft_swap(&a->data[a->size++], &b->data[--b->size]);
+	if (!ft_strcmp(action, "pb") && a->size)
+		ft_swap(&a->data[--a->size], &b->data[b->size++]);
+	if ((!ft_strcmp(action, "ra") || !ft_strcmp(action, "rr")) && a->size > 1)
+		rotate(a);
+	if ((!ft_strcmp(action, "rb") || !ft_strcmp(action, "rr")) && b->size > 1)
+		rotate(b);
+	if ((!ft_strcmp(action, "rra") || !ft_strcmp(action, "rrr")) && a->size > 1)
+		rrotate(a);
+	if ((!ft_strcmp(action, "rrb") || !ft_strcmp(action, "rrr")) && b->size > 1)
+		rrotate(b);
 	if (print)
 		ft_putendl(print);
 	counter(0);

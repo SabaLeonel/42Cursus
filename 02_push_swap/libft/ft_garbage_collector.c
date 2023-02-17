@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_garbage_collector.c                              :+:      :+:    :+:   */
+/*   ft_garbage_collector.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 11:37:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/10 11:37:51 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:24:18 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_garbage_collector(void *ptr, int mode, int _exit)
 {
-	static t_list 	*garbage;
+	static t_list	*garbage;
 	t_list			*element;
 
 	if (mode == 0)

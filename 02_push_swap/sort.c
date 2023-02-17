@@ -1,30 +1,100 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 17:36:41 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/17 17:41:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	sort_1(t_stack *a)
 {
-	t_stack	a;
-	int		i;
-	t_stack	b;
+	return (NULL);
+}
+void	sort2(t_stack *a)
+{
+	if (a->data[0] > a->data[1])
+		ft_swap(&a->data[0], &a->data[1]);
+}
 
-	printf("list :");
-	ft_init_stack(&a, &b, argc, argv);
-	for (i = 0; i < a.size; i++)
-	{
-		printf("%i", a.data[i]);
-	}
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+void	sort_3(t_stack *a)
+{
+	sort2(&a);
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+}
+
+void	
+
+parcourir pousser sur b sort 3
+
+void	sort_5(t_stack *b)
+{
+	sort 3 trier les plus petits entre eux
 }

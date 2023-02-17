@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/16 17:22:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:54:44 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_print_unsigned(unsigned int num, int *len);
 void		check_arg(va_list *args, char arg, int *len);
 void		ft_printbase(long long int num, char *format, int base, int *len);
 void		ft_garbage_collector(void *ptr, int mode, int _exit);
-void			*ft_allok(int num, int size, int exit_on_null);
+void		*ft_allok(int num, int size, int exit_on_null);
 int			ft_doublons_ia(int *tab, int size);
 int			ft_isnum(char *str);
 int			ft_all_are_num(char **tab);
@@ -74,6 +74,7 @@ void		ft_putendl(char *s);
 void		ft_putnbrendl(long int num);
 void		ft_swap(char *a, char *b);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_indexof_iarr(int *tab, int size, int find);
 
 typedef struct s_list
 {

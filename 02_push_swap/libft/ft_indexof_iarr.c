@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_indexof_iarr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 17:36:41 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/17 16:25:46 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/17 16:53:25 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_indexof_iarr(int *tab, int size, int find)
 {
-	t_stack	a;
-	int		i;
-	t_stack	b;
+	int	i;
 
-	printf("list :");
-	ft_init_stack(&a, &b, argc, argv);
-	for (i = 0; i < a.size; i++)
+	i = -1;
+	while (++i < size)
 	{
-		printf("%i", a.data[i]);
+		if (tab[i] == find)
+			return (i);
 	}
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	return (-1);
 }

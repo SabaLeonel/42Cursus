@@ -6,15 +6,17 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:24:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/16 16:27:05 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:22:25 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 void	ft_swap(char *a, char *b)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = *a;
 	*a = *b;
-	b = tmp; 
+	b = tmp;
 }
