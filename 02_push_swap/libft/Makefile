@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/02/17 16:53:03 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/02/18 17:44:53 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRC	= ft_tolower.c \
 	ft_putchar.c \
 	ft_putstr.c \
 	ft_putendl.c \
-	ft_putnbrendl \
+	ft_putnbrendl.c \
+	ft_putnbr.c \
 	ft_swap.c \
 	ft_strcmp.c \
 	ft_indexof_iarr.c \

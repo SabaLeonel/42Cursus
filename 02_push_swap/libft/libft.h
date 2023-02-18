@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 16:54:44 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:44:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		ft_putchar(char c);
 void		ft_putnbr(long int num);
 void		ft_putendl(char *s);
 void		ft_putnbrendl(long int num);
-void		ft_swap(char *a, char *b);
+void		ft_swap(int *a, int *b);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_indexof_iarr(int *tab, int size, int find);
 

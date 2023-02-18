@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 15:47:38 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:53:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	b->data = ft_allok(argc, sizeof(int), 1);
 	while (++i < argc -1)
 	{
-		a->data[i] = ft_atoilong(argv[i + 1]);
-		if (a->data[i] > MAXINT
-			|| a->data[i] < MININT)
+		a->data[argc - 2 - i] = ft_atoilong(argv[i + 1]);
+		if (a->data[argc - 2 - i] > MAXINT
+			|| a->data[argc - 2 - i] < MININT)
 			i = MAXINT;
 	}
 	a->size = argc - 1;

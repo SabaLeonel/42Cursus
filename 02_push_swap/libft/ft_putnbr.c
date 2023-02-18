@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 16:46:34 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 15:23:24 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:49:09 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putnbr(long int num)
 
 	if (num < 0)
 	{
-		putchar('-');
+		ft_putchar('-');
 		num = -num;
 	}
 	if (num >= 10)
@@ -29,6 +29,6 @@ void	ft_putnbr(long int num)
 	if (num <= 9)
 	{
 		tmp = num + 48;
-		ft_putchar(&tmp);
+		write(1, &tmp, 1);
 	}
 }
