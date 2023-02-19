@@ -5,6 +5,7 @@ LIBFT = ./libft/libft.a
 SRC	= main.c \
 	init_stack.c \
 	check.c \
+	sort.c \
 
 OBJ	= $(SRC:.c=.o)
 
