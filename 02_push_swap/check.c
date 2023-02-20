@@ -6,11 +6,21 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/17 16:58:57 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:43:24 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rotate(t_stack *a)
+{
+	int	i;
+
+	i = -1;
+	ft_swap(&a->data[0], &a->data[a->size - 1]);
+	while (i++ < a->size - 3)
+		ft_swap(&a->data[a->size -1 - i], &a->data[a->size -2 - i]);
+}
 
 void	rrotate(t_stack *a)
 {
@@ -22,16 +32,6 @@ void	rrotate(t_stack *a)
 	{
 		ft_swap(&a->data[i], &a->data[i + 1]);
 	}
-}
-
-void	rotate(t_stack *a)
-{
-	int	i;
-
-	i = -1;
-	ft_swap(&a->data[0], &a->data[a->size - 1]);
-	while (i++ < a->size - 2)
-		ft_swap(&a->data[a->size -1 - i], &a->data[a->size -2 - i]);
 }
 
 void	counter(int mode)

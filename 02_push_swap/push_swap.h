@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/18 18:54:44 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/20 22:10:04 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b);
 void	sort_2(t_stack *a);
 void	sort_3(t_stack *a);
 void	sort_5(t_stack *a, t_stack *b);
+void	simple_sort(t_stack *a, t_stack *b);
+int		is_sorted(t_stack *a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/19 23:47:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/20 21:48:38 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	{
 		printf("\nNum : %i - pos : %i\n ", a.data[i], i);
 	}
-	sort_5(&a, &b);
+	simple_sort(&a, &b);
 	printf("\nlist sorted : \n");
 	for (i = a.size -1; i >= 0; i--)
 	{
