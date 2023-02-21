@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_find_min_pos.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/21 23:49:10 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/21 22:28:13 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/21 23:41:43 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_find_min_pos(int *arr, int len)
 {
-	t_stack	a;
-	t_stack	b;
+	int	min;
+	int	min_pos;
+	int	i;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = 1;
+	min = arr[0];
+	min_pos = 0;
+	while (i < len)
+	{
+		if (arr[i] < min)
+		{
+			min = arr[i];
+			min_pos = i;
+		}
+		i++;
+	}
+	return (min_pos);
 }

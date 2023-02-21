@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   find_min_pos.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/21 23:49:10 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/21 23:45:15 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/21 23:49:24 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char **argv)
+void	find_min_pos(t_stack *a, int *min, int *pos)
 {
-	t_stack	a;
-	t_stack	b;
+	int	i;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = 1;
+	if (a->size == 0)
+		return ;
+	*min = a->data[0];
+	*pos = 0;
+	while (i < a->size)
+	{
+		if (a->data[i] < *min)
+		{
+			*min = a->data[i];
+			*pos = i;
+		}
+		i++;
+	}
 }
