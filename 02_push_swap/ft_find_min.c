@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_min_pos.c                                     :+:      :+:    :+:   */
+/*   ft_find_min.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 23:45:15 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/21 23:49:24 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:08:23 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_min_pos(t_stack *a, int *min, int *pos)
+int	ft_find_min(t_stack *a)
 {
+	int	min;
 	int	i;
 
-	i = 1;
-	if (a->size == 0)
-		return ;
-	*min = a->data[0];
-	*pos = 0;
-	while (i < a->size)
+	i = 0;
+	min = a->data[0];
+	while (i++ < a->size)
 	{
-		if (a->data[i] < *min)
-		{
-			*min = a->data[i];
-			*pos = i;
-		}
-		i++;
+		if (min > a->data[i])
+			min = a->data[i];
 	}
+	return (min);
 }
+
+int find_min(t_stack *a)
+{
+    int min;
+    int min_idx;
+	int	i;
+
+	min = MAXINT;
+	min_idx = -1;
+	i = -1;
+	while (++i < a->size)
+	{
+		if (a->data[i] < min)
+		{
+			min = a->data[i];
+			min_idx = i;
+		}
+	}
+    return min_idx;
+}
+

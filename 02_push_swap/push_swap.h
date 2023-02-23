@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/22 00:09:13 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:48:43 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	sort_3(t_stack *a, t_stack *b);
 void	sort_5(t_stack *a, t_stack *b);
 void	sort(t_stack *a, t_stack *b);
 int		is_sorted(t_stack *a);
-void	find_min_pos(t_stack *a, int *min, int *pos);
+int		ft_find_min(t_stack *a);
+void 	find_min(t_stack *stack, int *min, int *pos);
 
 #endif

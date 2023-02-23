@@ -6,7 +6,7 @@ SRC	= main.c \
 	init_stack.c \
 	check.c \
 	sort.c \
-	find_min_pos.c \
+	ft_find_min.c \
 
 OBJ	= $(SRC:.c=.o)
 
