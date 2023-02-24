@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/02/21 22:29:41 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/02/24 09:46:14 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ SRC	= ft_tolower.c \
 	ft_swap.c \
 	ft_strcmp.c \
 	ft_indexof_iarr.c \
-	ft_find_min_pos.c \
+	ft_find_min.c \
 
 OBJ	= $(SRC:.c=.o)
 

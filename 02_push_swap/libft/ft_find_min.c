@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_min_pos.c                                  :+:      :+:    :+:   */
+/*   ft_find_min.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 22:28:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/21 23:41:43 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/21 23:45:15 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/24 10:50:48 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_find_min_pos(int *arr, int len)
+int ft_find_min(int *tab, int size)
 {
-	int	min;
-	int	min_pos;
-	int	i;
+	int min;
+	int i;
 
-	i = 1;
-	min = arr[0];
-	min_pos = 0;
-	while (i < len)
+	i = -1;
+	min = MAXINT;
+	while (++i < size)
 	{
-		if (arr[i] < min)
-		{
-			min = arr[i];
-			min_pos = i;
-		}
-		i++;
+		if (tab[i] < min)
+			min = tab[i];
 	}
-	return (min_pos);
+	return (min);
 }
+// int main(void)
+// {
+// 	int tab[5] = {5,4,3,2,-1};
+// 	printf("min : %i", ft_find_min(tab, 5));
+// 	return (0);
+// }
