@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 15:46:20 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/25 14:31:28 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/25 14:42:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int ft_wordcount(const char *tab, char c)
 {
-	t_stack a;
-	t_stack b;
+	int	i;
+	int	j;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = 0;
+	j = 0;
+	if (tab[0] == c || tab[0] == '\0')
+		j --;
+	while (tab[i])
+	{
+		if (tab[i] == c && tab[i + 1] != '\0' && tab[i + 1] != c)
+			j ++;
+		i ++;
+	}
+	return (j + 1);
 }

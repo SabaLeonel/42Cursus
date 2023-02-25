@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_find_pivot.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 15:46:20 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/25 17:33:51 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/25 17:39:34 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_find_pivot(int *tab, int size)
 {
-	t_stack a;
-	t_stack b;
+	int	min;
+	int	max;
+	int	pivot;
+	int i;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = -1;
+	pivot = 0;
+	min = ft_find_min(tab, size);
+	max = ft_find_max(tab, size);
+	while (++i < size)
+	{
+		if (min != tab[i] || max != tab[i])
+			pivot = tab[i];
+	}
+	return (pivot);
 }

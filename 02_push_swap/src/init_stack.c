@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 13:16:31 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:46:01 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,25 @@
 void ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int i;
-	int *tab;
-	int countnum;
+	char **tabsplit;
 
 	i = -1;
 	a->data = ft_allok(argc, sizeof(int), 1);
 	b->data = ft_allok(argc, sizeof(int), 1);
+
 	if (argc == 2)
 	{
-		while (tab[i]
+		a->size = ft_wordcount(argv[1], ' ');
+		tabsplit = ft_allok(a->size, sizeof(int), 1);
+		tabsplit = ft_split(argv[1], ' ');
+		while (++i < a->size)
 		{
-			tab[i]	
+			a->data[a->size - 1 - i] = ft_atoilong(tabsplit[i]);
+			if (a->data[a->size - 1 - i] > MAXINT 
+				|| a->data[a->size - 1 - i] < MININT)
+				i = MAXINT;
 		}
+		b->size = 0;
 	}
 	else
 	{
@@ -39,7 +46,6 @@ void ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 		a->size = argc - 1;
 		b->size = 0;
 	}
-
 	if (!ft_is_valid(*a, argv) || i == MAXINT)
 		ft_garbage_collector(0, 1, 1);
 }

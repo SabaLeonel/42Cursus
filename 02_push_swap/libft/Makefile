@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/02/25 02:31:07 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/02/25 17:15:53 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,9 @@ SRCS	:= \
 	ft_swap.c				\
 	ft_strcmp.c				\
 	ft_indexof_iarr.c		\
-	ft_find_min.c
+	ft_find_min.c			\
+	ft_wordcount.c			\
+	ft_find_max.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build

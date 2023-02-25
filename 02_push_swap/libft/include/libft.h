@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/24 10:18:10 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:16:55 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 int			ft_tolower(int c);
 size_t		ft_strlen(const char *s);
@@ -76,6 +77,8 @@ void		ft_swap(int *a, int *b);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_indexof_iarr(int *tab, int size, int find);
 int			ft_find_min(int *tab, int size);
+int			ft_wordcount(const char *tab, char c);
+int			ft_find_max(int *tab, int size);
 
 typedef struct s_list
 {

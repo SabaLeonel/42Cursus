@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_find_max.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 15:46:20 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/25 17:13:57 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/02/25 17:17:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_find_max(int *tab, int size)
 {
-	t_stack a;
-	t_stack b;
+	int max;
+	int i;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = -1;
+	max = MININT;
+	while (++i < size)
+	{
+		if (tab[i] > max)
+			max = tab[i];
+	}
+	return (max);
 }

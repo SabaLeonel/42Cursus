@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 12:00:55 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:30:46 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,31 @@
 
 void sort_3(t_stack *a, t_stack *b)
 {
-	if (a->data[1] > a->data[0])
-		apply("sa", "sa", a, b);
-	if (a->data[2] > a->data[1])
+
+	int	minpos;
+	int maxpos;
+	int pivot;
+
+	minpos = ft_find_min(a->data, a->size);
+	maxpos = ft_find_max(a->data, a->size);	
+	if (minpos != a->data[0] || minpos != a->data[1])
+	minpos = ft_indexof_iarr(a->data, a->size, minpos);
+	maxpos = ft_indexof_iarr(a->data, a->size, maxpos);
+	if (NULL)
 	{
-		ft_swap(&a->data[1], &a->data[2]);
-		ft_putendl_fd("sa", 1);
-		if (a->data[1] > a->data[0])
-			apply("sa", "sa", a, b);
+		apply("sa", "sa", a, b);
+		apply("ra", "ra", a, b);
+	}
+	else if (NULL)
+		apply("sa", "sa", a, b);
+	else if (NULL)
+		apply("rra", "rra", a, b);
+	else if (void)
+		apply("ra", "ra", a, b);
+	else if (void)
+	{
+		apply("sa", "sa", a, b);
+		apply("rra", "rra", a, b);
 	}
 }
 
@@ -32,15 +49,15 @@ void send_smallest_to_b(t_stack *a, t_stack *b)
 	min = ft_find_min(a->data, a->size);
 	if (a->data[0] == min)
 		apply("rra", "rra", a, b);
-	if (a->data[a->size-2] == min)
+	if (a->data[a->size - 2] == min)
 		apply("sa", "sa", a, b);
-	if (a->data[a->size-3] == min)
-		ft_swap(&a->data[a->size-3], &a->data[a->size-1]);
+	if (a->data[a->size - 3] == min)
+		ft_swap(&a->data[a->size - 3], &a->data[a->size - 1]);
 	if (a->data[a->data[1]] == min)
 	{
-		ft_swap(&a->data[1], &a->data[a->size-1]);
+		ft_swap(&a->data[1], &a->data[a->size - 1]);
 	}
-	if (a->data[a->size-1] == min)
+	if (a->data[a->size - 1] == min)
 		apply("pb", "pb", a, b);
 }
 
