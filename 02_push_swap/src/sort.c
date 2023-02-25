@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 02:03:16 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 03:52:40 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void sort_5(t_stack *a, t_stack *b)
 		send_smallest_to_b(a, b);
 	send_smallest_to_b(a, b);
 	sort_3(a, b);
-	printf("List sorted 3 : \n");
-	for (int i = b->size-1; i >= 0; i--)
-	{
-		printf("%d \n", b->data[i]);
-	}
 	apply("pa", "pa", a, b);
 	apply("pa", "pa", a, b);
 }
