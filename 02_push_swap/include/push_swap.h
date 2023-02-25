@@ -6,14 +6,14 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/24 09:47:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 02:46:50 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
@@ -37,5 +37,6 @@ void	sort_3(t_stack *a, t_stack *b);
 void	sort_5(t_stack *a, t_stack *b);
 void	sort(t_stack *a, t_stack *b);
 int		is_sorted(t_stack *a);
+int		main(int argc, char **argv);
 
 #endif
