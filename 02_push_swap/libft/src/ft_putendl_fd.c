@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 12:26:33 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2022/11/22 12:29:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 11:54:53 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_putendl_fd(char *s, int fd)
 	if (s)
 	{
 		ft_putstr_fd(s, fd);
-		ft_putchar_fd('\n', fd);
+		ft_putstr_fd("\n", fd);
 	}
 }

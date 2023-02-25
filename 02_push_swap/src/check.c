@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 02:02:49 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 13:06:03 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b)
 	if ((!ft_strcmp(action, "rrb") || !ft_strcmp(action, "rrr")) && b->size > 1)
 		rrotate(b);
 	if (print)
-		ft_putendl(print);
+		ft_putendl_fd(print, 1);
 	counter(0);
 }
 
@@ -74,12 +74,12 @@ int	ft_is_valid(t_stack a, char **argv)
 {
 	if (ft_doublons_ia(a.data, a.size))
 	{
-		ft_putendl("Error");
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	if (ft_all_are_num(&argv[1]))
 	{
-		ft_putendl("Error");
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	return (1);

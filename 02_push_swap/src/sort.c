@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 03:52:40 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:00:55 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void sort_3(t_stack *a, t_stack *b)
 	if (a->data[2] > a->data[1])
 	{
 		ft_swap(&a->data[1], &a->data[2]);
-		ft_putendl("sa");
+		ft_putendl_fd("sa", 1);
 		if (a->data[1] > a->data[0])
 			apply("sa", "sa", a, b);
 	}

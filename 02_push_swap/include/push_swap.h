@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 02:46:50 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 04:06:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 typedef struct s_stack
 {
 	int		*data;
-	char	name;
-	char	nname;
 	int		size;
 }	t_stack;
 
