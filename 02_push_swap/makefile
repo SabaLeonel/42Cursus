@@ -33,7 +33,8 @@ SRCS		:= \
 	src/main.c 				\
 	src/init_stack.c		\
 	src/check.c				\
-	src/sort.c
+	src/sort.c				\
+	src/utils.c
 
 
 BUILD_DIR   := .build

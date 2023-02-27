@@ -6,25 +6,22 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 00:48:00 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 01:57:04 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void sort_3(t_stack *a, t_stack *b)
+void	sort_3(t_stack *a, t_stack *b)
 {
-
-	int minpos;
-	int maxpos;
-	int pivotpos;
+	int	minpos;
+	int	maxpos;
+	int	pivotpos;
 
 	minpos = ft_find_min(a->data, a->size);
 	maxpos = ft_find_max(a->data, a->size);
 	pivotpos = ft_find_pivot(a->data, a->size);
-	minpos = ft_indexof_iarr(a->data, a->size, minpos);
-	maxpos = ft_indexof_iarr(a->data, a->size, maxpos);
-	pivotpos = ft_indexof_iarr(a->data, a->size, pivotpos);
+	find_pos(minpos, maxpos, pivotpos, a);
 	if (minpos == 1 && maxpos == 0 && pivotpos == 2)
 		apply("sa", "sa", a, b);
 	else if (minpos == 1 && maxpos == 2 && pivotpos == 0)
@@ -45,33 +42,12 @@ void sort_3(t_stack *a, t_stack *b)
 
 void	send_smallest_to_b(t_stack *a, t_stack *b)
 {
-	int min;
-	int minpos;
+	int	min;
+	int	minpos;
 
 	min = ft_find_min(a->data, a->size);
 	minpos = ft_indexof_iarr(a->data, a->size, min);
-	if (minpos < a->size / 2)
-	{
-		if (minpos == 0)
-			apply("rra", "rra", a, b);
-		if (minpos == 1)
-		{
-			apply("rra", "rra", a, b);
-			apply("rra", "rra", a, b);
-		}
-	}
-	else if (minpos > a->size / 2)
-	{
-		if (minpos == a->size - 2)
-			apply("sa", "sa", a, b);
-	}
-	else if (minpos == 2)
-	{
-		apply("ra", "ra", a, b);
-		minpos = ft_indexof_iarr(a->data, a->size, min);
-		if (minpos != a->size-1)
-			apply("sa", "sa", a, b);
-	}
+	s_to_b_pt2(a, b, minpos, min);
 	apply("pb", "pb", a, b);
 }
 
@@ -87,9 +63,8 @@ void	sort_5(t_stack *a, t_stack *b)
 
 void	sort(t_stack *a, t_stack *b)
 {
-
 	if (is_sorted(a) || a->size == 0 || a->size == 1)
-		return;
+		return ;
 	else if (a->size == 2)
 	{
 		if (a->data[0] > a->data[1])
@@ -103,7 +78,7 @@ void	sort(t_stack *a, t_stack *b)
 
 int	is_sorted(t_stack *a)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (i++ < a->size - 1)

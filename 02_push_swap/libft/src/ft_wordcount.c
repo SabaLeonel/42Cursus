@@ -6,13 +6,13 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 14:31:28 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 14:42:20 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 01:09:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_wordcount(const char *tab, char c)
+int	ft_wordcount(const char *tab, char c)
 {
 	int	i;
 	int	j;
