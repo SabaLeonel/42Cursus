@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 15:46:01 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/25 21:32:26 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 		}
 		b->size = 0;
 	}
-	else
+	else if (argc > 2)
 	{
 		while (++i < argc - 1)
 		{

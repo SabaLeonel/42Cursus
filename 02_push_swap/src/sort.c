@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/25 17:30:46 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:48:00 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,68 @@
 void sort_3(t_stack *a, t_stack *b)
 {
 
-	int	minpos;
+	int minpos;
 	int maxpos;
-	int pivot;
+	int pivotpos;
 
 	minpos = ft_find_min(a->data, a->size);
-	maxpos = ft_find_max(a->data, a->size);	
-	if (minpos != a->data[0] || minpos != a->data[1])
+	maxpos = ft_find_max(a->data, a->size);
+	pivotpos = ft_find_pivot(a->data, a->size);
 	minpos = ft_indexof_iarr(a->data, a->size, minpos);
 	maxpos = ft_indexof_iarr(a->data, a->size, maxpos);
-	if (NULL)
+	pivotpos = ft_indexof_iarr(a->data, a->size, pivotpos);
+	if (minpos == 1 && maxpos == 0 && pivotpos == 2)
+		apply("sa", "sa", a, b);
+	else if (minpos == 1 && maxpos == 2 && pivotpos == 0)
+		apply("ra", "ra", a, b);
+	else if (minpos == 0 && maxpos == 1 && pivotpos == 2)
+		apply("rra", "rra", a, b);
+	else if (minpos == 2 && maxpos == 1 && pivotpos == 0)
 	{
 		apply("sa", "sa", a, b);
 		apply("ra", "ra", a, b);
 	}
-	else if (NULL)
-		apply("sa", "sa", a, b);
-	else if (NULL)
-		apply("rra", "rra", a, b);
-	else if (void)
-		apply("ra", "ra", a, b);
-	else if (void)
+	else if (minpos == 0 && maxpos == 2 && pivotpos == 1)
 	{
 		apply("sa", "sa", a, b);
 		apply("rra", "rra", a, b);
 	}
 }
 
-void send_smallest_to_b(t_stack *a, t_stack *b)
+void	send_smallest_to_b(t_stack *a, t_stack *b)
 {
 	int min;
+	int minpos;
 
 	min = ft_find_min(a->data, a->size);
-	if (a->data[0] == min)
-		apply("rra", "rra", a, b);
-	if (a->data[a->size - 2] == min)
-		apply("sa", "sa", a, b);
-	if (a->data[a->size - 3] == min)
-		ft_swap(&a->data[a->size - 3], &a->data[a->size - 1]);
-	if (a->data[a->data[1]] == min)
+	minpos = ft_indexof_iarr(a->data, a->size, min);
+	if (minpos < a->size / 2)
 	{
-		ft_swap(&a->data[1], &a->data[a->size - 1]);
+		if (minpos == 0)
+			apply("rra", "rra", a, b);
+		if (minpos == 1)
+		{
+			apply("rra", "rra", a, b);
+			apply("rra", "rra", a, b);
+		}
 	}
-	if (a->data[a->size - 1] == min)
-		apply("pb", "pb", a, b);
+	else if (minpos > a->size / 2)
+	{
+		if (minpos == a->size - 2)
+			apply("sa", "sa", a, b);
+	}
+	else if (minpos == 2)
+	{
+		apply("ra", "ra", a, b);
+		minpos = ft_indexof_iarr(a->data, a->size, min);
+		if (minpos != a->size-1)
+			apply("sa", "sa", a, b);
+	}
+	apply("pb", "pb", a, b);
 }
 
-void sort_5(t_stack *a, t_stack *b)
+void	sort_5(t_stack *a, t_stack *b)
 {
-	// if data.size = 5 faire 2x lop juste en bas
-	// 2 push chiffre plus bas dans le b
 	if (a->size == 5)
 		send_smallest_to_b(a, b);
 	send_smallest_to_b(a, b);
@@ -73,8 +85,9 @@ void sort_5(t_stack *a, t_stack *b)
 	apply("pa", "pa", a, b);
 }
 
-void sort(t_stack *a, t_stack *b)
+void	sort(t_stack *a, t_stack *b)
 {
+
 	if (is_sorted(a) || a->size == 0 || a->size == 1)
 		return;
 	else if (a->size == 2)
@@ -88,7 +101,7 @@ void sort(t_stack *a, t_stack *b)
 		sort_5(a, b);
 }
 
-int is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)
 {
 	int i;
 
