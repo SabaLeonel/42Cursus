@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 01:57:04 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:35:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	send_smallest_to_b(t_stack *a, t_stack *b)
 
 	min = ft_find_min(a->data, a->size);
 	minpos = ft_indexof_iarr(a->data, a->size, min);
-	s_to_b_pt2(a, b, minpos, min);
+	push_min_to_front(a, b, minpos, min);
 	apply("pb", "pb", a, b);
 }
 

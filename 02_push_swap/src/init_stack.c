@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 01:23:21 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:24:30 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	b->data = ft_allok(argc, sizeof(int), 1);
 	if (argc == 2)
 	{
-		argc2(a, b, tabsplit, argv);
+		parse_one_arg(a, b, tabsplit, argv);
 	}
 	else if (argc > 2)
 	{
@@ -41,7 +41,7 @@ void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 		ft_garbage_collector(0, 1, 1);
 }
 
-void	argc2(t_stack *a, t_stack *b, char **tab, char **argv)
+void	parse_one_arg(t_stack *a, t_stack *b, char **tab, char **argv)
 {
 	int	i;
 

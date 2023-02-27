@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 01:40:45 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 01:56:27 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:35:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	find_pos(int minpos, int maxpos, int pivotpos, t_stack *a)
 	pivotpos = ft_indexof_iarr(a->data, a->size, pivotpos);
 }
 
-void	s_to_b_pt2(t_stack *a, t_stack *b, int minpos, int min)
+void	push_min_to_front(t_stack *a, t_stack *b, int minpos, int min)
 {
 	if (minpos < a->size / 2)
 	{
