@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 01:06:31 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:02:40 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ int	ft_is_valid(t_stack a, char **argv)
 		return (0);
 	}
 	return (1);
+	write(2, "Error\n", 6);
 }

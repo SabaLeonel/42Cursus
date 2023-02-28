@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/27 23:35:20 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:24:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	sort(t_stack *a, t_stack *b)
 		sort_3(a, b);
 	else if (a->size == 4 || a->size == 5)
 		sort_5(a, b);
+	else
+		radix_sort(a, b);
 }
 
 int	is_sorted(t_stack *a)
