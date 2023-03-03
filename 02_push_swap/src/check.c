@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 11:12:07 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:57:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,32 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b)
 		ft_putendl_fd(print, 1);
 }
 
-int	ft_is_valid(t_stack a, char **argv, char **)
+int	ft_is_valid(t_stack a, char **argv, int argc, char **tabsplit)
 {
-	int	i;
-
-	i = -1;
-	a.data = ft_wordcount(argv[1], ' ');
-	tab = ft_allok(a.size, sizeof(int), 1);
-	tab = ft_split(argv[1], ' ');
-	while (++i < a.size)
-	{
-		a->data[a->size - 1 - i] = ft_atoilong(tab[i]);
-	}
+	 //printf("%d\n", argc);
+	(void) tabsplit;
+	(void) argc;
+	(void) argv;
 	if (ft_doublons_ia(a.data, a.size))
 	{
 		ft_putstr_fd("DoublonsError\n", 2);
 		return (0);
 	}
-	if (ft_all_are_num(&argv[1]))
-	{
-		// for(int i=0; i < 4; i++)
-		// 	printf("\nnum : %s ", argv[1]);
-		ft_putstr_fd("NotNumError\n", 2);
-		return (0);
-	}
+	// if (ft_all_are_num()) //char
+	// {
+	// 	if (ft_all_are_num(tabsplit))
+	// 	{printf("%d\n", 1);
+	// 		ft_putstr_fd("NotNumError\n", 2);
+	// 		return (0);
+	// 	}
+	// }
+	// else if (argc > 2) //int
+	// {printf("%d\n", 2);
+	// 	if (ft_all_are_num(&argv[1]))
+	// 	{
+	// 		ft_putstr_fd("NotNumError\n", 2);
+	// 		return (0);
+	// 	}
+	// }
 	return (1);
 }

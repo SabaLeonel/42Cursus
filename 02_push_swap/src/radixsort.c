@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:22:09 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/02 17:57:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:15:53 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	radix_sort(t_stack *a, t_stack *b)
 {
 	(void)a;
 	(void)b;
-	printf("hello");
 }
