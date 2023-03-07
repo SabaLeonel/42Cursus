@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_alloc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 18:20:30 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/03/07 18:21:58 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/03/07 18:29:07 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_alloc(int count, int size, void (*f)())
 {
-	t_stack	a;
-	t_stack	b;
+	void	*res;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	free(a.data);
-	free(b.data);
-	// ft_garbage_collector(0, 1, 0);
-	return (0);
+	res = ft_calloc(count, size);
+	if (res == 0)
+		f();
+	return (res);
 }

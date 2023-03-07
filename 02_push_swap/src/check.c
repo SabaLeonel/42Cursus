@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 16:57:20 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:13:16 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,15 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b)
 		ft_putendl_fd(print, 1);
 }
 
-int	ft_is_valid(t_stack a, char **argv, int argc, char **tabsplit)
+int	ft_is_valid(t_stack a)
 {
-	 //printf("%d\n", argc);
-	(void) tabsplit;
-	(void) argc;
-	(void) argv;
+	int	i;
+
+	i = 0;
 	if (ft_doublons_ia(a.data, a.size))
 	{
-		ft_putstr_fd("DoublonsError\n", 2);
+		error();
 		return (0);
 	}
-	// if (ft_all_are_num()) //char
-	// {
-	// 	if (ft_all_are_num(tabsplit))
-	// 	{printf("%d\n", 1);
-	// 		ft_putstr_fd("NotNumError\n", 2);
-	// 		return (0);
-	// 	}
-	// }
-	// else if (argc > 2) //int
-	// {printf("%d\n", 2);
-	// 	if (ft_all_are_num(&argv[1]))
-	// 	{
-	// 		ft_putstr_fd("NotNumError\n", 2);
-	// 		return (0);
-	// 	}
-	// }
 	return (1);
 }

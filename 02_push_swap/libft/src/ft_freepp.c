@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_freepp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 18:20:30 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/03/07 17:50:27 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/03/07 18:07:03 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_freepp(char **tab)
 {
-	t_stack	a;
-	t_stack	b;
+	int	i;
 
-	ft_init_stack(&a, &b, argc, argv);
-	sort(&a, &b);
-	free(a.data);
-	free(b.data);
-	// ft_garbage_collector(0, 1, 0);
-	return (0);
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
 }

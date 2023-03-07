@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/02/28 17:24:19 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:38:22 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,12 @@
 
 void	sort_3(t_stack *a, t_stack *b)
 {
-	int	minpos;
-	int	maxpos;
-	int	pivotpos;
-
-	minpos = ft_find_min(a->data, a->size);
-	maxpos = ft_find_max(a->data, a->size);
-	pivotpos = ft_find_pivot(a->data, a->size);
-	find_pos(minpos, maxpos, pivotpos, a);
-	if (minpos == 1 && maxpos == 0 && pivotpos == 2)
-		apply("sa", "sa", a, b);
-	else if (minpos == 1 && maxpos == 2 && pivotpos == 0)
+	if (a->data[2] == 3)
 		apply("ra", "ra", a, b);
-	else if (minpos == 0 && maxpos == 1 && pivotpos == 2)
+	else if (a->data[1] == 3)
 		apply("rra", "rra", a, b);
-	else if (minpos == 2 && maxpos == 1 && pivotpos == 0)
-	{
+	if (a->data[2] == 2)
 		apply("sa", "sa", a, b);
-		apply("ra", "ra", a, b);
-	}
-	else if (minpos == 0 && maxpos == 2 && pivotpos == 1)
-	{
-		apply("sa", "sa", a, b);
-		apply("rra", "rra", a, b);
-	}
 }
 
 void	send_smallest_to_b(t_stack *a, t_stack *b)
@@ -56,7 +38,12 @@ void	sort_5(t_stack *a, t_stack *b)
 	if (a->size == 5)
 		send_smallest_to_b(a, b);
 	send_smallest_to_b(a, b);
-	sort_3(a, b);
+	if (a->data[2] == 5)
+		apply("ra", "ra", a, b);
+	else if (a->data[1] == 5)
+		apply("rra", "rra", a, b);
+	if (a->data[2] == 4)
+		apply("sa", "sa", a, b);
 	apply("pa", "pa", a, b);
 	apply("pa", "pa", a, b);
 }
@@ -67,7 +54,7 @@ void	sort(t_stack *a, t_stack *b)
 		return ;
 	else if (a->size == 2)
 	{
-		if (a->data[0] > a->data[1])
+		if (a->data[1] > a->data[2])
 			apply("sa", "sa", a, b);
 	}
 	else if (a->size == 3)

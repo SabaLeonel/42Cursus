@@ -6,17 +6,17 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 01:40:45 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 23:13:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 17:41:50 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	find_pos(int minpos, int maxpos, int pivotpos, t_stack *a)
+void	find_pos(int *minpos, int *maxpos, int *pivotpos, t_stack *a)
 {
-	minpos = ft_indexof_iarr(a->data, a->size, minpos);
-	maxpos = ft_indexof_iarr(a->data, a->size, maxpos);
-	pivotpos = ft_indexof_iarr(a->data, a->size, pivotpos);
+	*minpos = ft_indexof_iarr(a->data, a->size, *minpos);
+	*maxpos = ft_indexof_iarr(a->data, a->size, *maxpos);
+	*pivotpos = ft_indexof_iarr(a->data, a->size, *pivotpos);
 }
 
 void	push_min_to_front(t_stack *a, t_stack *b, int minpos, int min)
@@ -50,7 +50,6 @@ long int	ft_atoipushswap(const char *str)
 	long int	i;
 	long int	res;
 	long int	signe;
-	// long int	temp;
 
 	i = 0;
 	res = 0;
@@ -68,5 +67,14 @@ long int	ft_atoipushswap(const char *str)
 		res = res * 10 + str[i] - '0';
 		i ++;
 	}
+	if (!ft_isdigit(str[i]) && str[i] != 0)
+		error();
 	return (res * signe);
+}
+
+void	error(void)
+{
+	ft_putendl_fd("error", 2);
+	ft_garbage_collector(0, 1, 1);
+	exit(0);
 }

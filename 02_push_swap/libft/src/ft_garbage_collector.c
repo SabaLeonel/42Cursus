@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 11:37:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 16:04:30 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:17:17 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_garbage_collector(void *ptr, int mode, int _exit)
 		element = ft_lstnew(ptr);
 		if (element == 0 && _exit)
 			ft_garbage_collector(0, 1, _exit);
+		if (element == 0)
+			return ;
 		ft_lstadd_back(&garbage, element);
 	}
 	else
