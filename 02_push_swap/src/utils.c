@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 01:40:45 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 17:04:08 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/03 23:13:15 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ long int	ft_atoipushswap(const char *str)
 	long int	i;
 	long int	res;
 	long int	signe;
-	long int	temp;
+	// long int	temp;
 
 	i = 0;
 	res = 0;
@@ -63,14 +63,10 @@ long int	ft_atoipushswap(const char *str)
 			signe = -1;
 		i ++;
 	}
-	temp = i;
 	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + str[i] - '0';
 		i ++;
 	}
-	printf("\n num : %i\n", str[i]);
-	if (!ft_isdigit(str[i]))
-		printf("\n pas chiffre\n");
 	return (res * signe);
 }
