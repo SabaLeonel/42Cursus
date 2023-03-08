@@ -12,14 +12,16 @@
 
 #include "libft.h"
 
-void	ft_free_ppi(int *tab)
+void	ft_free_pp(void **tab)
 {
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
-		free(&tab[i]);
+		free(tab[i]);
 		i ++;
 	}
 	free(tab);

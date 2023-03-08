@@ -82,7 +82,7 @@ $(LIBS_TARGET):
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<  -fsanitize=address -g3
 	$(info CREATED $@)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 01:40:45 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 17:24:02 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:30:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ void	error(void)
 {
 	ft_putendl_fd("error", 2);
 	ft_garbage_collector(0, 1, 1);
-	exit(0);
 }

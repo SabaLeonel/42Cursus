@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 17:28:14 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:44:21 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	i = -1;
 	a->data = ft_allok(argc, sizeof(int), 1);
 	b->data = ft_allok(argc, sizeof(int), 1);
-	printf("\npointer a-data >%p \n", a->data);
-	printf("\npointer b-data >%p \n", b->data);
 	while (argv[++i])
 	{
 		a->data[i] = ft_atoipushswap(argv[i]);
@@ -43,7 +41,6 @@ void	ft_normalizer(t_stack *a)
 	int	count;
 
 	newtab = ft_allok(a->size, sizeof(int), 1);
-	printf("\npointer newtab >%p \n", newtab);
 	i = 0;
 	while (i < a->size)
 	{
