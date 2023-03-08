@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 19:18:04 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/08 15:35:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int			ft_find_min(int *tab, int size);
 int			ft_wordcount(const char *tab, char c);
 int			ft_find_max(int *tab, int size);
 int			ft_find_pivot(int *tab, int size);
-void		ft_free_ppi(int **tab);
-void		ft_free_ppa(char **tab);
+void		ft_free_ppi(int *tab);
+void		ft_free_ppc(char **tab);
 void		*ft_alloc(int count, int size, void (*f)());
 
 typedef struct s_list

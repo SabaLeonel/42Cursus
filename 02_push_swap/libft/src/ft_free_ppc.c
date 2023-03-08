@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_free_ppa(char **tab)
+void	ft_free_ppc(char **tab)
 {
 	int	i;
 

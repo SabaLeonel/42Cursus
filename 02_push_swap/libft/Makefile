@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/03/07 19:21:36 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/03/08 15:19:36 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ SRCS	:= \
 	ft_find_pivot.c			\
 	ft_free_ppi.c			\
 	ft_alloc.c				\
-	ft_free_ppa.c
+	ft_free_ppc.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build
