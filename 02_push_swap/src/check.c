@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 17:13:16 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:26:03 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ void	rrotate(t_stack *a)
 	}
 }
 
-void	counter(int mode)
-{
-	static int	count;
-
-	if (mode)
-	{
-		ft_putnbrendl(count);
-		return ;
-	}
-	else
-		count++;
-}
-
 void	apply(char *action, char *print, t_stack *a, t_stack *b)
 {
 	if ((!ft_strcmp(action, "sa") || !ft_strcmp(action, "ss")) && a->size > 1)
@@ -71,13 +58,7 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b)
 
 int	ft_is_valid(t_stack a)
 {
-	int	i;
-
-	i = 0;
 	if (ft_doublons_ia(a.data, a.size))
-	{
 		error();
-		return (0);
-	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 01:40:45 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 17:41:50 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:24:22 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ long int	ft_atoipushswap(const char *str)
 void	error(void)
 {
 	ft_putendl_fd("error", 2);
-	ft_garbage_collector(0, 1, 1);
+	// ft_garbage_collector(0, 1, 1);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 18:30:50 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:19:28 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_normalizer(t_stack *a)
 		i ++;
 	}
 	a->data = newtab;
+	ft_free_ppi(&newtab);
 }
 
 void	parse_one_arg(t_stack *a, t_stack *b, char *argv)
@@ -78,6 +79,6 @@ void	parse_one_arg(t_stack *a, t_stack *b, char *argv)
 			|| a->data[a->size - 1 - i] < MININT)
 			error();
 	}
-	ft_freepp(tab);
 	b->size = 0;
+	ft_free_ppa(tab);
 }

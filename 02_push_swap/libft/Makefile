@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/03/07 18:26:58 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/03/07 19:21:36 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,8 +90,9 @@ SRCS	:= \
 	ft_wordcount.c			\
 	ft_find_max.c			\
 	ft_find_pivot.c			\
-	ft_freepp.c				\
-	ft_alloc.c
+	ft_free_ppi.c			\
+	ft_alloc.c				\
+	ft_free_ppa.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build
