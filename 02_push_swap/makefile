@@ -43,7 +43,7 @@ OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 CC          := gcc
 CFLAGS      := -Wall -Wextra -Werror -g
-CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
+CPPFLAGS    := $(addprefix -I,$(INCS))
 LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
 LDLIBS      := $(addprefix -l,$(LIBS))
 
@@ -54,7 +54,7 @@ LDLIBS      := $(addprefix -l,$(LIBS))
 # MAKEFLAGS make flags
 # DIR_DUP   duplicate directory tree
 
-RM          := rm -f
+RM          := rm -rf
 MAKEFLAGS   += --silent --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
 
@@ -87,7 +87,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BUILD_DIR)
 
 fclean: clean
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done

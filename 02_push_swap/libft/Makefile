@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/03/08 15:19:36 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/03/08 16:06:36 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,11 +97,10 @@ SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEPS		:= $(OBJS:.o=.d)
 
-CC			:= clang
+CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror
-CPPFLAGS	:= -MMD -MP -I include
+CPPFLAGS	:= -I include
 AR			:= ar
 ARFLAGS		:= -r -c -s
 
@@ -112,7 +111,7 @@ ARFLAGS		:= -r -c -s
 # MAKEFLAGS make flags
 # DIR_DUP   duplicate directory tree
 
-RM          := rm -f
+RM          := rm -rf
 MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
 
@@ -137,10 +136,8 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
 
--include $(DEPS)
-
 clean:
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS) $(BUILD_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
