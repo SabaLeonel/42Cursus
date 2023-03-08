@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 15:27:56 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:29:15 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,22 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	char	**tmp;
 
-	ft_init_stack(&a, &b, argc, argv);
+	if (argc == 2)
+	{
+		tmp = ft_split(argv[1], ' ');
+		if (!tmp)
+			error();
+		printf("\npointer tmp >%p \n", tmp);
+		ft_init_stack(&a, &b, argc, tmp);
+		ft_free_ppc(tmp);
+	}
+	else if (argc > 2)
+	{
+		ft_init_stack(&a, &b, argc, argv + 1);
+	}
 	sort(&a, &b);
-	free(a.data);
-	free(b.data);
-	// ft_garbage_collector(0, 1, 0);
+	ft_garbage_collector(0, 1, 0);
 	return (0);
 }

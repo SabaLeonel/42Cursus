@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:00:49 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 15:45:16 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:28:14 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@ void	ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv)
 	int		i;
 
 	i = -1;
-	a->data = ft_alloc(argc, sizeof(int), error);
-	b->data = ft_alloc(argc, sizeof(int), error);
-	if (argc == 2)
-		parse_one_arg(a, b, argv[1]);
-	else if (argc > 2)
+	a->data = ft_allok(argc, sizeof(int), 1);
+	b->data = ft_allok(argc, sizeof(int), 1);
+	printf("\npointer a-data >%p \n", a->data);
+	printf("\npointer b-data >%p \n", b->data);
+	while (argv[++i])
 	{
-		while (++i < argc - 1)
-		{
-			a->data[argc - 2 - i] = ft_atoipushswap(argv[i + 1]);
-			if (a->data[argc - 2 - i] > MAXINT
-				|| a->data[argc - 2 - i] < MININT)
-				error();
-		}
-		a->size = argc - 1;
-		b->size = 0;
+		a->data[i] = ft_atoipushswap(argv[i]);
+		if (ft_atoipushswap(argv[i]) > MAXINT
+			|| ft_atoipushswap(argv[i]) < MININT)
+			error();
 	}
+	a->size = i;
+	b->size = 0;
 	if (!ft_is_valid(*a))
 		error();
 	ft_normalizer(a);
@@ -45,7 +42,8 @@ void	ft_normalizer(t_stack *a)
 	int	*newtab;
 	int	count;
 
-	newtab = ft_alloc(a->size, sizeof(int), error);
+	newtab = ft_allok(a->size, sizeof(int), 1);
+	printf("\npointer newtab >%p \n", newtab);
 	i = 0;
 	while (i < a->size)
 	{
@@ -61,25 +59,25 @@ void	ft_normalizer(t_stack *a)
 		i ++;
 	}
 	a->data = newtab;
-	// printf("%p\n%p\n\n", a->data, newtab);
-	// ft_free_ppi(newtab);
 }
 
-void	parse_one_arg(t_stack *a, t_stack *b, char *argv)
-{
-	int		i;
-	char	**tab;
+// void	parse_one_arg(t_stack *a, t_stack *b, char *argv)
+// {
+// 	int		i;
+// 	char	**tab;
 
-	tab = ft_split(argv, ' ');
-	i = -1;
-	a->size = ft_wordcount(argv, ' ');
-	while (++i < a->size)
-	{
-		a->data[a->size - 1 - i] = ft_atoipushswap(tab[i]);
-		if (a->data[a->size - 1 - i] > MAXINT
-			|| a->data[a->size - 1 - i] < MININT)
-			error();
-	}
-	b->size = 0;
-	ft_free_ppc(tab);
-}
+// 	tab = ft_split(argv, ' ');
+// 	if (!tab)
+// 		error();
+// 	i = -1;
+// 	a->size = ft_wordcount(argv, ' ');
+// 	while (++i < a->size)
+// 	{
+// 		a->data[a->size - 1 - i] = ft_atoipushswap(tab[i]);
+// 		if (ft_atoipushswap(argv[i + 1]) > MAXINT
+// 				|| ft_atoipushswap(argv[i + 1]) < MININT)
+// 				error();
+// 	}
+// 	b->size = 0;
+// 	ft_free_ppc(tab);
+// }

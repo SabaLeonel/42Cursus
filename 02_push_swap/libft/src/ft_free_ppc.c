@@ -16,8 +16,11 @@ void	ft_free_ppc(char **tab)
 {
 	int	i;
 
-	i = -1;
-	while (tab[++i])
+	i = 0;
+	while (tab[i])
+	{
 		free(tab[i]);
+		i ++;
+	}
 	free(tab);
 }
