@@ -40,7 +40,6 @@ SRCS		:= \
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
-DEPS        := $(OBJS:.o=.d)
 
 CC          := gcc
 CFLAGS      := -Wall -Wextra -Werror -g
@@ -86,11 +85,9 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
 
--include $(DEPS)
-
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done

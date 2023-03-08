@@ -18,6 +18,9 @@ void	ft_free_ppi(int *tab)
 
 	i = 0;
 	while (tab[i])
-		free(tab[i++]);
+	{
+		free(&tab[i]);
+		i ++;
+	}
 	free(tab);
 }
