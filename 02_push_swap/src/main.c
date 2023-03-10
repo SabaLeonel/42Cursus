@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 18:42:48 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:55:37 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ int	main(int argc, char **argv)
 		ft_free_pp((void **)tmp);
 	}
 	else if (argc > 2)
-	{
-		ft_init_stack(&a, &b, argc, argv + 1);
-	}
+		ft_init_stack(&a, &b, argc -1, argv + 1);
 	sort(&a, &b);
 	ft_garbage_collector(0, 1, 0);
 	return (0);

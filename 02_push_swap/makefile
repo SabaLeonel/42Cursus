@@ -74,7 +74,7 @@ DIR_DUP     = mkdir -p $(@D)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME) -fsanitize=address
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
@@ -82,7 +82,7 @@ $(LIBS_TARGET):
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<  -fsanitize=address -g3
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
 
 clean:

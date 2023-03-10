@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:11:46 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/03 17:03:31 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:15:42 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_all_are_num(char **tab)
 {
 	int	i;
+
 	i = 0;
 	while (tab[i++])
 	{

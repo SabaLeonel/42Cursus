@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:00:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 17:38:22 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:11:17 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	sort_3(t_stack *a, t_stack *b)
 {
 	if (a->data[2] == 3)
-		apply("ra", "ra", a, b);
+		apply("ra", a, b);
 	else if (a->data[1] == 3)
-		apply("rra", "rra", a, b);
+		apply("rra", a, b);
 	if (a->data[2] == 2)
-		apply("sa", "sa", a, b);
+		apply("sa", a, b);
 }
 
 void	send_smallest_to_b(t_stack *a, t_stack *b)
@@ -30,7 +30,7 @@ void	send_smallest_to_b(t_stack *a, t_stack *b)
 	min = ft_find_min(a->data, a->size);
 	minpos = ft_indexof_iarr(a->data, a->size, min);
 	push_min_to_front(a, b, minpos, min);
-	apply("pb", "pb", a, b);
+	apply("pb", a, b);
 }
 
 void	sort_5(t_stack *a, t_stack *b)
@@ -39,13 +39,13 @@ void	sort_5(t_stack *a, t_stack *b)
 		send_smallest_to_b(a, b);
 	send_smallest_to_b(a, b);
 	if (a->data[2] == 5)
-		apply("ra", "ra", a, b);
+		apply("ra", a, b);
 	else if (a->data[1] == 5)
-		apply("rra", "rra", a, b);
+		apply("rra", a, b);
 	if (a->data[2] == 4)
-		apply("sa", "sa", a, b);
-	apply("pa", "pa", a, b);
-	apply("pa", "pa", a, b);
+		apply("sa", a, b);
+	apply("pa", a, b);
+	apply("pa", a, b);
 }
 
 void	sort(t_stack *a, t_stack *b)
@@ -55,7 +55,7 @@ void	sort(t_stack *a, t_stack *b)
 	else if (a->size == 2)
 	{
 		if (a->data[1] > a->data[2])
-			apply("sa", "sa", a, b);
+			apply("sa", a, b);
 	}
 	else if (a->size == 3)
 		sort_3(a, b);

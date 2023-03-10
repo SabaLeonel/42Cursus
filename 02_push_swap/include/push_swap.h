@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 17:48:23 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:10:14 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 typedef struct s_stack
 {
 	int		*data;
-	int		*index;
 	int		size;
 }	t_stack;
 
@@ -30,7 +29,7 @@ void		ft_init_stack(t_stack *a, t_stack *b, int argc, char **argv);
 int			ft_is_valid(t_stack a);
 void		rrotate(t_stack *a);
 void		rotate(t_stack *a);
-void		apply(char *action, char *print, t_stack *a, t_stack *b);
+void		apply(char *action, t_stack *a, t_stack *b);
 void		sort_2(t_stack *a);
 void		sort_3(t_stack *a, t_stack *b);
 void		sort_5(t_stack *a, t_stack *b);
@@ -44,5 +43,6 @@ void		radix_sort(t_stack *a, t_stack *b);
 void		ft_normalizer(t_stack *a);
 long int	ft_atoipushswap(const char *str);
 void		error(void);
+void		connect_numbers(t_stack *a, t_stack *b);
 
 #endif

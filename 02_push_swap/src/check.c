@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 15:00:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/07 19:26:03 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:26:43 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rrotate(t_stack *a)
 	}
 }
 
-void	apply(char *action, char *print, t_stack *a, t_stack *b)
+void	apply(char *action, t_stack *a, t_stack *b)
 {
 	if ((!ft_strcmp(action, "sa") || !ft_strcmp(action, "ss")) && a->size > 1)
 		ft_swap(&a->data[a->size - 2], &a->data[a->size - 1]);
@@ -52,8 +52,8 @@ void	apply(char *action, char *print, t_stack *a, t_stack *b)
 		rrotate(a);
 	if ((!ft_strcmp(action, "rrb") || !ft_strcmp(action, "rrr")) && b->size > 1)
 		rrotate(b);
-	if (print)
-		ft_putendl_fd(print, 1);
+	if (action)
+		ft_putendl_fd(action, 1);
 }
 
 int	ft_is_valid(t_stack a)
