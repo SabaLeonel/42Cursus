@@ -97,14 +97,12 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-test500	: re
-		python3 python_visualizer.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+info-%:
+	$(MAKE) --dry-run --always-make $* | grep -v "info"
 
-test100	: re
-		python3 python_visualizer.py `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
-
-test5	: re
-		python3 python_visualizer.py `ruby -e "puts (1..5).to_a.shuffle.join(' ')"`
+#------------------------------------------------#
+#   SPEC                                         #
+#------------------------------------------------#
 
 .PHONY: clean fclean re
 .SILENT:

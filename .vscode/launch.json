@@ -1,28 +1,35 @@
 {
-	// Use IntelliSense to learn about possible attributes.
-	// Hover to view descriptions of existing attributes.
-	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "(lldb) Launch",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/02_push_swap/push_swap",
-			"args": ["1 2 3 5 55433"],
-			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb"
-		},
-		{
-			"type": "lldb",
-			"request": "launch",
-			"name": "Debug",
-			"program": "${workspaceFolder}/<executable file>",
-			"args": [],
-			"cwd": "${workspaceFolder}"
-		}
-	]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(lldb) Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/02_push_swap/push_swap",
+      "args": [
+        "1 2 3 5 55433"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug",
+      "program": "${workspaceFolder}/<executable file>",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/leon/Documents/42Cursus/02_push_swap",
+      "program": "/Users/leon/Documents/42Cursus/02_push_swap/build/Debug/outDebug"
+    }
+  ]
 }
