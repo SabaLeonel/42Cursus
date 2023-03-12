@@ -5,7 +5,9 @@
 		"limits": "c",
 		"ratio": "c",
 		"push_swap.h": "c",
-		"random": "c"
+		"random": "c",
+		"array": "c",
+		"vector": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
