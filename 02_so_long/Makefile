@@ -1,4 +1,4 @@
-NAME	= fractol
+NAME	= so_long
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
@@ -53,7 +53,7 @@ endif
 
 MLX_INC = -I ${DIR_MLX}
 MLX =	${DIR_MLX}libmlx.a
-LIBMLX = ${LDFLAGS} ${MLX_}
+LIBMLX = ${LDFLAGS} ${MLX_LNK}
 
 #------------------------------------------------#
 #   UTENSILS                                     #
@@ -81,29 +81,34 @@ DIR_DUP     = mkdir -p $(@D)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(LDFLAGS) $(OBJS) ${LIBMLX} $(LDLIBS) -o $(NAME)
+$(NAME): $(OBJS) $(MLX) $(LIBS_TARGET)
+	$(CC) $(LIBMLX) $(OBJS) $(LDLIBS) -o $(NAME)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
 	$(MAKE) -C $(@D)
 
+$(MLX):
+	$(MAKE) -C $(@D)
+
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(MLX_INC) $(CPPFLAGS) -c -o $@ $<
 	$(info CREATED $@)
+
 
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(OBJS) $(BUILD_DIR)
 
-fclean: clean
+libclean:
+	$(MAKE) -C $(DIR_MLX) clean
+
+fclean: clean libclean
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(RM) $(NAME)
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
+re: fclean all
 
 .PHONY: clean fclean re
 .SILENT:

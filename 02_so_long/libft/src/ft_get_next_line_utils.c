@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_get_next_line_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:16:31 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/14 23:56:32 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/14 23:57:33 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i ++;
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_add_stock(const char *s1, const char *s2)
 {
@@ -51,30 +39,6 @@ char	*ft_add_stock(const char *s1, const char *s2)
 	return (dst);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	char	*str;
-	size_t	i;
-
-	i = 0;
-	str = (char *)s;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i ++;
-	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*tab;
-
-	tab = malloc(sizeof(char) * (count * size));
-	if (!tab)
-		return (NULL);
-	ft_bzero(tab, count * size);
-	return (tab);
-}
 
 int	ft_gnl_strchr(const char *s, char c)
 {

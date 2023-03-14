@@ -6,42 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/14 19:46:16 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/15 00:18:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct s_vector
-{
-	int	x;
-	int	y;
-}	t_vector;
-
-
-typedef struct s_game
-{
-	int			**map;
-	t_vector	player_pos;
-	t_window	window;
-	t_vector	size;
-	int			collectible;
-	int			coll_count;
-	int			players;
-	int			exit;
-	int			move_count;
-
-	t_canvas	sprites[5];
-}	t_game;
-
-enum
-{
-	EMPTY,
-	WALL,
-	PLAYER,
-	COLLECTIBLE,
-	EXIT,
-};
 
 t_canvas	ft_init_image(void *mlx, char *filename)
 {
@@ -141,7 +110,7 @@ void	generate_map(t_game *game, int fd, char *temp)
 			}
 		}
 		y ++;
-		temp = get_next_line(fd);
+		temp = ft_get_next_line(fd);
 	}
 }
 
@@ -154,9 +123,6 @@ void	check_min_amount(t_game *game)
 	if (game->collectible < 1)
 		error("invalid collectible amount");
 }
-
-//importer sprite
-//faire regles jeux
 
 void check_wall(t_game *game)
 {
@@ -195,8 +161,6 @@ void	printmap(t_game *game)
 void	init_sprites(t_game *game)
 {
 	game->sprites[WALL] = ft_init_image(game->window.mlx, "sprites/sprite_wall.xpm");
-	
-	
 	game->sprites[EXIT] = ft_init_image(game->window.mlx, "sprites/sprite_exit.xpm");
 	game->sprites[EMPTY] = ft_init_image(game->window.mlx, "sprites/sprite_empty.xpm");
 	game->sprites[PLAYER] = ft_init_image(game->window.mlx, "sprites/sprite_player.xpm");
@@ -251,7 +215,7 @@ void	parse_map(char *path, t_game *game)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		error("cannot open file");
-	temp = get_next_line(fd);
+	temp = ft_get_next_line(fd);
 	game->size.x = ft_strlen(temp) - 1;
 	if (game->size.x < 4)
 		error("la map elle est trop petite frere");
