@@ -1,4 +1,4 @@
-NAME	= push_swap
+NAME	= fractol
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
@@ -30,13 +30,7 @@ INCS        := include		\
 
 SRC_DIR     := src
 SRCS		:= \
-	src/main.c 				\
-	src/init_stack.c		\
-	src/check.c				\
-	src/sort.c				\
-	src/utils.c				\
-	src/radixsort.c
-
+	src/main.c 
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -46,6 +40,20 @@ CFLAGS      := -Wall -Wextra -Werror -g
 CPPFLAGS    := $(addprefix -I,$(INCS))
 LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
 LDLIBS      := $(addprefix -l,$(LIBS))
+
+
+# Compile la MiniLibX suivant l'OS
+ifeq (${shell uname}, Linux)
+	DIR_MLX = mlx_linux/
+	MLX_LNK	= -L $(DIR_MLX) -lmlx -lXext -lX11 -lbsd -lm
+else
+	DIR_MLX = mlx_macos/
+	MLX_LNK	= -L $(DIR_MLX) -l mlx -framework OpenGL -framework AppKit
+endif
+
+MLX_INC = -I ${DIR_MLX}
+MLX =	${DIR_MLX}libmlx.a
+LIBMLX = ${LDFLAGS} ${MLX_}
 
 #------------------------------------------------#
 #   UTENSILS                                     #
@@ -74,7 +82,7 @@ DIR_DUP     = mkdir -p $(@D)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	$(CC) $(LDFLAGS) $(OBJS) ${LIBMLX} $(LDLIBS) -o $(NAME)
 	$(info CREATED $(NAME))
 
 $(LIBS_TARGET):
@@ -96,13 +104,6 @@ fclean: clean
 re:
 	$(MAKE) fclean
 	$(MAKE) all
-
-info-%:
-	$(MAKE) --dry-run --always-make $* | grep -v "info"
-
-#------------------------------------------------#
-#   SPEC                                         #
-#------------------------------------------------#
 
 .PHONY: clean fclean re
 .SILENT:
