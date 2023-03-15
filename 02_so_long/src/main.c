@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/15 00:18:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:51:23 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ t_vector	map_size(char *path)
 	{
 		buffer[size] = 0;
 		i = -1;
+		printf("\nhello\n");
 		while (buffer[++i])
 		{
 			if (buffer[i] == '\n')

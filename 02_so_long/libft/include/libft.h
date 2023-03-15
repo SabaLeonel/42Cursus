@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/15 00:16:40 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:45:41 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 # define MININT		-2147483648
 # define MAXINT		2147483647
-# define BUFFER_SIZE 10000
+# define BUFFER_SIZE 1000
 
 # include <unistd.h>
 # include <stdlib.h>
