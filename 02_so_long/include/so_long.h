@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/15 00:16:26 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/18 18:17:58 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include "mlx.h"
+# include "hook.h"
 
 typedef struct s_canvas
 {
@@ -46,9 +47,6 @@ typedef struct s_window
 	t_canvas	cvs;
 }	t_window;
 
-
-
-
 typedef struct s_game
 {
 	int			**map;
@@ -64,6 +62,13 @@ typedef struct s_game
 	t_canvas	sprites[5];
 }	t_game;
 
+
+/* 0 = EMPTY */
+/* 1 = WALL */
+/* 2 = PLAYER */
+/* 3 = COLLECTIBLE */
+/* 4 = EXIT */
+
 enum
 {
 	EMPTY,
@@ -73,50 +78,20 @@ enum
 	EXIT,
 };
 
-enum e_keycode
-{
-	KEYCODE_A = 0,
-	KEYCODE_S = 1,
-	KEYCODE_D = 2,
-	KEYCODE_F = 3,
-	KEYCODE_H = 4,
-	KEYCODE_G = 5,
-	KEYCODE_Y = 6,
-	KEYCODE_X = 7,
-	KEYCODE_C = 8,
-	KEYCODE_V = 9,
-	KEYCODE_RAN = 10,
-	KEYCODE_B = 11,
-	KEYCODE_Q = 12,
-	KEYCODE_W = 13,
-	KEYCODE_E = 14,
-	KEYCODE_R = 15,
-	KEYCODE_Z = 18,
-	KEYCODE_T = 17,
-	KEYCODE_1 = 18,
-	KEYCODE_2 = 19,
-	KEYCODE_3 = 20,
-	KEYCODE_4 = 21,
-	KEYCODE_6 = 22,
-	KEYCODE_5 = 23,
-	KEYCODE_9 = 25,
-	KEYCODE_7 = 26,
-	KEYCODE_8 = 28,
-	KEYCODE_0 = 29,
-	KEYCODE_O = 31,
-	KEYCODE_I = 34,
-	KEYCODE_L = 37,
-	KEYCODE_K = 40,
-	KEYCODE_TAB = 49,
-	KEYCODE_SPACE = 49,
-	KEYCODE_LEFT_ARROW = 123,
-	KEYCODE_RIGHT_ARROW = 124,
-	KEYCODE_DOWN_ARROW = 125,
-	KEYCODE_UP_ARROW = 126,
-	KEYCODE_LSHIFT = 257,
-	KEYCODE_RSHIFT = 258,
-};
-
-
+void		error(char *message);
+t_canvas	ft_init_image(void *mlx, char *filename);
+t_vector	map_size(char *path);
+int			check_elements(char c, t_game *game);
+void		check_extension(char *path);
+void		generate_map(t_game *game, int fd, char *temp);
+void		check_min_amount(t_game *game);
+void		check_wall(t_game *game);
+void		printmap(t_game *game);
+void		init_sprites(t_game *game);
+void		check_is_solvable(int x, int y, t_game *game);
+void		clean_solvable(t_game *game);
+void		parse_map(char *path, t_game *game);
+void		draw_map(t_game *game);
+int			key_hook(int key, t_game *game);
 
 #endif
