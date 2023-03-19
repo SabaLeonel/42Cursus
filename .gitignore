@@ -2,5 +2,6 @@
 *.o
 *.a
 *.d
-push_swap
-so_long
+02_push_swap/push_swap
+02_so_long/so_long
+.vscode

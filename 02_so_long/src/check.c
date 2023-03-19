@@ -6,12 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 19:36:02 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/18 18:13:18 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:32:27 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	check_min_amount(t_game *game)
 {
@@ -23,12 +22,12 @@ void	check_min_amount(t_game *game)
 		error("invalid collectible amount");
 }
 
-void check_wall(t_game *game)
+void	check_wall(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(++i < game->size.x)
+	while (++i < game->size.x)
 	{
 		if (game->map[0][i] != WALL)
 			error("not a wall");
@@ -68,5 +67,25 @@ int	check_elements(char c, t_game *game)
 		return (PLAYER);
 	else
 		error("invalid caratere");
-	return (-1);	
+	return (-1);
+}
+
+void	draw_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	mlx_clear_window(game->window.mlx, game->window.win);
+	y = -1;
+	while (++y < game->size.y)
+	{
+		x = -1;
+		while (++x < game->size.x)
+		{
+			mlx_put_image_to_window(game->window.mlx,
+				game->window.win, game->sprites[EMPTY].img, x * 96, y * 96);
+			mlx_put_image_to_window(game->window.mlx, game->window.win,
+				game->sprites[game->map[y][x]].img, x * 96, y * 96);
+		}
+	}
 }

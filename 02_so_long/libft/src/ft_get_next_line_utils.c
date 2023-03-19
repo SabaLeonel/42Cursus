@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:16:31 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/14 23:57:33 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/19 00:03:43 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*ft_add_stock(const char *s1, const char *s2)
 	dst[len + i] = '\0';
 	return (dst);
 }
-
 
 int	ft_gnl_strchr(const char *s, char c)
 {

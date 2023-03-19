@@ -1,23 +1,4 @@
 {
-  "files.associations": {
-	"algorithm": "c",
-	"chrono": "c",
-	"limits": "c",
-	"ratio": "c",
-	"push_swap.h": "c",
-	"random": "c",
-	"array": "c",
-	"vector": "c",
-	"__availability": "c",
-	"__errc": "c",
-	"__hash_table": "c",
-	"__locale": "c",
-	"__tuple": "c",
-	"bitset": "c",
-	"ios": "c",
-	"locale": "c"
-},
-  "C_Cpp.errorSquiggles": "disabled",
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
@@ -52,8 +33,5 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-"C_Cpp_Runner.useAddressSanitizer": false,
-"terminal.integrated.automationProfile.osx": {
-	
-}
+  "C_Cpp_Runner.useAddressSanitizer": false
 }

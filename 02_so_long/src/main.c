@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/18 18:23:03 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:08:17 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vector	map_size(char *path)
 	int			i;
 
 	res.y = 0;
-    res.x = 0;
+	res.x = 0;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		error("cannot open file");
@@ -40,22 +40,21 @@ t_vector	map_size(char *path)
 	return (res);
 }
 
-void	printmap(t_game *game)
-{
-	for(int i = 0; i < game->size.y; i ++)
-	{
-		for(int j = 0; j < game->size.x; j ++)
-		{
-			printf("%i ",game->map[i][j]);
-		}
-		printf("\n");
-	}
-}
-
+// void	printmap(t_game *game)
+// {
+// 	for(int i = 0; i < game->size.y; i ++)
+// 	{
+// 		for(int j = 0; j < game->size.x; j ++)
+// 		{
+// 			printf("%i ",game->map[i][j]);
+// 		}
+// 		printf("\n");
+// 	}
+// }
 
 void	check_is_solvable(int x, int y, t_game *game)
 {
-	if (game->map[y][x] == WALL || game->map[y][x] >=  10)
+	if (game->map[y][x] == WALL || game->map[y][x] >= 10)
 		return ;
 	if (game->map[y][x] == COLLECTIBLE)
 		game->coll_count++;
@@ -114,24 +113,6 @@ void	parse_map(char *path, t_game *game)
 	clean_solvable(game);
 }
 
-void	draw_map(t_game *game)
-{
-	int	x;
-	int	y;
-	mlx_clear_window(game->window.mlx, game->window.win);
-	y = -1;
-	while (++y < game->size.y)
-	{
-		x = -1;
-		while (++x < game->size.x)
-		{
-			mlx_put_image_to_window(game->window.mlx, game->window.win,  game->sprites[EMPTY].img, x * 96, y * 96);
-			mlx_put_image_to_window(game->window.mlx, game->window.win,  game->sprites[game->map[y][x]].img, x * 96, y * 96);
-		}
-	}
-}
-
-
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -148,7 +129,8 @@ int	main(int argc, char **argv)
 	game.window.mlx = mlx_init();
 	if (game.window.mlx == NULL)
 		return (EXIT_FAILURE);
-	game.window.win = mlx_new_window(game.window.mlx, 96 * game.size.x, 96 * game.size.y, "SO_LONG");
+	game.window.win = mlx_new_window(game.window.mlx,
+			96 * game.size.x, 96 * game.size.y, "SO_LONG");
 	if (game.window.win == NULL)
 		return (EXIT_FAILURE);
 	init_sprites(&game);

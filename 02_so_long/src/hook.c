@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:12:10 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/18 18:13:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/19 00:00:12 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,22 @@ int	key_hook(int key, t_game *game)
 		new_pos.y -= 1;
 	else
 		return (0);
+	hook_move(new_pos, game);
+	return (0);
+}
+
+int	hook_move(t_vector new_pos, t_game *game)
+{
 	if (game->map[new_pos.y][new_pos.x] == WALL
-		|| (game->map[new_pos.y][new_pos.x] == EXIT && game->coll_count != game->collectible))
+		|| (game->map[new_pos.y][new_pos.x] == EXIT &&
+			game->coll_count != game->collectible))
 		return (0);
 	game->map[game->player_pos.y][game->player_pos.x] = 0;
 	if (game->map[new_pos.y][new_pos.x] == COLLECTIBLE)
 		game->coll_count++;
 	if (game->map[new_pos.y][new_pos.x] == EXIT)
 	{
-		printf("zyou won\n");
+		printf("you won\n");
 		game->player_pos = new_pos;
 		draw_map(game);
 		return (0);

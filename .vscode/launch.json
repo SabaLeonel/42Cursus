@@ -28,8 +28,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/leon/Documents/42Cursus/02_push_swap",
-      "program": "/Users/leon/Documents/42Cursus/02_push_swap/build/Debug/outDebug"
+      "cwd": "/Users/leon/Documents/42Cursus",
+      "program": "/Users/leon/Documents/42Cursus/build/Debug/outDebug"
     }
   ]
 }

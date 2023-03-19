@@ -6,13 +6,12 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/18 18:17:58 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/19 00:04:56 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
 
 # include "libft.h"
 # include <fcntl.h>
@@ -62,12 +61,13 @@ typedef struct s_game
 	t_canvas	sprites[5];
 }	t_game;
 
-
-/* 0 = EMPTY */
-/* 1 = WALL */
-/* 2 = PLAYER */
-/* 3 = COLLECTIBLE */
-/* 4 = EXIT */
+/*
+**  0 = EMPTY
+**  1 = WALL
+**  2 = PLAYER
+**  3 = COLLECTIBLE
+**  4 = EXIT
+*/
 
 enum
 {
