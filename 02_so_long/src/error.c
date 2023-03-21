@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/18 23:39:21 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/03/19 19:31:48 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/03/19 19:31:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	error(char *message)
-{
-	if (message)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putstr_fd("so_long: ", 2);
-		ft_putendl_fd(message, 2);
-	}
-	ft_garbage_collector(0, 1, 1);
-}

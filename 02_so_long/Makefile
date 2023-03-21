@@ -30,11 +30,7 @@ INCS        := include		\
 
 SRC_DIR     := src
 SRCS		:= \
-	src/error.c \
-	src/main.c	\
-	src/hook.c	\
-	src/check.c	\
-	src/init.c
+	src/main.c
 	
 
 BUILD_DIR   := .build
