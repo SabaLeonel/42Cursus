@@ -6,96 +6,72 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/21 19:14:11 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:39:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-typedef struct s_game {
-	void *mlx;
-	void *mlx_win;
-	t_data img;
-	t_data sprite;
-	int x;
-	int y;
-} 	t_game;
-
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+t_vector	init_map_size(char *path)
 {
-	char	*dst;
+	t_vector	res;
+	int			fd;
+	char		buffer[1000];
+	int			size;
+	int			i;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	res.x = 0;
+	res.y = 0;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		error("No such file or directory");
+	size = read(fd, buffer, 999);
+	while (size)
+	{
+		buffer[size] = 0;
+		i = -1;
+		while (buffer[++i])
+		{
+			if (buffer[i] == '\n')
+				res.y ++;
+		}
+		size = read(fd, buffer, 999);
+	}
+	return (res);
 }
 
-int	render_frame(t_game *game);
-int mouse_move(int x, int y, t_game *game);
-
-int	main(void)
+void	parse_map(char *path, t_game *game)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	int		fd;
+	char	*temp;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	for (int i = 0; i < 500; i++)
-		my_mlx_pixel_put(&img, i, i, 0x00FF0000);
-	int x = 0;
-	int y = 0;
-	t_data sprite;
-	
-	sprite.img = mlx_xpm_file_to_image(mlx, "src/sprite_collectible.xpm", &x, &y);
-	if (sprite.img == NULL)
-		printf("failed to load image .xpm\n");
-	sprite.addr = mlx_get_data_addr(sprite.img,
-			&sprite.bits_per_pixel, &sprite.line_length, &sprite.endian);
-	// mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	for (int i = 0; i < 10; i ++)
-		mlx_put_image_to_window(mlx, mlx_win, sprite.img, i * 96 , i);
+	check_extension(path);
+	game->size = init_map_size(path);
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		error("No such file or directory");
+	temp = ft_get_next_line(fd);
+	game->size.x = ft_strlen(temp) - 1;
 
-	t_game game;
-
-	game.mlx = mlx;
-	game.mlx_win = mlx_win;
-	game.img = img;
-	game.sprite = sprite;
+	if (game->size.y < 4 && game->size.x < 4)
+		error("Map is too small");
 	
-	mlx_hook(game.mlx_win, 6, 0, mouse_move, &game);
-	
-	mlx_loop_hook(mlx, render_frame, &game);
-	printf("hello\n");
-	mlx_loop(mlx);
-	return (0);
 }
 
-// function to render game world to screen
-int	render_frame(t_game *game)
-{
-	// my_mlx_pixel_put(&game->img, 500, 500, 0x00FF0000);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->sprite.img, game->x , game->y);
-	
-	return (0);
-}
 
-// function to get input
-int mouse_move(int x, int y, t_game *game)
+int	main(int argc, char **argv)
 {
-	game->x = x;
-	game->y = y;
+	t_game	game;
+
+	game.exit = 0;
+	game.item = 0;
+	game.item_count = 0;
+	game.moves = 0;
+	game.players = 0;
+
+	if (argc != 2)
+		msg_error(argc);
+	parse_map(argv[1], &game);
 	return (0);
 }
 

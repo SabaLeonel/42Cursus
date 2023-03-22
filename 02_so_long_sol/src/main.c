@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/21 18:49:46 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:30:24 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	main(int argc, char **argv)
 			96 * game.size.x, 96 * game.size.y, "SO_LONG");
 	if (game.window.win == NULL)
 		return (EXIT_FAILURE);
-	init_sprites( &game);
+	init_sprites(&game);
 	draw_map(&game);
 	game.coll_count = 0;
 	mlx_hook(game.window.win, 2, 0, key_hook, &game);
