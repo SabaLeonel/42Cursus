@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 17:39:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:36:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vector	init_map_size(char *path)
 	if (fd == -1)
 		error("No such file or directory");
 	size = read(fd, buffer, 999);
-	while (size)
+	while (size != 0)
 	{
 		buffer[size] = 0;
 		i = -1;
@@ -53,10 +53,29 @@ void	parse_map(char *path, t_game *game)
 	temp = ft_get_next_line(fd);
 	game->size.x = ft_strlen(temp) - 1;
 
-	if (game->size.y < 4 && game->size.x < 4)
+	if (game->size.y < 4 || game->size.x < 4)
 		error("Map is too small");
+	game->map = ft_allok(game->size.y, sizeof(int *), 1);
+	// generate map
+	generate_map(game, fd, temp);
+	// check min amount
+	// check wall
+	// check solvable map
+	// clean solvable
 	
 }
+
+// void	printmap(t_game *game)
+// {
+// 	for(int i = 0; i < game->size.y; i ++)
+// 	{
+// 		for(int j = 0; j < game->size.x; j ++)
+// 		{
+// 			printf("%i ",game->map[i][j]);
+// 		}
+// 		printf("\n");
+// 	}
+// }
 
 
 int	main(int argc, char **argv)
@@ -72,6 +91,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		msg_error(argc);
 	parse_map(argv[1], &game);
+	// printmap(&game);
 	return (0);
 }
 

@@ -32,7 +32,8 @@ SRC_DIR     := src
 SRCS		:= \
 	src/main.c		\
 	src/error.c		\
-	src/check.c	
+	src/check.c		\
+	src/init.c
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

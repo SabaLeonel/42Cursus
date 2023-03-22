@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 17:13:43 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:35:42 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,16 @@ void		parse_map(char *path, t_game *game);
 void		check_extension(char *path);
 void		error(char *message);
 void		msg_error(int ac);
+void		generate_map(t_game *game, int fd, char *temp);
+int			check_elements(char c, t_game *game);
+
+enum
+{
+	EMPTY, //0
+	ITEMS, //1
+	EXIT, // 2
+	PLAYERS, //3
+	WALL, // 4
+};
 
 #endif
