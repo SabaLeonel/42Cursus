@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 19:36:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:49:40 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,29 @@ t_vector	init_map_size(char *path)
 	return (res);
 }
 
+void	check_valid_path(t_game *game)
+{
+	int	i;
+	int	j;
+
+	if (game->item_count != game->item)
+		error("can't reach all the items");
+	if (game->exit != 1)
+		error("can't reach the exit");
+	i = -1;
+	while (++i < game->size.y)
+	{
+		j = -1;
+		while (++j < game->size.x)
+		{
+			if (game->map[i][j] >= 10)
+				game->map[i][j] -= 10;
+		}
+	}
+}
+
+
+
 void	parse_map(char *path, t_game *game)
 {
 	int		fd;
@@ -56,12 +79,13 @@ void	parse_map(char *path, t_game *game)
 	if (game->size.y < 4 || game->size.x < 4)
 		error("Map is too small");
 	game->map = ft_allok(game->size.y, sizeof(int *), 1);
-	// generate map
 	generate_map(game, fd, temp);
-	// check min amount
+	check_min_amount(game);
 	// check wall
-	// check solvable map
-	// clean solvable
+	check_wall(game);
+	game->exit = 0;
+	check_is_solvable(game->playerpos.x, game->playerpos.y, game);
+	check_valid_path(game);
 	
 }
 
@@ -89,9 +113,14 @@ int	main(int argc, char **argv)
 	game.players = 0;
 
 	if (argc != 2)
-		msg_error(argc);
+		arg_error(argc);
 	parse_map(argv[1], &game);
-	// printmap(&game);
+	// init mlx
+	// init window
+	// init sprites
+	// draw map
+	// mlx hook
+	// mlx loop
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 19:35:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:37:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,13 @@ t_vector	init_map_size(char *path);
 void		parse_map(char *path, t_game *game);
 void		check_extension(char *path);
 void		error(char *message);
-void		msg_error(int ac);
+void		arg_error(int ac);
 void		generate_map(t_game *game, int fd, char *temp);
 int			check_elements(char c, t_game *game);
+void		check_min_amount(t_game *game);
+void		check_wall(t_game *game);
+void		check_is_solvable(int x, int y, t_game *game);
+void		check_valid_path(t_game *game);
 
 enum
 {

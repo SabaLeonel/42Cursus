@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:48 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 16:36:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:37:39 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	error(char *message)
 		ft_putendl_fd(message, 2);	
 	}
 	exit(EXIT_FAILURE);
-	//ft_garbage_collector(0, 1, 1); 
+	ft_garbage_collector(0, 1, 1); 
 }
 
-void	msg_error(int ac)
+void	arg_error(int ac)
 {
 	if (ac < 2)
 		error("too few arguments");
