@@ -31,9 +31,10 @@ INCS        := include		\
 SRC_DIR     := src
 SRCS		:= \
 	src/main.c		\
-	src/error.c		\
+	src/message.c		\
 	src/check.c		\
-	src/init.c
+	src/init.c		\
+	src/hook.c
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

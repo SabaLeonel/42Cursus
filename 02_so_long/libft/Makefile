@@ -6,7 +6,7 @@
 #    By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 11:02:33 by lsaba-qu          #+#    #+#              #
-#    Updated: 2023/03/17 11:57:46 by lsaba-qu         ###   ########.fr        #
+#    Updated: 2023/03/28 23:54:25 by lsaba-qu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,8 @@ SRCS	:= \
 	ft_free_pp.c				\
 	ft_alloc.c					\
 	ft_get_next_line_utils.c	\
-	ft_get_next_line.c
+	ft_get_next_line.c			\
+	ft_putnbrendl_fd.c			
 	
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 

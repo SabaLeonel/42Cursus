@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/17 19:08:47 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 23:37:13 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ enum e_keycode
 	KEYCODE_K = 40,
 	KEYCODE_TAB = 49,
 	KEYCODE_SPACE = 49,
+	KEYCODE_ESC = 53,
 	KEYCODE_LEFT_ARROW = 123,
 	KEYCODE_RIGHT_ARROW = 124,
 	KEYCODE_DOWN_ARROW = 125,

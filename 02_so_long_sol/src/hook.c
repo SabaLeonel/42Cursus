@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:12:10 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 16:48:58 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:12:17 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	key_hook(t_game *game)
 	{
 		return (0);
 	}
-	
 	hook_move(new_pos, game);
 	return (0);
 }

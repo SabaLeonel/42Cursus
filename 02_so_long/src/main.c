@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 18:42:58 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:09:58 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	check_valid_path(t_game *game)
 	}
 }
 
-
-
 void	parse_map(char *path, t_game *game)
 {
 	int		fd;
@@ -75,31 +73,16 @@ void	parse_map(char *path, t_game *game)
 		error("No such file or directory");
 	temp = ft_get_next_line(fd);
 	game->size.x = ft_strlen(temp) - 1;
-
 	if (game->size.y < 4 || game->size.x < 4)
 		error("Map is too small");
 	game->map = ft_allok(game->size.y, sizeof(int *), 1);
 	generate_map(game, fd, temp);
 	check_min_amount(game);
-	// check wall
 	check_wall(game);
 	game->exit = 0;
 	check_is_solvable(game->playerpos.x, game->playerpos.y, game);
 	check_valid_path(game);
-	
 }
-
-// void	printmap(t_game *game)
-// {
-// 	for(int i = 0; i < game->size.y; i ++)
-// 	{
-// 		for(int j = 0; j < game->size.x; j ++)
-// 		{
-// 			printf("%i ",game->map[i][j]);
-// 		}
-// 		printf("\n");
-// 	}
-// }
 
 int	main(int argc, char **argv)
 {
@@ -112,14 +95,14 @@ int	main(int argc, char **argv)
 	game.window.mlx = mlx_init();
 	if (game.window.mlx == NULL)
 		return (EXIT_FAILURE);
-	game.window.win = mlx_new_window(game.window.mlx, game.size.x * 96, game.size.y * 96, "So_long");
+	game.window.win = mlx_new_window(game.window.mlx,
+			game.size.x * 96, game.size.y * 96, "./so_long");
 	if (!game.window.win)
 		return (EXIT_FAILURE);
 	init_sprites(&game);
-
-	// mlx hook
-	mlx_loop_hook(game.window.mlx, draw_map, &game);
-	// mlx loop
+	draw_map(&game);
+	game.item_count = 0;
+	mlx_key_hook(game.window.win, key_hook, &game);
 	mlx_hook(game.window.win, 17, 0, hook_exit, &game);
 	mlx_loop(game.window.mlx);
 	return (0);

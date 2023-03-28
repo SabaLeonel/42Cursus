@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:44 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/23 20:39:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:10:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_extension(char *path)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(path);
 	if (len < 5 || ft_strcmp(&path[len - 4], ".ber"))
@@ -30,7 +30,7 @@ int	check_elements(char c, t_game *game)
 	else if (c == 'E' && ++game->exit)
 		return (EXIT);
 	else if (c == 'P' && ++game->players)
-		return (PLAYERS);
+		return (PLAYER);
 	else if (c == '1')
 		return (WALL);
 	else
@@ -49,7 +49,7 @@ void	check_min_amount(t_game *game)
 		else
 			error("you need at least 1 exit");
 	}
-	if ( game->players != 1)
+	if (game->players != 1)
 	{
 		if (game->players > 1)
 			error("too many players");
@@ -67,7 +67,7 @@ void	check_wall(t_game *game)
 	{
 		if (game->map[0][i] != WALL)
 			error("not a wall");
-		if ( game->map[game->size.y - 1][i] != WALL)
+		if (game->map[game->size.y - 1][i] != WALL)
 			error("not a wall");
 	}
 	i = -1;

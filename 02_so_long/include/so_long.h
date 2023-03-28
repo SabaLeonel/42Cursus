@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 18:43:37 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 00:09:39 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
-
 
 typedef struct s_canvas
 {
@@ -77,14 +76,18 @@ void		init_sprites(t_game *game);
 t_canvas	init_image(t_game *game, char *filepath);
 int			draw_map(t_game *game);
 int			hook_exit(t_game *game);
+int			key_hook(int key, t_game *game);
+int			hook_move(t_vector new_pos, t_game *game);
+void		end_program(t_game *game);
+void		print_msg(char *message, t_game *game);
 
 enum
 {
-	EMPTY, //0
-	ITEMS, //1
-	EXIT, // 2
-	PLAYERS, //3
-	WALL, // 4
+	EMPTY,
+	ITEMS,
+	EXIT,
+	PLAYER,
+	WALL,
 };
 
 #endif
