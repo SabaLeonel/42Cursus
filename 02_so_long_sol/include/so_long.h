@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/19 19:21:53 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:37:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ typedef struct s_window
 	t_canvas	cvs;
 }	t_window;
 
+typedef	struct s_anim
+{
+	t_canvas	frames[5];
+	int			current_frame;
+	int			frame_amount;
+	int			time_to_change;
+	int			timer;
+}	t_anim;
+
+
 typedef struct s_game
 {
 	int			**map;
@@ -57,8 +67,8 @@ typedef struct s_game
 	int			players;
 	int			exit;
 	int			move_count;
-
-	t_canvas	sprites[5];
+	t_anim	 	sprites[5];
+	char		keys[200];
 }	t_game;
 
 /*
@@ -91,7 +101,7 @@ void		check_is_solvable(int x, int y, t_game *game);
 void		clean_solvable(t_game *game);
 void		parse_map(char *path, t_game *game);
 void		draw_map(t_game *game);
-int			key_hook(int key, t_game *game);
+int			key_hook(t_game *game);
 int			hook_move(t_vector new_pos, t_game *game);
 // void		printmap(t_game *game);
 

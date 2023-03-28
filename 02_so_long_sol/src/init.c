@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:21:37 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/21 18:50:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:50:22 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,36 @@
 
 void	init_sprites(t_game *game)
 {
-	game->sprites[WALL] = ft_init_image(game->window.mlx,
+	game->sprites[WALL].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_wall.xpm");
-	game->sprites[EXIT] = ft_init_image(game->window.mlx,
+	game->sprites[EXIT].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_exit.xpm");
-	game->sprites[EMPTY] = ft_init_image(game->window.mlx,
+	game->sprites[EMPTY].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_empty.xpm");
-	game->sprites[PLAYER] = ft_init_image(game->window.mlx,
+	game->sprites[PLAYER].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_player.xpm");
-	game->sprites[COLLECTIBLE] = ft_init_image(game->window.mlx,
+	game->sprites[PLAYER].frames[1] = ft_init_image(game->window.mlx,
 			"sprites/sprite_collectible.xpm");
+	game->sprites[PLAYER].frames[2] = ft_init_image(game->window.mlx,
+			"sprites/sprite_exit.xpm");
+	game->sprites[COLLECTIBLE].frames[0] = ft_init_image(game->window.mlx,
+			"sprites/sprite_collectible.xpm");
+	game->sprites[WALL].frame_amount = 1;
+	game->sprites[EXIT].frame_amount = 1;
+	game->sprites[PLAYER].frame_amount = 3;
+	game->sprites[COLLECTIBLE].frame_amount = 1;
+	game->sprites[EMPTY].frame_amount = 1;
+
+	game->sprites[WALL].time_to_change = 999;
+	game->sprites[EXIT].time_to_change = 999;
+	game->sprites[PLAYER].time_to_change = 3;
+	game->sprites[COLLECTIBLE].time_to_change = 999;
+	game->sprites[EMPTY].time_to_change = 999;
+}
+
+void *get_frame(t_anim *c)
+{
+	return c->frames[c->current_frame].img;
 }
 
 void	generate_map(t_game *game, int fd, char *temp)
@@ -75,9 +95,10 @@ void	draw_map(t_game *game)
 		while (++x < game->size.x)
 		{
 			mlx_put_image_to_window(game->window.mlx,
-				game->window.win, game->sprites[EMPTY].img, x * 96, y * 96);
+				game->window.win,
+				get_frame(&game->sprites[EMPTY]), x * 96, y * 96);
 			mlx_put_image_to_window(game->window.mlx, game->window.win,
-				game->sprites[game->map[y][x]].img, x * 96, y * 96);
+				get_frame(&game->sprites[game->map[y][x]]), x * 96, y * 96);
 		}
 	}
 }

@@ -6,7 +6,15 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:52 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/21 17:27:31 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:43:41 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+
+int	hook_exit(t_game *game)
+{
+	exit(EXIT_SUCCESS);
+	ft_garbage_collector(0, 1, 1); 
+	return (0);
+}

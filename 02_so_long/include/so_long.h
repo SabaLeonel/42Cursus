@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/23 20:37:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:43:37 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_canvas
 	int		pixel_bits;
 	int		line_length;
 	int		endian;
+	int		x;
+	int		y;
 }	t_canvas;
 
 typedef struct s_window
@@ -71,6 +73,10 @@ void		check_min_amount(t_game *game);
 void		check_wall(t_game *game);
 void		check_is_solvable(int x, int y, t_game *game);
 void		check_valid_path(t_game *game);
+void		init_sprites(t_game *game);
+t_canvas	init_image(t_game *game, char *filepath);
+int			draw_map(t_game *game);
+int			hook_exit(t_game *game);
 
 enum
 {

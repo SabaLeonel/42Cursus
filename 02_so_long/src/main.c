@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/23 20:49:40 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 18:42:58 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,26 +101,27 @@ void	parse_map(char *path, t_game *game)
 // 	}
 // }
 
-
 int	main(int argc, char **argv)
 {
-	t_game	game;
+	t_game		game;
 
-	game.exit = 0;
-	game.item = 0;
-	game.item_count = 0;
-	game.moves = 0;
-	game.players = 0;
-
+	ft_bzero(&game, sizeof(t_game));
 	if (argc != 2)
 		arg_error(argc);
 	parse_map(argv[1], &game);
-	// init mlx
-	// init window
-	// init sprites
-	// draw map
+	game.window.mlx = mlx_init();
+	if (game.window.mlx == NULL)
+		return (EXIT_FAILURE);
+	game.window.win = mlx_new_window(game.window.mlx, game.size.x * 96, game.size.y * 96, "So_long");
+	if (!game.window.win)
+		return (EXIT_FAILURE);
+	init_sprites(&game);
+
 	// mlx hook
+	mlx_loop_hook(game.window.mlx, draw_map, &game);
 	// mlx loop
+	mlx_hook(game.window.win, 17, 0, hook_exit, &game);
+	mlx_loop(game.window.mlx);
 	return (0);
 }
 

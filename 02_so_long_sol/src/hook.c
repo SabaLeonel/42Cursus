@@ -6,27 +6,49 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:12:10 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/19 00:00:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:48:58 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_hook(int key, t_game *game)
+void set_frame(t_anim *c)
+{
+	if (++c->timer >= c->time_to_change)
+	{
+		c->timer = 0;
+		if (++c->current_frame >= c->frame_amount)
+			c->current_frame = 0;
+	}
+}
+
+int	key_hook(t_game *game)
 {
 	t_vector	new_pos;
+	static		int counter = 0;
+	int			i;
 
+	i = -1;
+	if (++counter < 1000)
+		return (0);
+	while (++i < 5)
+		set_frame(&game->sprites[i]);
+	draw_map(game);
+	counter = 0;
 	new_pos = game->player_pos;
-	if (key == KEYCODE_A)
+	if (game->keys[KEYCODE_A])
 		new_pos.x -= 1;
-	else if (key == KEYCODE_S)
+	else if (game->keys[KEYCODE_S])
 		new_pos.y += 1;
-	else if (key == KEYCODE_D)
+	else if (game->keys[KEYCODE_D])
 		new_pos.x += 1;
-	else if (key == KEYCODE_W)
+	else if (game->keys[KEYCODE_W])
 		new_pos.y -= 1;
 	else
+	{
 		return (0);
+	}
+	
 	hook_move(new_pos, game);
 	return (0);
 }

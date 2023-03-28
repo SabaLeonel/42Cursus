@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 19:36:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:01:24 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,41 @@ void		generate_map(t_game *game, int fd, char *temp)
 		y ++;
 		temp = ft_get_next_line(fd);
 	}
+}
+
+void	init_sprites(t_game *game)
+{
+	game->sprites[ITEMS] = init_image(game, "sprites/sprite_items.xpm");
+	game->sprites[WALL] = init_image(game, "sprites/sprite_wall.xpm");
+	game->sprites[EXIT] = init_image(game, "sprites/sprite_exit.xpm");
+	game->sprites[PLAYERS] = init_image(game, "sprites/sprite_player.xpm");
+	game->sprites[EMPTY] = init_image(game, "sprites/sprite_empty.xpm");
+}
+
+t_canvas	init_image(t_game *game, char *filepath)
+{
+	t_canvas img;
+
+	img.img = mlx_xpm_file_to_image(game->window.mlx, filepath, &img.x, &img.y);
+	img.addr = mlx_get_data_addr(img.img, &img.pixel_bits, &img.line_length,
+								&img.endian);
+	return (img);
+}
+
+int	draw_map(t_game *game)
+{
+	int x;
+	int y;
+
+	y = -1;
+	while (++ y < game->size.y)
+	{
+		x = -1;
+		while (++x < game->size.x)
+		{
+			mlx_put_image_to_window(game->window.mlx, game->window.win, game->sprites[EMPTY].img, x * 96, y * 96);
+			mlx_put_image_to_window(game->window.mlx, game->window.win, game->sprites[game->map[y][x]].img, x * 96, y * 96);
+		}
+	}
+	return (0);
 }

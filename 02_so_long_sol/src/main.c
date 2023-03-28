@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/22 17:30:24 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 16:27:18 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,15 +113,24 @@ void	parse_map(char *path, t_game *game)
 	clean_solvable(game);
 }
 
+int	key_up(int key, char *keys)
+{
+	keys[key] = 0;
+	return (0);
+}
+
+int	key_down(int key, char *keys)
+{
+	keys[key] = 1;
+	return (0);
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	game.players = 0;
-	game.exit = 0;
-	game.coll_count = 0;
-	game.collectible = 0;
-	game.move_count = 0;
+	ft_bzero(&game, sizeof(t_game));
 	if (argc != 2)
 		error("missing map");
 	parse_map(argv[1], &game);
@@ -136,6 +145,8 @@ int	main(int argc, char **argv)
 	init_sprites(&game);
 	draw_map(&game);
 	game.coll_count = 0;
-	mlx_hook(game.window.win, 2, 0, key_hook, &game);
+	mlx_hook(game.window.win, 2, 0, key_down, game.keys);
+	mlx_hook(game.window.win, 3, 0, key_up, game.keys);
+	mlx_loop_hook(game.window.mlx, key_hook, &game);
 	mlx_loop(game.window.mlx);
 }
