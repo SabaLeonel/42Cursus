@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 23:20:11 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 21:41:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,21 @@ void	generate_map(t_game *game, int fd, char *temp)
 
 void	init_sprites(t_game *game)
 {
-	game->sprites[ITEMS] = init_image(game, "sprites/sprite_items.xpm");
-	game->sprites[WALL] = init_image(game, "sprites/sprite_wall.xpm");
-	game->sprites[EXIT] = init_image(game, "sprites/sprite_exit.xpm");
-	game->sprites[PLAYER] = init_image(game, "sprites/sprite_player.xpm");
+
+	game->sprites[ITEMS] = init_image(game, "sprites/sprite-items.xpm");
+	game->sprites[WALL] = init_image(game, "sprites/sprite-wall.xpm");
+	game->sprites[EXIT] = init_image(game, "sprites/sprite-exit.xpm");
 	game->sprites[EMPTY] = init_image(game, "sprites/sprite_empty.xpm");
+	game->sprites[PLAYER] = init_image(game,
+			"sprites/sprite-player-gn-stand");
+	game->sprites[PLAYER_DOWN] = init_image(game,
+			"sprites/sprite-player-gn-down");
+	game->sprites[PLAYER_LEFT] = init_image(game,
+			"sprites/sprite-player-gn-left");
+	game->sprites[PLAYER_RIGHT] = init_image(game,
+			"sprites/sprite-player-gn-right");
+	game->sprites[PLAYER_RIGHT] = init_image(game,
+			"sprites/sprite-player-gn-up");
 }
 
 t_canvas	init_image(t_game *game, char *filepath)

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 16:37:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/29 21:43:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,6 @@ typedef struct s_game
 	t_anim	 	sprites[5];
 	char		keys[200];
 }	t_game;
-
-/*
-**  0 = EMPTY
-**  1 = WALL
-**  2 = PLAYER
-**  3 = COLLECTIBLE
-**  4 = EXIT
-*/
 
 enum
 {
