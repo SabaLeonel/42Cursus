@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:22:09 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/12 13:16:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:35:48 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	radix_sort(t_stack *a, t_stack *b)
 
 void	connect_numbers(t_stack *a, t_stack *b)
 {
-	while (b ->size != 0)
+	while (b->size != 0)
 		apply("pa", a, b);
 }

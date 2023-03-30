@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/29 21:38:53 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:53:41 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ typedef struct s_vector
 	int	y;
 }	t_vector;
 
+typedef struct s_anim
+{
+	t_canvas	frames[5];
+	int			current_frame;
+	int			frame_amount;
+	int			time_to_change;
+	int			timer;
+}	t_anim;
+
 typedef struct s_game
 {
 	t_vector	size;
@@ -58,7 +67,7 @@ typedef struct s_game
 	int			moves;
 	int			exit;
 	int			players;
-	t_canvas	sprites[9];
+	t_anim		sprites[5];
 }	t_game;
 
 t_vector	init_map_size(char *path);
@@ -73,13 +82,16 @@ void		check_wall(t_game *game);
 void		check_is_solvable(int x, int y, t_game *game);
 void		check_valid_path(t_game *game);
 void		init_sprites(t_game *game);
-t_canvas	init_image(t_game *game, char *filepath);
+t_canvas	init_image(void *mlx, char *filepath);
 int			draw_map(t_game *game);
 int			hook_exit(t_game *game);
 int			key_hook(int key, t_game *game);
 int			hook_move(t_vector new_pos, t_game *game);
 void		end_program(t_game *game);
 void		print_msg(char *message, t_game *game);
+void		set_frame(t_anim *sprite);
+void		*get_frame(t_anim *c);
+void		init_animation(t_game *game);
 
 enum
 {
@@ -88,10 +100,6 @@ enum
 	EXIT,
 	PLAYER,
 	WALL,
-	PLAYER_UP,
-	PLAYER_DOWN,
-	PLAYER_RIGHT,
-	PLAYER_LEFT,
 };
 
 #endif

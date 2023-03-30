@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:21:37 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 16:50:22 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:22:12 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,27 @@ void	init_sprites(t_game *game)
 	game->sprites[EMPTY].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_empty.xpm");
 	game->sprites[PLAYER].frames[0] = ft_init_image(game->window.mlx,
-			"sprites/sprite_player.xpm");
+			"sprites/sprite-player-gn-stand.xpm");
 	game->sprites[PLAYER].frames[1] = ft_init_image(game->window.mlx,
-			"sprites/sprite_collectible.xpm");
-	game->sprites[PLAYER].frames[2] = ft_init_image(game->window.mlx,
-			"sprites/sprite_exit.xpm");
+			"sprites/sprite-player-gs-stand.xpm");
 	game->sprites[COLLECTIBLE].frames[0] = ft_init_image(game->window.mlx,
 			"sprites/sprite_collectible.xpm");
 	game->sprites[WALL].frame_amount = 1;
 	game->sprites[EXIT].frame_amount = 1;
-	game->sprites[PLAYER].frame_amount = 3;
+	game->sprites[PLAYER].frame_amount = 2;
 	game->sprites[COLLECTIBLE].frame_amount = 1;
 	game->sprites[EMPTY].frame_amount = 1;
 
 	game->sprites[WALL].time_to_change = 999;
 	game->sprites[EXIT].time_to_change = 999;
-	game->sprites[PLAYER].time_to_change = 3;
+	game->sprites[PLAYER].time_to_change = 5;
 	game->sprites[COLLECTIBLE].time_to_change = 999;
 	game->sprites[EMPTY].time_to_change = 999;
 }
 
-void *get_frame(t_anim *c)
+void	*get_frame(t_anim *c)
 {
-	return c->frames[c->current_frame].img;
+	return (c->frames[c->current_frame].img);
 }
 
 void	generate_map(t_game *game, int fd, char *temp)

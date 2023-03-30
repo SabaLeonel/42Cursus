@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/29 21:43:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:44:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ void		parse_map(char *path, t_game *game);
 void		draw_map(t_game *game);
 int			key_hook(t_game *game);
 int			hook_move(t_vector new_pos, t_game *game);
-// void		printmap(t_game *game);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:52 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/29 21:43:18 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:33:21 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@ int	hook_exit(t_game *game)
 	return (0);
 }
 
-
 int	key_hook(int key, t_game *game)
 {
 	t_vector	new_pos;
+	int			i;
 
+	i = -1;
+	while (++i < 5)
+		set_frame(&game->sprites[i]);
+	draw_map(game);
 	new_pos = game->playerpos;
 	if (key == KEYCODE_ESC)
 		end_program(game);
@@ -38,6 +42,21 @@ int	key_hook(int key, t_game *game)
 		return (0);
 	hook_move(new_pos, game);
 	return (0);
+}
+
+void	*get_frame(t_anim *c)
+{
+	return (c->frames[c->current_frame].img);
+}
+
+void	set_frame(t_anim *c)
+{
+	if (++c->timer >= c->time_to_change)
+	{
+		c->timer = 0;
+		if (++c->current_frame >= c->frame_amount)
+			c->current_frame = 0;
+	}
 }
 
 int	hook_move(t_vector new_pos, t_game *game)

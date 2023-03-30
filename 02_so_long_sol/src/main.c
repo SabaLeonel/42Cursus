@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 07:38:50 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 16:27:18 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:42:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		error("missing map");
 	parse_map(argv[1], &game);
-	// printmap(&game);
 	game.window.mlx = mlx_init();
 	if (game.window.mlx == NULL)
 		return (EXIT_FAILURE);

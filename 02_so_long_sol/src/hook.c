@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 18:12:10 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/29 00:12:17 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:21:38 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void set_frame(t_anim *c)
 int	key_hook(t_game *game)
 {
 	t_vector	new_pos;
-	static		int counter = 0;
+	static int	counter = 0;
 	int			i;
 
 	i = -1;
@@ -45,9 +45,7 @@ int	key_hook(t_game *game)
 	else if (game->keys[KEYCODE_W])
 		new_pos.y -= 1;
 	else
-	{
 		return (0);
-	}
 	hook_move(new_pos, game);
 	return (0);
 }
