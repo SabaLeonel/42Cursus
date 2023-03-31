@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/31 12:42:05 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:57:18 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	generate_map(t_game *game, int fd, char *temp)
 	int	x;
 	int	y;
 
-
 	y = 0;
 	while (temp)
 	{
-		// printf("len temp %i == %i size x\n", (int)ft_strlen(temp), game->size.x);
+	printf("HELLO"	);
+
 		if ((int)ft_strlen(temp) - 1 != game->size.x)
-			error("Lines are not the same size");
+			error("Error initializing the map");
 		x = -1;
 		game->map[y] = ft_allok(game->size.x, sizeof(int), 1);
 		while (++x < game->size.x)
@@ -37,8 +37,6 @@ void	generate_map(t_game *game, int fd, char *temp)
 		}
 		y ++;
 		temp = ft_get_next_line(fd);
-		// printf("%i\n", temp[x]);
-		// temp[x] = '\n';
 	}
 }
 
@@ -85,4 +83,3 @@ int	draw_map(t_game *game)
 	}
 	return (0);
 }
-

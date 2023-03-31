@@ -30,8 +30,8 @@ INCS        := include		\
 
 SRC_DIR     := src
 SRCS		:= \
+	src/main.c  \
 	src/error.c \
-	src/main.c	\
 	src/hook.c	\
 	src/check.c	\
 	src/init.c

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:48 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/29 00:38:14 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:09:57 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	error(char *message)
 		ft_putstr_fd("So_long: Error: ", 2);
 		ft_putendl_fd(message, 2);
 	}
-	ft_garbage_collector(0, 1, 1);
+	printf("FICHIER MESSAGE");
+	exit(1);
 }
 
 void	arg_error(int ac)
@@ -49,5 +50,6 @@ void	print_msg(char *message, t_game *game)
 void	end_program(t_game *game)
 {
 	mlx_destroy_window(game->window.mlx, game->window.win);
-	ft_garbage_collector(0, 1, 1);
+	printf("END PROGRAMME");
+	exit(0);
 }

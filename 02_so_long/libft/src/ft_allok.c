@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:30:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 18:25:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:28:29 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_allok(int num, int size, int exit_on_null)
 	void	*res;
 
 	res = ft_calloc(num, size);
-	if (res == 0 && exit_on_null)
+	if (res == 0 || exit_on_null)
 		ft_garbage_collector(res, 1, 1);
 	else
 		ft_garbage_collector(res, 0, 0);

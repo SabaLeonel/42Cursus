@@ -5,23 +5,15 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/02_push_swap/push_swap",
+      "program": "${workspaceFolder}/02_so_long/so_long",
       "args": [
-        "1 2 3 5 55433"
+        "${workspaceFolder}/02_so_long/maps/map_correct.ber"
       ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb"
-    },
-    {
-      "type": "lldb",
-      "request": "launch",
-      "name": "Debug",
-      "program": "${workspaceFolder}/<executable file>",
-      "args": [],
-      "cwd": "${workspaceFolder}"
     },
     {
       "name": "C/C++ Runner: Debug Session",
