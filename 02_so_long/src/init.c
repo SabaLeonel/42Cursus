@@ -6,10 +6,9 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/30 19:10:56 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:42:05 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "so_long.h"
 
@@ -18,11 +17,13 @@ void	generate_map(t_game *game, int fd, char *temp)
 	int	x;
 	int	y;
 
+
 	y = 0;
 	while (temp)
 	{
+		// printf("len temp %i == %i size x\n", (int)ft_strlen(temp), game->size.x);
 		if ((int)ft_strlen(temp) - 1 != game->size.x)
-			error("lines are not the same size");
+			error("Lines are not the same size");
 		x = -1;
 		game->map[y] = ft_allok(game->size.x, sizeof(int), 1);
 		while (++x < game->size.x)
@@ -36,38 +37,23 @@ void	generate_map(t_game *game, int fd, char *temp)
 		}
 		y ++;
 		temp = ft_get_next_line(fd);
+		// printf("%i\n", temp[x]);
+		// temp[x] = '\n';
 	}
 }
 
 void	init_sprites(t_game *game)
 {
-	game->sprites[WALL].frames[0] = init_image(game->window.mlx,
+	game->sprites[WALL] = init_image(game->window.mlx,
 			"sprites/sprite-wall.xpm");
-	game->sprites[EXIT].frames[0] = init_image(game->window.mlx,
+	game->sprites[EXIT] = init_image(game->window.mlx,
 			"sprites/sprite-exit.xpm");
-	game->sprites[EMPTY].frames[0] = init_image(game->window.mlx,
+	game->sprites[EMPTY] = init_image(game->window.mlx,
 			"sprites/sprite-empty.xpm");
-	game->sprites[PLAYER].frames[0] = init_image(game->window.mlx,
+	game->sprites[PLAYER] = init_image(game->window.mlx,
 			"sprites/sprite-player-gn-stand.xpm");
-	game->sprites[PLAYER].frames[1] = init_image(game->window.mlx,
-			"sprites/sprite-player-gs-stand.xpm");
-	game->sprites[ITEMS].frames[0] = init_image(game->window.mlx,
+	game->sprites[ITEMS] = init_image(game->window.mlx,
 			"sprites/sprite-items.xpm");
-	init_animation(game);
-}
-
-void	init_animation(t_game *game)
-{
-	game->sprites[WALL].frame_amount = 1;
-	game->sprites[EXIT].frame_amount = 1;
-	game->sprites[PLAYER].frame_amount = 2;
-	game->sprites[ITEMS].frame_amount = 1;
-	game->sprites[EMPTY].frame_amount = 1;
-	game->sprites[WALL].time_to_change = 999;
-	game->sprites[EXIT].time_to_change = 999;
-	game->sprites[PLAYER].time_to_change = 0;
-	game->sprites[ITEMS].time_to_change = 999;
-	game->sprites[EMPTY].time_to_change = 999;
 }
 
 t_canvas	init_image(void *mlx, char *filepath)
@@ -92,10 +78,11 @@ int	draw_map(t_game *game)
 		while (++x < game->size.x)
 		{
 			mlx_put_image_to_window(game->window.mlx, game->window.win,
-				get_frame(&game->sprites[EMPTY]), x * 96, y * 96);
+				game->sprites[EMPTY].img, x * 96, y * 96);
 			mlx_put_image_to_window(game->window.mlx, game->window.win,
-				get_frame(&game->sprites[game->map[y][x]]), x * 96, y * 96);
+				game->sprites[game->map[y][x]].img, x * 96, y * 96);
 		}
 	}
 	return (0);
 }
+

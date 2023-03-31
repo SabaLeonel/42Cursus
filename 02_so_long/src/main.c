@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/30 16:27:53 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/31 12:28:33 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	check_valid_path(t_game *game)
 	int	j;
 
 	if (game->item_count != game->item)
-		error("can't reach all the items");
+		error("Can't reach all the items");
 	if (game->exit != 1)
-		error("can't reach the exit");
+		error("Can't reach the exit");
 	i = -1;
 	while (++i < game->size.y)
 	{
@@ -69,12 +69,14 @@ void	parse_map(char *path, t_game *game)
 	check_extension(path);
 	game->size = init_map_size(path);
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		error("No such file or directory");
 	temp = ft_get_next_line(fd);
+	if (!temp)
+		error("File is empty");
 	game->size.x = ft_strlen(temp) - 1;
 	if (game->size.y < 4 || game->size.x < 4)
-		error("Map is too small");
+		error("Map can't be generated");
 	game->map = ft_allok(game->size.y, sizeof(int *), 1);
 	generate_map(game, fd, temp);
 	check_min_amount(game);
@@ -107,4 +109,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game.window.mlx);
 	return (0);
 }
-
