@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/05 14:43:44 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:53:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	generate_map(t_game *game, int fd, char *temp)
 				game->playerpos.y = y;
 			}
 		}
+		free(temp);
 		y ++;
 		temp = ft_get_next_line(fd);
 	}

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:52 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/31 11:09:40 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:44:04 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	key_hook(int key, t_game *game)
 
 	new_pos = game->playerpos;
 	if (key == KEYCODE_ESC)
+	{
 		end_program(game);
+	}
 	else if (key == KEYCODE_A)
 		new_pos.x -= 1;
 	else if (key == KEYCODE_S)
