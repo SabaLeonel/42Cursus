@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/31 14:57:18 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:43:44 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	generate_map(t_game *game, int fd, char *temp)
 	y = 0;
 	while (temp)
 	{
-	printf("HELLO"	);
-
 		if ((int)ft_strlen(temp) - 1 != game->size.x)
 			error("Error initializing the map");
 		x = -1;

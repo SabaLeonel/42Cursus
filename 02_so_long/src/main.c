@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:32:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/31 14:58:01 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:43:33 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	parse_map(char *path, t_game *game)
 	check_extension(path);
 	game->size = init_map_size(path);
 	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	if (fd == -1)
 		error("No such file or directory");
 	temp = ft_get_next_line(fd);
 	if (!temp)
