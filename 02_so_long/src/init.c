@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 19:31:57 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/05 18:53:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/06 16:16:23 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	init_sprites(t_game *game)
 	game->sprites[EMPTY] = init_image(game->window.mlx,
 			"sprites/sprite-empty.xpm");
 	game->sprites[PLAYER] = init_image(game->window.mlx,
-			"sprites/sprite-player-gn-stand.xpm");
+			"sprites/sprite-player-gs-stand.xpm");
 	game->sprites[ITEMS] = init_image(game->window.mlx,
 			"sprites/sprite-items.xpm");
 }
