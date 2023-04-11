@@ -44,6 +44,7 @@
 	"__hash_table": "c",
 	"functional": "c",
 	"type_traits": "c",
-	"__node_handle": "c"
+	"__node_handle": "c",
+	"wait.h": "c"
 }
 }
