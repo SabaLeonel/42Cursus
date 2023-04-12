@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/11 18:40:33 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:18:15 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
-typedef struct s_pipex
+typedef struct s_cmd
 {
-	int	fd;
-	char *path;
-	char **arg;
-}	t_pipex;
+	int		fd;
+	char	*path;
+	char	**arg;
+}	t_cmd;
 
-void	print(char *message, int mode);
+
+void	message(char *msg, int mode);
 
 #endif
