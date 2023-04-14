@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message.c                                          :+:      :+:    :+:   */
+/*   ft_putnbrendl_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:18:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/14 12:12:54 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/02/14 16:46:34 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/03/28 23:49:13 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	message(char *msg, int mode)
+void	ft_putnbrendl_fd(long int num, int fd)
 {
-	if (mode == 0 && msg)
-	{
-		ft_putendl_fd(msg, 1);
-		exit(mode);
-	}
-	if (mode == 1 && msg)
-	{
-		ft_putstr_fd("Pipex: Error: ", 1);
-		ft_putendl_fd(msg, 1);
-		exit(mode);
-	}
+	ft_putnbr_fd(num, fd);
+	ft_putstr_fd("\n", fd);
 }

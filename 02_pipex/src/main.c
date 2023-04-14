@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/13 18:41:05 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:06:55 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	parse_cmd(t_cmd *cmd, int fd, char *arg, char **env)
 {
 	cmd->fd = fd;
-	cmd->arg = ft_split(env, ' ');
+	cmd->arg = ft_split(arg, ' ');
 	cmd->path = init_path(arg[0], env);
 }
 
@@ -37,6 +37,7 @@ void	parent_proc(int fd[], char **argv, char **env)
 	
 	close(fd[0]);
 	close(fd[1]);
+	execute(&cmd, env);
 }
 
 
@@ -71,7 +72,7 @@ int	main(int argc, char **argv, char **env)
 		message("An error occured when using fork", 1);
 	if (pid == 0)
 		child_proc(fd, argv, env);
-	else
+	else if (pid > 0)
 		parent_proc(fd, argv, env);
 	
 	// if (pipe(fd))

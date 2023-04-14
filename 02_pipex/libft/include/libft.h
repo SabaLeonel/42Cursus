@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 17:40:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/03/28 23:50:08 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # define MININT		-2147483648
 # define MAXINT		2147483647
+# define BUFFER_SIZE 1000
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -82,6 +83,10 @@ int			ft_find_max(int *tab, int size);
 int			ft_find_pivot(int *tab, int size);
 void		ft_free_pp(void **tab);
 void		*ft_alloc(int count, int size, void (*f)());
+char		*ft_get_next_line(int fd);
+char		*ft_add_stock(const char *s1, const char *s2);
+int			ft_gnl_strchr(const char *str, char c);
+void		ft_putnbrendl_fd(long int num, int fd);
 
 typedef struct s_list
 {
