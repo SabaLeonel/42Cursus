@@ -30,8 +30,7 @@ INCS        := include		\
 
 SRC_DIR     := src
 SRCS		:= \
-	src/main.c		\
-	src/message.c	\
+	src/main.c
 
 
 BUILD_DIR   := .build

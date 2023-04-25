@@ -6,107 +6,63 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/14 12:06:55 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:19:42 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-
-void	parse_cmd(t_cmd *cmd, int fd, char *arg, char **env)
+char *get_executable(char *file, char **env)
 {
-	cmd->fd = fd;
-	cmd->arg = ft_split(arg, ' ');
-	cmd->path = init_path(arg[0], env);
+	(void)env;
+	return (ft_strdup(file));
+	/*
+	steps:
+		if file start with / or ./ check if exist and return
+		/bin/ls 
+		./pipex
+		get PATH var from env
+		split path ':'
+		check in all paths if paths[i] + file exist
+		
+	*/
 }
 
-void	parent_proc(int fd[], char **argv, char **env)
+void exec(char *cmd, char **env, int input, int output)
 {
-	t_cmd	cmd;
-
-	ft_bzero(&cmd, sizeof(t_cmd));
+	char **args;
+	char *file;
+	int pid;
 	
-	parse_cmd(&cmd, 0, argv[4], env);
-	
-	cmd.fd = open(argv[4], O_WRONLY | O_CREAT ,777);
-	if (cmd.fd == -1)
-		message("Can't open file", 1);
-	//fd[0] parent process
-	dup2(cmd.fd, STDOUT_FILENO);
-	dup2(fd[0], STDIN_FILENO);
-	
-	close(fd[0]);
-	close(fd[1]);
-	execute(&cmd, env);
+	args = ft_split(cmd, ' ');
+	file = get_executable(args[0], env);
+	printf("%s\n", file);
+	pid = fork();
+	if (pid == 0)
+	{
+		dup2(input, STDIN_FILENO);
+		dup2(output, STDOUT_FILENO);
+		execve(file, args, env);
+	}
+	else
+	{
+		waitpid(pid, NULL, 0);
+		close(input);
+		close(output);
+	}
 }
 
-
-void	child_proc(int fd[], char **argv, char **env)
-{
-	t_cmd cmd;
-
-	ft_bzero(&cmd, sizeof(t_cmd));
-	parse_cmd(&cmd, 0, argv[2], env);
-	cmd.fd = open(argv[1], O_RDONLY);
-	if (cmd.fd == -1)
-		message("Can't open file", 1);
-	//fd[1] child process
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(cmd.fd, STDIN_FILENO);
-	close(fd[0]);
-	close(cmd.fd);
-	// execve("/bin/ls", argv, NULL);
-}
 
 int	main(int argc, char **argv, char **env)
 {
-	int	fd[2];
-	int	pid;
+	int	fd;
+	int	_pipe[2];
 
 	if (argc != 5)
-		message("Invalid arguments", 1);
-	if (pipe(fd) == -1)
-		message("An error occured when opening the pipe", 1);
-	pid = fork();
-	if (pid == -1)
-		message("An error occured when using fork", 1);
-	if (pid == 0)
-		child_proc(fd, argv, env);
-	else if (pid > 0)
-		parent_proc(fd, argv, env);
-	
-	// if (pipe(fd))
-	// 	printf("Hello\n");
-	// char *arg[2] = {"-l", NULL};
-	// int fd = open("file.txt", O_WRONLY | O_CREAT ,777);
-	// int pid;
-	// dup2(fd, 1);
-	//  pid = fork();
-	// if (pid == 0)
-	//  	execve("/bin/ls", arg, env);
-	// if (pid != 0)
-	// {
-	// 	waitpid(pid, NULL, 0);
-	// 	print("parent", 1);
-	// }
-
-	// int fd[2];
-	// pipe(fd);
-	// int x = 41;
-	// int y = 0;
-	// int pid = fork();
-	// if (pid == 0)
-	// {
-	// 	x++;
-	// 	write(fd[1], &x, sizeof(int));
-	// }
-	// if (pid != 0)
-	// {
-	// 	waitpid(pid, NULL, 0);
-	// 	read(fd[0], &y, sizeof(int));
-	// 	printf("%d | %d\n", y, x);
-	// }
-	close(fd[0]);
-	close(fd[1]);
-	return (0);
+		return (1);
+	pipe(_pipe);
+	fd = open(argv[1], O_RDONLY);
+	exec(argv[2], env, fd, _pipe[1]);
+	fd = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0000644);
+	exec(argv[3], env, _pipe[0], fd);
 }

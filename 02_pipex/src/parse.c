@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 18:42:07 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/14 12:00:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:59:34 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char	**parse_env(char **env)
 
 char *parse_path(char *cmd, char *path)
 {
-	int	i;
 	char *newpath;
 
 	newpath = ft_calloc(ft_strlen(path)+ 2, sizeof(char *));
@@ -42,6 +41,26 @@ char *parse_path(char *cmd, char *path)
 	newpath[ft_strlen(path)] = '/';
 	newpath = ft_add_stock(newpath, cmd);
 	return (newpath);
+}
+
+
+char	*get_path(char *cmd, char **env)
+{
+	char	**temppath;
+	int		i;
+
+	i = 0;
+	temppath = parse_env(env);
+	while (temppath[i])
+	{
+		temppath[i] = parse_path(temppath[i], cmd);
+		if (!temppath[i])
+			return (free_arr(temppath));
+		if (!access(temppath[i], F_OK))
+			return (temppath[i]);
+		i ++;
+	}
+	return (free_arr(temppath));
 }
 
 void init_path(char *cmd, char **env)
@@ -58,10 +77,21 @@ void init_path(char *cmd, char **env)
 		paths[i] = parse_path(paths[i], cmd);
 		if (!paths[i])
 		{
-			free_pp(paths);
+			free_arr(paths);
 			message("Can't parse path",1);
 		}
-		
 		i ++;
 	}
+}
+
+char	*free_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i] != NULL)
+		free(arr[i++]);
+	free(arr[i]);
+	free(arr);
+	return (NULL);
 }
