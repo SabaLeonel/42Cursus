@@ -6,37 +6,44 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/25 18:19:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:39:51 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char *get_executable(char *file, char **env)
+char	*get_executable(char *file, char **env)
 {
-	(void)env;
-	return (ft_strdup(file));
+	// char	*newpath = "TEST";
+
+	(void) env;
+	// printf("file : %s\n", file);
+	// if file start with / or ./ check if exist and return
+	// 		/bin/ls 
+	// 		./pipex
+	 if (!access(file, F_OK))
+		perror("Pipex: Error: ");
+	
 	/*
 	steps:
-		if file start with / or ./ check if exist and return
-		/bin/ls 
-		./pipex
+		
 		get PATH var from env
 		split path ':'
 		check in all paths if paths[i] + file exist
 		
 	*/
+	return (ft_strdup(file));
 }
 
-void exec(char *cmd, char **env, int input, int output)
+void	exec(char *cmd, char **env, int input, int output)
 {
-	char **args;
-	char *file;
-	int pid;
-	
+	char	**args;
+	char	*file;
+	int		pid;
+
 	args = ft_split(cmd, ' ');
 	file = get_executable(args[0], env);
-	printf("%s\n", file);
+	// printf("%s\n", file);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -52,17 +59,35 @@ void exec(char *cmd, char **env, int input, int output)
 	}
 }
 
+int	error(void)
+{
+	perror("Pipex: Error: ");
+	return (EXIT_FAILURE);
+}
+
 
 int	main(int argc, char **argv, char **env)
 {
 	int	fd;
 	int	_pipe[2];
 
-	if (argc != 5)
-		return (1);
-	pipe(_pipe);
-	fd = open(argv[1], O_RDONLY);
-	exec(argv[2], env, fd, _pipe[1]);
-	fd = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0000644);
-	exec(argv[3], env, _pipe[0], fd);
+	if (argc == 5)
+	{
+		if (pipe(_pipe) == -1)
+			error();
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+			error();
+		exec(argv[2], env, fd, _pipe[1]);
+		fd = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0000644);
+		if (fd == -1)
+			error();
+		exec(argv[3], env, _pipe[0], fd);
+	}
+	else
+	{
+		ft_putendl_fd("Pipex: Error: Invalid arguments", STDERR_FILENO);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
