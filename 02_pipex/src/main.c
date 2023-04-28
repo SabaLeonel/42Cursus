@@ -6,33 +6,61 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/27 19:38:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:07:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+int	checkpath(char *file)
+{
+	if (file && (ft_strncmp(file, "./", 2) == 0 || file[0] == '/'))
+	{
+		if ((file[0] == '.' && access(&file[2], F_OK) == 0)
+			|| (file[0] == '/' && access(&file[1], F_OK) == 0))
+			return (1);
+	}
+	return (0);
+}
+
 char	*get_executable(char *file, char **env)
 {
-	// char	*newpath = "TEST";
+	char	cmd[999];
+	char	**path;
+	int		i;
 
-	(void) env;
-	printf("file : %s\n", file);
-	// if file start with / or ./ check if exist and return
-	// 		/bin/ls 
-	// 		./pipex
-	 if (!access(file, F_OK))
-		perror("Pipex: Error: ");
-	
-	/*
-	steps:
-		
-		get PATH var from env
-		split path ':'
-		check in all paths if paths[i] + file exist
-		
-	*/
-	return (ft_strdup(file));
+	if (checkpath(file) == 1)
+		return (file);
+	i = -1;
+	path = getpath(env);
+	if (!file || !path)
+		error(-1);
+	while (path[++i])
+	{
+		ft_strcpy(cmd, path[i]);
+		ft_strcat(cmd, "/");
+		ft_strcat(cmd, file);
+		if (access(cmd, F_OK) == 0)
+		{
+			ft_free_pp((void **)path);
+			return (ft_strdup(cmd));
+		}
+	}
+	ft_free_pp((void **) path);
+	return (0);
+}
+
+char	**getpath(char **env)
+{
+	int		i;
+
+	i = -1;
+	while (env[++i])
+	{
+		if (ft_strncmp("PATH=", env[i], 5) == 0)
+			return (ft_split(env[i] + 5, ':'));
+	}
+	return (NULL);
 }
 
 void	exec(char *cmd, char **env, int input, int output)
@@ -43,7 +71,8 @@ void	exec(char *cmd, char **env, int input, int output)
 
 	args = ft_split(cmd, ' ');
 	file = get_executable(args[0], env);
-	// printf("%s\n", file);
+	if (!file)
+		error(-1);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -56,15 +85,10 @@ void	exec(char *cmd, char **env, int input, int output)
 		waitpid(pid, NULL, 0);
 		close(input);
 		close(output);
+		free((void *)file);
+		ft_free_pp((void **)args);
 	}
 }
-
-int	error(void)
-{
-	perror("Pipex: Error: ");
-	return (EXIT_FAILURE);
-}
-
 
 int	main(int argc, char **argv, char **env)
 {
@@ -74,20 +98,20 @@ int	main(int argc, char **argv, char **env)
 	if (argc == 5)
 	{
 		if (pipe(_pipe) == -1)
-			error();
+			error(-1);
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
-			error();
+			error(-1);
 		exec(argv[2], env, fd, _pipe[1]);
 		fd = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0000644);
 		if (fd < 0)
-			error();
+			error(-1);
 		exec(argv[3], env, _pipe[0], fd);
 	}
 	else
 	{
 		ft_putendl_fd("Pipex: Error: Invalid arguments", STDERR_FILENO);
-		return (EXIT_FAILURE);
+		exit (1);
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:22:05 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/28 23:50:08 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:41:20 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ char		*ft_get_next_line(int fd);
 char		*ft_add_stock(const char *s1, const char *s2);
 int			ft_gnl_strchr(const char *str, char c);
 void		ft_putnbrendl_fd(long int num, int fd);
+char		*ft_strcat(char *dest, char *src);
+char		*ft_strncat(char *dest, char *src, unsigned int nb);
+char		*ft_strcpy(char *dest, char *src);
 
 typedef struct s_list
 {

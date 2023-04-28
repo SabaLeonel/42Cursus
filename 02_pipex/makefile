@@ -30,19 +30,20 @@ INCS        := include		\
 
 SRC_DIR     := src
 SRCS		:= \
-	src/main.c
+	src/main.c	\
+	src/error.c
 
 
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 CC          := gcc
-CFLAGS      := -Wall -Wextra -Werror
+CFLAGS      := -Wall -Wextra -Werror #-fsanitize=address -g3
 CPPFLAGS    := $(addprefix -I,$(INCS))
 LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
 LDLIBS      := $(addprefix -l,$(LIBS))
 
-#------------------------------------------------#
+#------------------------------------------------#s
 #   UTENSILS                                     #
 #------------------------------------------------#
 # RM        force remove

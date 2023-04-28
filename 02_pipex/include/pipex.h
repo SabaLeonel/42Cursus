@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/25 17:55:30 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:07:39 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@
 // char	*get_path(char *cmd, char **env);
 // char	*parse_path(char *cmd, char *path);
 // char	*free_arr(char **arr);
+char	**getpath(char **env);
+void	exec(char *cmd, char **env, int input, int output);
+int		checkpath(char *file);
+char	*get_executable(char *file, char **env);
+int		error(int ernum);
 
 #endif
