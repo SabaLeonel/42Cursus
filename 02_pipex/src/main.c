@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/26 15:39:51 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/04/27 19:38:15 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*get_executable(char *file, char **env)
 	// char	*newpath = "TEST";
 
 	(void) env;
-	// printf("file : %s\n", file);
+	printf("file : %s\n", file);
 	// if file start with / or ./ check if exist and return
 	// 		/bin/ls 
 	// 		./pipex
@@ -76,11 +76,11 @@ int	main(int argc, char **argv, char **env)
 		if (pipe(_pipe) == -1)
 			error();
 		fd = open(argv[1], O_RDONLY);
-		if (fd == -1)
+		if (fd < 0)
 			error();
 		exec(argv[2], env, fd, _pipe[1]);
 		fd = open(argv[4], O_CREAT | O_TRUNC | O_WRONLY, 0000644);
-		if (fd == -1)
+		if (fd < 0)
 			error();
 		exec(argv[3], env, _pipe[0], fd);
 	}
