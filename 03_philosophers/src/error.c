@@ -6,17 +6,14 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:18:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/04/28 15:05:58 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:04:35 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "philo.h"
 
-int	error(int ernum)
+int	error(char *msg)
 {
-	if (!ernum)
-		ft_putendl_fd("Pipex: Error: command does not exist", 2);
-	else
-		perror("Pipex: Error: ");
+	printf("Philo: Error: %s\n", msg);
 	exit(1);
 }

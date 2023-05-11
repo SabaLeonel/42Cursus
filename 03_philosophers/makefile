@@ -21,16 +21,11 @@ NAME	= philo
 # LDFLAGS     linker flags
 # LDLIBS      libraries name
 
-LIBS        := ft
-LIBS_TARGET := 				\
-	libft/libft.a
 
-INCS        := include		\
-	libft/include			\
-
+INCS        := include
 SRC_DIR     := src
 SRCS		:= \
-	src/main.c	\
+	src/main.c 				\
 	src/error.c
 
 
@@ -38,12 +33,11 @@ BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 CC          := gcc
-CFLAGS      := -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS      := -Wall -Wextra -Werror
 CPPFLAGS    := $(addprefix -I,$(INCS))
-LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
-LDLIBS      := $(addprefix -l,$(LIBS))
 
-#------------------------------------------------#s
+
+#------------------------------------------------#
 #   UTENSILS                                     #
 #------------------------------------------------#
 # RM        force remove
@@ -70,11 +64,8 @@ DIR_DUP     = mkdir -p $(@D)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	$(info CREATED $(NAME))
-
-$(LIBS_TARGET):
-	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
@@ -82,16 +73,15 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(info CREATED $@)
 
 clean:
-	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(OBJS) $(BUILD_DIR)
 
 fclean: clean
-	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(RM) $(NAME)
 
 re:
 	$(MAKE) fclean
 	$(MAKE) all
+
 
 .PHONY: clean fclean re
 .SILENT:

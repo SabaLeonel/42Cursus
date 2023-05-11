@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 14:44:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/03/08 18:29:07 by lsaba-qu         ###   ########.fr       */
+/*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
+/*   Updated: 2023/05/11 15:30:47 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_atoi(const char *str)
 {
-	t_list	*tmp;
-	t_list	*head;
+	int	i;
+	int	res;
+	int	signe;
 
-	head = *lst;
-	while (head)
+	i = 0;
+	res = 0;
+	signe = 1;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i ++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		tmp = head->next;
-		del(head->data);
-		free(head);
-		head = tmp;
+		if (str[i] == '-')
+			signe = -1;
+		i ++;
 	}
-	*lst = NULL;
+	while (ft_isdigit(str[i]))
+	{
+		res = res * 10 + str[i] - '0';
+		i ++;
+	}
+	return (res * signe);
 }

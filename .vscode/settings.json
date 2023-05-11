@@ -46,6 +46,7 @@
 	"type_traits": "c",
 	"__node_handle": "c",
 	"wait.h": "c",
-	"pipex.h": "c"
+	"pipex.h": "c",
+	"philo.h": "c"
 }
 }
