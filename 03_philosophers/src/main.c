@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/11 17:15:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:46:36 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	*routine(void *t)
 	return (0);
 }
 
+
+
 int	main(int argc, char **argv)
 {
-	t_philo t1;
-	// t_share	maine_share;
-	t1.id = 5;
-	(void)argv;
+	t_state *data;
 
 	if (argc < 5 || argc > 6)
 		error("Invalid number of arguments");
-	
-	init_table(&maine_share);
-	pthread_create(&t1.thread, NULL, &routine, &t1);
-	pthread_join(t1.thread, NULL);	
+	data = (t_state *)malloc(sizeof(t_state));	
+	init_table(data);
+	init_threads(data);
+	// pthread_create(&data->philo.thread, NULL, &routine, &data);
+	// pthread_join(t1.thread, NULL);	
 	return 0;
 }
 

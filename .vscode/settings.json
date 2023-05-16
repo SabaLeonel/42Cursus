@@ -47,6 +47,7 @@
 	"__node_handle": "c",
 	"wait.h": "c",
 	"pipex.h": "c",
-	"philo.h": "c"
+	"philo.h": "c",
+	"__threading_support": "c"
 }
 }

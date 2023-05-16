@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/11 17:07:21 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:17:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,41 +32,28 @@ enum
 typedef struct s_philo t_philo;
 
 
-typedef struct s_time
+typedef struct s_state
 {
-	unsigned long long	time_to_die;
-	unsigned long long	time_to_eat;
-	unsigned long long	time_to_sleep;
+	unsigned long long	tt_die;
+	unsigned long long	tt_eat;
+	unsigned long long	tt_sleep;
+	int					nb_philo;
+	int					nb_eat;
 	unsigned long long	start_time;
 	int					min_meal;
-
-	pthread_mutex_t		*print_mutex;
-	pthread_mutex_t		*full_mutex;
-	int					*full_philo;
-	
-} t_time;
-
-
-typedef	struct s_share
-{
-	pthread_mutex_t	print_mutex;
-	pthread_mutex_t full_mutex;
-	int				full_philo;
-	t_philo			*philo;
-	t_time			time;
-}	t_share;
+	t_philo				*philo;
+	pthread_mutex_t		*fork; // malloc nb of philo 5 philo 5 fourchette
+	pthread_mutex_t		mutex_print;
+} t_state;
 
 typedef struct s_philo
 {
 	int					id;
-	pthread_mutex_t		fork;
-	pthread_mutex_t		*next_fork;
-	pthread_t			thread;
-	int					status;
-	int					cptmeal;
-	t_time				time;
-	t_share				*share;
+	int					fork_left_id;
+	int					fork_right_id;
 	unsigned long long	time_lastmeal;
+	pthread_t			thread;
+	int					nb_ate;
 } t_philo;
 
 
