@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/16 14:59:32 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:44:40 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,20 @@ int		init_mutex(t_state *data)
 
 void	init_philo(t_state *data)
 {
+	int	i;
+
+	i = -1;
 	//id philo start with 1
 	//boucle x nb philo
+	while (++i < data->nb_philo)
+	{
+		data->philo[i].id = i + 1;
+		data->philo[i].fork_left_id = data->philo[i].id;
+		if (data->philo[i].id == 1)
+			data->philo[i].fork_right_id = data->nb_eat;
+		else
+			data->philo[i].fork_right_id = data->philo[i].id - 1;
+	}
 	// leftid = id_phil
 	// right = id - 1 sauf premier
 }
@@ -54,7 +66,7 @@ void	init_threads(t_state *data)
 	int	i;
 
 	i = 0;
-	while (data->philo[i])
+	while (data->philo[i].id)
 	{
 		if (pthread_create(&data->philo[i].thread, NULL, &routine, &data->philo[i]))
 			error("Failed to create a thread");

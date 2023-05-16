@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/16 14:17:49 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:31:07 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@ typedef struct s_philo
 } t_philo;
 
 
-int	ft_atoi(const char *str);
-int	error(char *msg);
+int		ft_atoi(const char *str);
+int		error(char *msg);
+void	*routine(void *t);
+void	check_state(t_state *data);
+int		check_all_eat(t_state *data);
+void	init_table(t_state *data, char **av);
+void	init_threads(t_state *data);
+void	init_philo(t_state *data);
+
+
+
 #endif

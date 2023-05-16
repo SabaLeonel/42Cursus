@@ -26,7 +26,10 @@ INCS        := include
 SRC_DIR     := src
 SRCS		:= \
 	src/main.c 				\
-	src/error.c
+	src/message.c			\
+	src/utils.c				\
+	src/init.c				\
+	src/check.c				
 
 
 BUILD_DIR   := .build
