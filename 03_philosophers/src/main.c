@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/16 15:10:39 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:53:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <stdio.h>
 
 
-void	*routine(void *t)
+void	*routine(t_philo *philo)
 {
-	t_philo *philo;
-	philo = (t_philo *)t;
+	t_state *data;
 	
+	data = philo->data;
 	while (1)
 	{
 		printf("philo think %i\n", philo->id);
@@ -34,20 +34,19 @@ void	*routine(void *t)
 
 
 
-int	main(int argc, char **argv)
+int	main(int argc, char **av)
 {
-	t_state *data;
+	t_state data;
 
+	data = (t_state){};
+	data.start_time = get_time();
 	if (argc < 5 || argc > 6)
 		error("Invalid number of arguments");
-	data = (t_state *)malloc(sizeof(t_state));	
-	init_table(data);
-	init_threads(data);
-	// pthread_create(&data->philo.thread, NULL, &routine, &data);
+	init_table(&data, av);
+	init_threads(&data);
 	// pthread_join(t1.thread, NULL);	
 	return (0);
 }
-
 
 /*
 ** int bigsleep(usleep )

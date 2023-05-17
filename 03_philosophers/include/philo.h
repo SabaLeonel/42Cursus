@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/16 16:31:07 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/17 18:57:31 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ enum
 	DEAD,	// 3
 };
 
-typedef struct s_philo t_philo;
-
+typedef struct s_philo	t_philo;
 
 typedef struct s_state
 {
@@ -44,28 +43,27 @@ typedef struct s_state
 	t_philo				*philo;
 	pthread_mutex_t		*fork; // malloc nb of philo 5 philo 5 fourchette
 	pthread_mutex_t		mutex_print;
-} t_state;
+}	t_state;
 
 typedef struct s_philo
 {
+	t_state				*data;
 	int					id;
 	int					fork_left_id;
 	int					fork_right_id;
 	unsigned long long	time_lastmeal;
 	pthread_t			thread;
 	int					nb_ate;
-} t_philo;
+}	t_philo;
 
-
-int		ft_atoi(const char *str);
-int		error(char *msg);
-void	*routine(void *t);
-void	check_state(t_state *data);
-int		check_all_eat(t_state *data);
-void	init_table(t_state *data, char **av);
-void	init_threads(t_state *data);
-void	init_philo(t_state *data);
-
-
+int					ft_atoi(const char *str);
+int					error(char *msg);
+void				*routine(t_philo *philo);
+void				check_state(t_state *data);
+int					check_all_eat(t_state *data);
+void				init_table(t_state *data, char **av);
+void				init_threads(t_state *data);
+void				init_philo(t_state *data);
+unsigned long long	get_time();
 
 #endif
