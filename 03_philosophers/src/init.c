@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/17 18:52:54 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 15:20:57 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	destroy_mutexlist(t_state *data, int len)
 {
-	int i;
+	int	i;
+
+	i = 0;
 	while (i < len)
 	{
 		pthread_mutex_destroy(&data->fork[i]);
@@ -24,27 +26,27 @@ int	destroy_mutexlist(t_state *data, int len)
 	return (-1);
 }
 
-int		init_mutex(t_state *data)
+int	init_mutex(t_state *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		if (pthread_init(data->fork[i]))
+		if (pthread_mutex_init(&data->fork[i], NULL))
 			return (destroy_mutexlist(data, i));
 		i ++;
 	}
 	if (pthread_mutex_init(&data->mutex_print, NULL))
 		return (destroy_mutexlist(data, i));
-	
+	return (0);
 }
 
-unsigned long long get_time()
+unsigned long long	get_time(void)
 {
-	struct timeval time;
+	struct timeval	time;
 
-	getimeofday(&time, NULL);
+	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
@@ -55,6 +57,7 @@ void	init_philo(t_state *data)
 	i = -1;
 	while (++i < data->nb_philo)
 	{
+		// printf("Hello\n")
 		data->philo[i].time_lastmeal = get_time();
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left_id = i;
@@ -62,7 +65,7 @@ void	init_philo(t_state *data)
 			data->philo[i].fork_right_id = data->nb_philo - 1;
 		else
 			data->philo[i].fork_right_id = i + 1;
-		if (pthread_create(&data->philo[i].thread, NULL, &routine, &(data->philo[i])))
+		if (pthread_create(&data->philo[i].thread, NULL, (void *(*)(void *))&routine, &(data->philo[i])))
 			error("Failed to create thread");
 	}
 	check_state(data);

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/16 16:24:34 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:01:32 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	exec(char *cmd, char **env, int input, int output)
 
 	args = ft_split(cmd, ' ');
 	file = get_executable(args[0], env);
-	for (int i = 0 ; args[i]; i++)
-		printf("%s\n",args[i]);
 	if (!file)
 		error(-1);
 	pid = fork();

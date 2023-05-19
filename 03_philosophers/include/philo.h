@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/17 18:57:31 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:37:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 # include <stdio.h>
 # include <sys/wait.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 enum
 {
-	EAT, 	// 0
-	SLEEP, 	// 1
-	THINK, 	// 2
-	DEAD,	// 3
+	EAT,
+	SLEEP,
+	THINK,
+	DEAD,
 };
 
 typedef struct s_philo	t_philo;
@@ -41,7 +42,7 @@ typedef struct s_state
 	unsigned long long	start_time;
 	int					min_meal;
 	t_philo				*philo;
-	pthread_mutex_t		*fork; // malloc nb of philo 5 philo 5 fourchette
+	pthread_mutex_t		*fork;
 	pthread_mutex_t		mutex_print;
 }	t_state;
 
@@ -64,6 +65,7 @@ int					check_all_eat(t_state *data);
 void				init_table(t_state *data, char **av);
 void				init_threads(t_state *data);
 void				init_philo(t_state *data);
-unsigned long long	get_time();
+unsigned long long	get_time(void);
+int					ft_isdigit(int c);
 
 #endif
