@@ -29,7 +29,8 @@ SRCS		:= \
 	src/message.c			\
 	src/utils.c				\
 	src/init.c				\
-	src/check.c				
+	src/check.c				\
+	src/routine.c			\
 
 
 BUILD_DIR   := .build

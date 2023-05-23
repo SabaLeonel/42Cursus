@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 21:53:46 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:45:49 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-enum
+enum e_philo
 {
 	EAT,
+	FORK,
 	SLEEP,
 	THINK,
 	DEAD,
@@ -41,7 +42,7 @@ typedef struct s_state
 	int					nb_eat;
 	int					all_dead;
 	unsigned long long	start_time;
-	int					min_meal;
+	int					max_meal;
 	t_philo				*philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		mutex_print;
@@ -61,13 +62,16 @@ typedef struct s_philo
 
 int					ft_atoi(const char *str);
 int					error(char *msg);
-void				*routine(t_philo *philo);
+void				*routine(void *philo);
 int					check_state(t_state *data);
 int					check_all_eat(t_state *data);
+int					check_args(char **av, t_state *data);
 void				init_table(t_state *data, char **av);
 void				init_threads(t_state *data);
 void				init_philo(t_state *data);
 unsigned long long	get_time(void);
 int					ft_isdigit(int c);
-
+void				eat(t_philo philo);
+void				print_action(t_philo *philo, enum e_philo action);
+void				ft_wait(unsigned long long tt_eat, t_philo philo);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 21:39:29 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:13:57 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,36 @@ void	init_philo(t_state *data)
 	int	i;
 
 	i = -1;
+	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
+	if (!data->philo)
+		error("Malloc failed philo");
+	printf("%p\n", data->philo);
 	while (++i < data->nb_philo)
 	{
+		// data->philo[i] = (t_philo *)malloc(sizeof(t_philo));
+		// if (!data->philo[i])
+		// 	error("Failed Malloc")
 		data->philo[i].time_lastmeal = get_time();
+		printf("%llu", data->philo[i].time_lastmeal);
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left_id = i;
 		if (i == 0)
 			data->philo[i].fork_right_id = data->nb_philo - 1;
 		else
 			data->philo[i].fork_right_id = i + 1;
-		if (pthread_create(&data->philo[i].thread, NULL, (void *(*)(void *))&routine, &(data->philo[i])))
+		data->philo[i].data = data;
+		if (pthread_create(&data->philo[i].thread,
+				NULL, &routine, &(data->philo[i])))
 			error("Failed to create thread");
 	}
-	check_state(data);
+	// check_state(data);
 }
 
 void	init_table(t_state *data, char **av)
 {
-	data->nb_philo = ft_atoi(av[1]);
-	data->tt_die = ft_atoi(av[2]);
-	data->tt_eat = ft_atoi(av[3]);
-	data->tt_sleep = ft_atoi(av[4]);
-	if (av[5])
-		data->nb_eat = ft_atoi(av[5]);
-	if (data->tt_die < 1 || data->tt_eat < 1
-		|| data->tt_sleep < 1 || data->nb_philo < 2)
-		error("Wrong arguments");
+	if (check_args(av, data))
+		error("Arguments are not valid");
+	data->start_time = get_time();
 	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
 			* data->nb_philo);
 	if (!data->fork)

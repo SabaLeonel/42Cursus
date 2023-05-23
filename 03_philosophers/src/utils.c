@@ -6,19 +6,11 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 21:54:03 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:20:51 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-
-void	print_action(t_philo *philo)
-{
-	unsigned long long	current_t;
-
-	current_t = get_time() - philo->data->start_time;
-}
 
 int	ft_isdigit(int c)
 {
@@ -58,4 +50,17 @@ unsigned long long	get_time(void)
 
 	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	ft_wait(unsigned long long time, t_philo philo)
+{
+	unsigned long long	current_t;
+
+	current_t = get_time();
+	while (!philo.dead)
+	{
+		usleep(50);
+		if (get_time() - current_t >= time)
+			break; 
+	}
 }
