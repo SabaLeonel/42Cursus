@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 15:20:37 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:31:12 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@
 void	*routine(t_philo *philo)
 {
 	t_state	*data;
+	int		i;
 
+	i = 0;
 	data = philo->data;
-	while ()
+	data->philo->time_lastmeal = get_time();
+	if (data->philo->id % 2)
+		usleep(1500);
+	while (!data->philo[i]->dead)
 	{
-		printf("philo think %i\n", philo->id);
-		sleep(1);
-		printf("philo eat %i\n", philo->id);
-		sleep(1);
-		printf("philo sleep %i\n", philo->id);
+		eat(&data->philo[i]);
+		
+		// printf("philo think %i\n", philo->id);
+		// sleep(1);
+		// printf("philo eat %i\n", philo->id);
+		// sleep(1);
+		// printf("philo sleep %i\n", philo->id);
 		sleep(1);
 	}
 	return (0);
@@ -43,11 +50,3 @@ int	main(int argc, char **av)
 	// init_threads(&data);
 	return (0);
 }
-
-/*
-** int bigsleep(usleep )
-** {
-** 	while
-** 	usleep(5);
-** }
-*/

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 15:20:57 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:39:29 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,6 @@ int	init_mutex(t_state *data)
 	return (0);
 }
 
-unsigned long long	get_time(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
-
 void	init_philo(t_state *data)
 {
 	int	i;
@@ -57,7 +49,6 @@ void	init_philo(t_state *data)
 	i = -1;
 	while (++i < data->nb_philo)
 	{
-		// printf("Hello\n")
 		data->philo[i].time_lastmeal = get_time();
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left_id = i;

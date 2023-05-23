@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 12:37:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:53:46 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_state
 	unsigned long long	tt_sleep;
 	int					nb_philo;
 	int					nb_eat;
+	int					all_dead;
 	unsigned long long	start_time;
 	int					min_meal;
 	t_philo				*philo;
@@ -55,12 +56,13 @@ typedef struct s_philo
 	unsigned long long	time_lastmeal;
 	pthread_t			thread;
 	int					nb_ate;
+	int					dead;
 }	t_philo;
 
 int					ft_atoi(const char *str);
 int					error(char *msg);
 void				*routine(t_philo *philo);
-void				check_state(t_state *data);
+int					check_state(t_state *data);
 int					check_all_eat(t_state *data);
 void				init_table(t_state *data, char **av);
 void				init_threads(t_state *data);
