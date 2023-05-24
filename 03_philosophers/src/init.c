@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 20:06:42 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:08:21 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	init_mutex(t_state *data)
 	}
 	if (pthread_mutex_init(&data->mutex_print, NULL))
 		return (destroy_mutexlist(data, i));
+	if (pthread_mutex_init(&data->mutex_all_dead, NULL))
+		return (destroy_mutexlist(data, i));
 	return (0);
 }
 
@@ -50,12 +52,8 @@ void	init_philo(t_state *data)
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philo)
 		error("Malloc failed philo");
-	// printf("%p\n", data->philo);
 	while (++i < data->nb_philo)
 	{
-		// data->philo[i] = (t_philo *)malloc(sizeof(t_philo));
-		// if (!data->philo[i])
-		// 	error("Failed Malloc")
 		data->philo[i].time_lastmeal = get_time();
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left_id = i;
@@ -64,12 +62,10 @@ void	init_philo(t_state *data)
 		else
 			data->philo[i].fork_right_id = i + 1;
 		data->philo[i].data = data;
-		printf("\nINIT %d\n", data->philo[i].dead);
 		if (pthread_create(&data->philo[i].thread,
 				NULL, &routine, &(data->philo[i])))
 			error("Failed to create thread");
 	}
-	// check_state(data);
 }
 
 void	init_table(t_state *data, char **av)
@@ -79,9 +75,16 @@ void	init_table(t_state *data, char **av)
 	data->start_time = get_time();
 	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
 			* data->nb_philo);
+	if (data->nb_philo == 1)
+	{
+		data->all_dead = 1;
+		return ;
+	}		
 	if (!data->fork)
 		error("Malloc fork failed");
 	if (init_mutex(data))
 		error("Init mutex failed");
 	init_philo(data);
+	if (check_state(data))
+		error("A philosopher died unexpectedly");
 }

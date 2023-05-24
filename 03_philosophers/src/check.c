@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 18:26:34 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:52:25 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ int	check_state(t_state *data)
 	while (i < data->nb_philo)
 	{
 		curr_time = get_time();
-		if (data->philo[i].dead || curr_time - data->philo[i].time_lastmeal > data->tt_die)
+		if (data->philo[i].dead
+			|| curr_time - data->philo[i].time_lastmeal > data->tt_die)
 		{
 			print_action(&data->philo[i], DEAD);
 			data->philo[i].dead = 1;
 		}
 		if (data->philo[i].dead)
-			return (1);
+			return (-1);
 		i ++;
 	}
 	return (0);
@@ -73,5 +74,5 @@ int	check_all_eat(t_state *data)
 		data->all_dead = 1;
 		return (-1);
 	}
-	return (1);
+	return (0);
 }

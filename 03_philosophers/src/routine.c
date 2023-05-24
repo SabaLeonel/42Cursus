@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 21:18:01 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 13:12:47 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:23:54 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	eat(t_philo *philo)
 {
+	// printf("%p\n", philo->data->fork[philo->fork_left_id]);
 	pthread_mutex_lock(&philo->data->fork[philo->fork_left_id]);
 	pthread_mutex_lock(&philo->data->fork[philo->fork_right_id]);
 	print_action(philo, FORK);

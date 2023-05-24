@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 13:12:00 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:55:29 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_state
 	t_philo				*philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		mutex_print;
+	pthread_mutex_t		mutex_all_dead;
 }	t_state;
 
 typedef struct s_philo
@@ -74,4 +75,5 @@ int					ft_isdigit(int c);
 void				eat(t_philo *philo);
 void				print_action(t_philo *philo, enum e_philo action);
 void				ft_wait(unsigned long long tt_eat, int dead);
+int					safecheck(pthread_mutex_t mutex, int var);
 #endif

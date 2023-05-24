@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:18:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 15:56:51 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:58:34 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_action(t_philo *philo, enum e_philo action)
 	char				*msg;
 	t_state				*data;
 
-	if (philo->dead || philo->data->all_dead)
+	if (philo->dead || safecheck(philo->data->mutex_all_dead, philo->data->all_dead))
 		return ;
 	if (action == FORK)
 		msg = "has taken a fork";
