@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 18:20:51 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:11:39 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ unsigned long long	get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-void	ft_wait(unsigned long long time, t_philo philo)
+void	ft_wait(unsigned long long time, int dead)
 {
 	unsigned long long	current_t;
 
 	current_t = get_time();
-	while (!philo.dead)
+	while (!dead)
 	{
 		usleep(50);
 		if (get_time() - current_t >= time)

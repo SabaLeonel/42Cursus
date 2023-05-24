@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 18:45:49 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:12:00 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				init_threads(t_state *data);
 void				init_philo(t_state *data);
 unsigned long long	get_time(void);
 int					ft_isdigit(int c);
-void				eat(t_philo philo);
+void				eat(t_philo *philo);
 void				print_action(t_philo *philo, enum e_philo action);
-void				ft_wait(unsigned long long tt_eat, t_philo philo);
+void				ft_wait(unsigned long long tt_eat, int dead);
 #endif

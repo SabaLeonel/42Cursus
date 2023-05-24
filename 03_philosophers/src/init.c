@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/23 19:13:57 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:06:42 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ void	init_philo(t_state *data)
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philo)
 		error("Malloc failed philo");
-	printf("%p\n", data->philo);
+	// printf("%p\n", data->philo);
 	while (++i < data->nb_philo)
 	{
 		// data->philo[i] = (t_philo *)malloc(sizeof(t_philo));
 		// if (!data->philo[i])
 		// 	error("Failed Malloc")
 		data->philo[i].time_lastmeal = get_time();
-		printf("%llu", data->philo[i].time_lastmeal);
 		data->philo[i].id = i + 1;
 		data->philo[i].fork_left_id = i;
 		if (i == 0)
@@ -65,6 +64,7 @@ void	init_philo(t_state *data)
 		else
 			data->philo[i].fork_right_id = i + 1;
 		data->philo[i].data = data;
+		printf("\nINIT %d\n", data->philo[i].dead);
 		if (pthread_create(&data->philo[i].thread,
 				NULL, &routine, &(data->philo[i])))
 			error("Failed to create thread");
