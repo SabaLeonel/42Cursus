@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 19:01:57 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:23:21 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,13 @@
 #include <pthread.h>
 #include <stdio.h>
 
-int	safecheck(pthread_mutex_t mutex, int var)
-{
-	int	ret;
-
-	pthread_mutex_lock(&mutex);
-	ret = var;
-	pthread_mutex_unlock(&mutex);
-	return (ret);
-}
-
-void	safechange(pthread_mutex_t mutex, int *var, int newval)
-{
-	pthread_mutex_lock(&mutex);
-	*var = newval;
-	pthread_mutex_unlock(&mutex);
-}
-
-void	*routine(void *arg)
-{
-	t_state	*data;
-	t_philo	*philo;
-	int		i;
-
-	i = 0;
-	philo = (t_philo *)arg;
-	data = philo->data;
-	if (philo->id % 2)
-		usleep(1500);
-	while (!philo->dead)
-	{
-		eat(&philo[i]);
-		if (safecheck(philo->data->mutex_all_dead, philo->data->all_dead))
-			break ;
-		print_action(&data->philo[i], SLEEP);
-		ft_wait(data->tt_sleep, data->philo[i].dead);
-		print_action(&data->philo[i], THINK);
-	}
-	return (0);
-}
-
 int	main(int argc, char **av)
 {
-	t_state	data;
+	t_table	table;
 
-	data = (t_state){};
-	if (argc < 4 || argc > 6)
+	table = (t_table){};
+	if (argc < 5 || argc > 6)
 		error("Invalid number of arguments");
-	init_table(&data, av);
-	// init_threads(&data);
+	init_table(&table, av);
 	return (0);
 }

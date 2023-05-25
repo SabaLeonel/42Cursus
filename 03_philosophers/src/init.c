@@ -6,85 +6,81 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 19:08:21 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:08:41 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	destroy_mutexlist(t_state *data, int len)
+// int	destroy_mutexlist(t_table *table, int len)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		pthread_mutex_destroy(&table->data.fork[i]);
+// 		i ++;
+// 	}
+// 	free(table->data.fork);
+// 	return (-1);
+// }
+
+int	init_mutex(t_table *table)
 {
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		pthread_mutex_destroy(&data->fork[i]);
-		i ++;
-	}
-	free(data->fork);
-	return (-1);
-}
-
-int	init_mutex(t_state *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->nb_philo)
-	{
-		if (pthread_mutex_init(&data->fork[i], NULL))
-			return (destroy_mutexlist(data, i));
-		i ++;
-	}
-	if (pthread_mutex_init(&data->mutex_print, NULL))
-		return (destroy_mutexlist(data, i));
-	if (pthread_mutex_init(&data->mutex_all_dead, NULL))
-		return (destroy_mutexlist(data, i));
+	if (pthread_mutex_init(&table->data.philo->fork, 0))
+		return (-1);
+	if (pthread_mutex_init(&table->data.philo->fork_r, 0))
+		return (-1);
+	if (pthread_mutex_init(&table->data.mutex_print, 0))
+		return (-1);
+	table->data.mutex_print = &table->mutex_print;
+	if (pthread_mutex_init(&table->full_philo, 0))
+		return (-1);
+	table->data.mutex_full_philo = &table->mutex_full_philo;
 	return (0);
 }
 
-void	init_philo(t_state *data)
+void	init_philo(t_table *table)
 {
 	int	i;
 
 	i = -1;
-	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
-	if (!data->philo)
-		error("Malloc failed philo");
-	while (++i < data->nb_philo)
+	while (++i < table->data.nb_philo)
 	{
-		data->philo[i].time_lastmeal = get_time();
-		data->philo[i].id = i + 1;
-		data->philo[i].fork_left_id = i;
-		if (i == 0)
-			data->philo[i].fork_right_id = data->nb_philo - 1;
+		table->data.philo[i].data = table->data;
+		table->data.philo[i].id = i + 1;
+		if (table->data.philo[i].id < table->data.nb_philo)
+			table->data.philo[i].fork_r = &table->data.philo[i + 1].fork;
 		else
-			data->philo[i].fork_right_id = i + 1;
-		data->philo[i].data = data;
-		if (pthread_create(&data->philo[i].thread,
-				NULL, &routine, &(data->philo[i])))
+			table->data.philo[i].fork_r = &table->data.philo[0].fork;
+		if (pthread_create(&table->data.philo[i].thread,
+				NULL, &routine, &(table->data.philo[i])))
+		// table->data.philo[i].time_lastmeal = get_time();
 			error("Failed to create thread");
+	}
+	i = -1;
+	while(i < table->data.nb_philo)
+	{
+		if (pthread_join(&table->data.philo[i], 0));
+			error("Can't join thread");
 	}
 }
 
-void	init_table(t_state *data, char **av)
+void	init_table(t_table *table, char **av)
 {
-	if (check_args(av, data))
+	if (check_args(av, table))
 		error("Arguments are not valid");
-	data->start_time = get_time();
-	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
-			* data->nb_philo);
-	if (data->nb_philo == 1)
-	{
-		data->all_dead = 1;
-		return ;
-	}		
-	if (!data->fork)
-		error("Malloc fork failed");
-	if (init_mutex(data))
+	table->data.start_time = get_time();
+	//table->data.fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * table->data.nb_philo);
+	// if (!data->fork)
+	// 	error("Malloc fork failed");
+	if (init_mutex(table))
 		error("Init mutex failed");
-	init_philo(data);
-	if (check_state(data))
-		error("A philosopher died unexpectedly");
+	table->data.full_philo = &table->full_philo;
+	// table->data.dead = &table->dead;
+	table->data.philo = (t_philo *)malloc(sizeof(t_philo) * table->data.nb_philo);
+	if (!table->data.philo)
+		error("Malloc failed philo");
+	init_philo(table);
 }

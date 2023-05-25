@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 13:11:39 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:49:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,24 @@ int	ft_atoi(const char *str)
 
 unsigned long long	get_time(void)
 {
-	struct timeval	time;
+	struct timeval		time;
+	unsigned long long	result;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+	result = time.tv_sec * 1000;
+	result += time.tv_usec / 1000;
+	return (result);
 }
 
-void	ft_wait(unsigned long long time, int dead)
+void	ft_usleep(unsigned long long time)
 {
 	unsigned long long	current_t;
 
 	current_t = get_time();
-	while (!dead)
+	while (1)
 	{
 		usleep(50);
 		if (get_time() - current_t >= time)
-			break; 
+			break;
 	}
 }

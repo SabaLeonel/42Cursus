@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 17:55:29 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:57:45 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,29 @@ typedef struct s_state
 	unsigned long long	tt_sleep;
 	int					nb_philo;
 	int					nb_eat;
-	int					all_dead;
+	int					dead;
 	unsigned long long	start_time;
-	int					max_meal;
 	t_philo				*philo;
-	pthread_mutex_t		*fork;
-	pthread_mutex_t		mutex_print;
-	pthread_mutex_t		mutex_all_dead;
+	pthread_mutex_t		*mutex_print;
+	pthread_mutex_t		*mutex_full_philo;
+	int					*full_philo;
 }	t_state;
+
+typedef struct s_table
+{
+	t_state				data;
+	int					full_philo;
+	pthread_mutex_t		mutex_print;
+	pthread_mutex_t		mutex_full_philo;
+}	t_table;
+
 
 typedef struct s_philo
 {
-	t_state				*data;
+	t_state				data;
 	int					id;
-	int					fork_left_id;
-	int					fork_right_id;
+	pthread_mutex_t		*fork_r;
+	pthread_mutex_t		fork;
 	unsigned long long	time_lastmeal;
 	pthread_t			thread;
 	int					nb_ate;
@@ -64,16 +72,14 @@ typedef struct s_philo
 int					ft_atoi(const char *str);
 int					error(char *msg);
 void				*routine(void *philo);
-int					check_state(t_state *data);
-int					check_all_eat(t_state *data);
-int					check_args(char **av, t_state *data);
-void				init_table(t_state *data, char **av);
-void				init_threads(t_state *data);
-void				init_philo(t_state *data);
+void				isdead(t_philo *philo);
+void 				isfull(t_philo *philo);
+int					check_args(char **av, t_table *table);
+void				init_table(t_table *table, char **av);
+void				init_philo(t_table *table);
 unsigned long long	get_time(void);
 int					ft_isdigit(int c);
 void				eat(t_philo *philo);
 void				print_action(t_philo *philo, enum e_philo action);
-void				ft_wait(unsigned long long tt_eat, int dead);
-int					safecheck(pthread_mutex_t mutex, int var);
+void				ft_usleep(unsigned long long tt_eat);
 #endif
