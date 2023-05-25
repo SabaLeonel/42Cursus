@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/24 17:52:25 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/24 20:15:37 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	check_state(t_state *data)
 	while (i < data->nb_philo)
 	{
 		curr_time = get_time();
+		pthread_mutex_lock(&data.)
 		if (data->philo[i].dead
 			|| curr_time - data->philo[i].time_lastmeal > data->tt_die)
 		{
