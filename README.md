@@ -11,5 +11,5 @@
 | 02         | [push_swap](./02_push_swap) | C            | `algorithm` `sort` `stack` | [![lsaba-qu's 42 push_swap Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2921545)](https://github.com/JaeSeoKim/badge42)               | 15-03-2023 |
 |          | [so_long](./02_so_long) | C            | `2d` `game` `hook` `minilibx` | [![lsaba-qu's 42 so_long Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/3029724)](https://github.com/JaeSeoKim/badge42) | 06-04-2023 |
 |          | [pipex](./02_pipex) | C            | `pipe` `fork` `process`| [![lsaba-qu's 42 pipex Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/3047589)](https://github.com/JaeSeoKim/badge42)| 28-04-2023 |
-| 03         | [philosophers](./03_philosophers/philo) | C            | `threads` `mutex` `routine` | pending | pending)   
+| 03         | [philosophers](./03_philosophers/philo) | C            | `threads` `mutex` `routine` | pending | pending|
 
