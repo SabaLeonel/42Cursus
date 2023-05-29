@@ -4,7 +4,7 @@
             "name": "macos-clang-arm64",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/02_so_long/include"
+                "${workspaceFolder}/03_philosophers/philo/include"
             ],
             "defines": [],
             "macFrameworkPath": [
