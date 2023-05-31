@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/26 16:49:33 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:57:04 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ unsigned long long	get_time(void)
 	return (result);
 }
 
-void	ft_usleep(unsigned long long time)
+void	ft_usleep(unsigned long long time, t_philo *philo)
 {
 	unsigned long long	current_t;
 
 	current_t = get_time();
-	while (1)
+	while (pthread_mutex_lock(&philo->m_dead)
+		&& !philo->dead
+		&& pthread_mutex_unlock(&philo->m_dead))
 	{
 		usleep(50);
 		if (get_time() - current_t >= time)

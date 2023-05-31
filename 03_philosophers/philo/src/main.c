@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/29 13:55:05 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:38:19 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	free_all(t_state data)
 	{
 		if (data.philo[i].checkfork)
 			pthread_mutex_destroy(&data.philo[i].fork);
+		if (data.philo[i].dead)
+			pthread_mutex_destroy(&data.philo[i].m_dead);
 		if (data.philo[i].thread)
 			pthread_detach(data.philo[i].thread);
 	}
@@ -36,6 +38,18 @@ void	free_all(t_state data)
 		pthread_mutex_destroy(data.m_print);
 }
 
+void	join_threads(t_state data)
+{
+	int i;
+
+	i = -1;
+	while (++i < data.nb_philo)
+	{
+		if (pthread_join(&data.philo->thread[i], 0))
+			return ;
+	}
+}
+
 int	main(int argc, char **av)
 {
 	t_table	table;
@@ -44,11 +58,18 @@ int	main(int argc, char **av)
 	table.data = (t_state){};
 	if (argc < 5 || argc > 6)
 		return (error("Invalid number of arguments"));
-	if (init_table(&table, av) || init_philo(&table))
+	if (init_table(&table, av))
 	{
 		free_all(table.data);
 		return (error("Bad arguments"));
 	}
+
+	if (init_philo(&table))
+	{
+		free_all(table.data);
+		return (error("Can't init phi"));
+	}
+	join_threads(table.data);
 	free_all(table.data);
 	return (0);
 }

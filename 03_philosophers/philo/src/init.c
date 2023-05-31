@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/29 16:38:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:45:25 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,37 @@ int	init_mutex(t_table *table)
 	return (0);
 }
 
+void	check_philo(t_state *data)
+{
+	int				i;
+	int				is_finish;
+	long long	int	curr_time;	
+
+	is_finish = 0;
+	while (is_finish)
+	{
+		i = 0;
+		while (i < data->nb_philo)
+		{
+			if (isdead(&data->philo[i]))
+			{
+				curr_time = get_time();
+				printf("%llu\t\tPhilo %d is dead\n",
+					curr_time - data->start_time, data->philo[i].id);
+				is_finish = 1;
+				i = 0;
+				while (i < data->nb_philo)
+				{
+					pthread_mutex_lock(&data->philo[i].m_dead);
+					data->philo[i++].dead = 1;
+					pthread_mutex_unlock(&data->philo[i].m_dead);
+				}
+			}
+			i++;
+		}
+	}
+}
+
 int	init_philo(t_table *table)
 {
 	int	i;
@@ -33,7 +64,9 @@ int	init_philo(t_table *table)
 	{
 		table->data.philo[i].data = table->data;
 		table->data.philo[i].id = i + 1;
+		table->data.philo[i].dead = 0;
 		table->data.philo[i].time_lastmeal = get_time();
+		pthread_mutex_init(&table->data.philo[i].m_dead, 0);
 		if (pthread_mutex_init(&table->data.philo[i].fork, 0))
 			return (1);
 		table->data.philo[i].checkfork = 1;
@@ -46,11 +79,8 @@ int	init_philo(t_table *table)
 			return (1);
 	}
 	i = -1;
-	while (++i < table->data.nb_philo)
-	{
-		if (pthread_join(&table->data.philo->thread[i], 0))
-			return (1);
-	}
+	// check_philo(&table->data);
+
 	return (0);
 }
 

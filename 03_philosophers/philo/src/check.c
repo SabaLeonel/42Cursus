@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/29 15:10:01 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:47:11 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,19 @@ int	isdead(t_philo *philo)
 	curr_time = get_time();
 	if (curr_time - philo->time_lastmeal > philo->data.tt_die)
 	{
+
 		pthread_mutex_lock(philo->data.m_print);
 		pthread_mutex_lock(philo->data.m_nb_eat);
 		pthread_mutex_lock(philo->data.m_dead);
-		philo->dead = 1;
+		*philo->data.dead = 1;
 		printf("%llu\t\tPhilo %d is dead\n",
 			curr_time - philo->data.start_time, philo->id);
 		return (1);
 	}
 	return (0);
 }
+
+// int	check_dead()
 
 int	is_full(t_philo *philo)
 {

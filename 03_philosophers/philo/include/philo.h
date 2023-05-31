@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/29 14:57:14 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:07:47 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*fork_r;
 	pthread_mutex_t		fork;
+	pthread_mutex_t		m_dead;
 }	t_philo;
 
 int					ft_atoi(const char *str);
@@ -84,5 +85,5 @@ unsigned long long	get_time(void);
 int					ft_isdigit(int c);
 void				eat(t_philo *philo);
 void				print_action(t_philo *philo, enum e_philo action);
-void				ft_usleep(unsigned long long tt_eat);
+void				ft_usleep(unsigned long long time, t_philo *philo);
 #endif

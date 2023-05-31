@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:18:25 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/26 16:48:12 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:10:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	print_action(t_philo *philo, enum e_philo action)
 	unsigned long long	current_t;
 	char				*msg;
 
+	if (!philo->dead)
+		return ;
 	if (action == FORK)
 		msg = "has taken a fork";
 	if (action == EAT)
