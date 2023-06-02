@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/31 18:47:11 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:34:16 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,39 +36,59 @@ int	check_args(char **av, t_table *table)
 	return (0);
 }
 
-int	isdead(t_philo *philo)
+int	is_full(t_philo *philo)
 {
 	unsigned long long	curr_time;
+	int					i;
 
+	i = -1;
+	// while (i < philo->data.philo
+	// 	&& access_value_i(&philo[i].))
 	curr_time = get_time();
-	if (curr_time - philo->time_lastmeal > philo->data.tt_die)
+	pthread_mutex_lock(philo->data.m_eat);
+	if (++(*philo->data.full_philo) == philo->data.nb_eat)
 	{
-
 		pthread_mutex_lock(philo->data.m_print);
-		pthread_mutex_lock(philo->data.m_nb_eat);
-		pthread_mutex_lock(philo->data.m_dead);
-		*philo->data.dead = 1;
-		printf("%llu\t\tPhilo %d is dead\n",
-			curr_time - philo->data.start_time, philo->id);
+		printf("%llu\t\tPhilos are full\n", curr_time - philo->data.start_time);
+		pthread_mutex_unlock(philo->data.m_print);
+		print_action(philo, FULL);
 		return (1);
+	}
+	pthread_mutex_unlock(philo->data.m_eat);
+	return (0);
+}
+
+int	check_philo(t_state *data)
+{
+	unsigned long long	curr_time;
+	int					i;
+
+	i = -1;
+	while (++i < data->nb_philo)
+	{
+		curr_time = get_time();
+		if (curr_time - access_value_l(&data->philo[i].time_lastmeal, 0)
+			> data->tt_die)
+		{
+			data->value = 1;
+			access_value_i(data->dead, &data->value);
+			pthread_mutex_lock(data->m_print);
+			printf("%llu\t\t%d died\n", curr_time - data->philo[i].time_lastmeal,
+				data->philo[i].id);
+			pthread_mutex_unlock(data->m_print);
+			i = -1;
+			while (++i < data->nb_philo)
+				access_value_i(&data->philo[i].dead, &data->value);
+			return (1);
+		}
 	}
 	return (0);
 }
 
-// int	check_dead()
-
-int	is_full(t_philo *philo)
+int	check_dead(t_state *data)
 {
-	unsigned long long	curr_time;
-
-	curr_time = get_time();
-	pthread_mutex_lock(philo->data.m_nb_eat);
-	if (++(*philo->data.full_philo) == philo->data.nb_eat)
-	{
-		pthread_mutex_lock(philo->data.m_print);
-		printf("%llu\t\tphilos are full\n", curr_time - philo->data.start_time);
+	if (pthread_create(&data->thread_check, NULL,
+			&routine_checker, (void *)data))
 		return (1);
-	}
-	pthread_mutex_unlock(philo->data.m_nb_eat);
 	return (0);
 }

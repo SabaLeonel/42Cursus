@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/19 12:01:32 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:16:09 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ char	*get_executable(char *file, char **env)
 		error(-1);
 	while (path[++i])
 	{
-		printf("%s\n", cmd);
 		ft_strcpy(cmd, path[i]);
 		ft_strcat(cmd, "/");
 		ft_strcat(cmd, file);

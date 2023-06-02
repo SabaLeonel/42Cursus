@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/05/31 18:45:25 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:59:15 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,42 +18,48 @@ int	init_mutex(t_table *table)
 		|| pthread_mutex_init(&table->m_nb_eat, 0)
 		|| pthread_mutex_init(&table->m_dead, 0))
 		return (1);
-	table->data.m_nb_eat = &table->m_nb_eat;
+	table->data.m_eat = &table->m_nb_eat;
 	table->data.m_print = &table->m_print;
 	table->data.m_dead = &table->m_dead;
 	return (0);
 }
 
-void	check_philo(t_state *data)
-{
-	int				i;
-	int				is_finish;
-	long long	int	curr_time;	
+// void	check_philo(t_state *data)
+// {
+// 	int				i;
+// 	int				is_finish;
+// 	long long int	curr_time;	
 
-	is_finish = 0;
-	while (is_finish)
-	{
-		i = 0;
-		while (i < data->nb_philo)
-		{
-			if (isdead(&data->philo[i]))
-			{
-				curr_time = get_time();
-				printf("%llu\t\tPhilo %d is dead\n",
-					curr_time - data->start_time, data->philo[i].id);
-				is_finish = 1;
-				i = 0;
-				while (i < data->nb_philo)
-				{
-					pthread_mutex_lock(&data->philo[i].m_dead);
-					data->philo[i++].dead = 1;
-					pthread_mutex_unlock(&data->philo[i].m_dead);
-				}
-			}
-			i++;
-		}
-	}
-}
+// 	is_finish = 0;
+// 	while (is_finish)
+// 	{
+// 		i = 0;
+// 		while (i < data->nb_philo)
+// 		{
+// 			if (data->philo[i].dead)
+// 			{
+// 				curr_time = get_time();
+// 				printf("%llu\t\tPhilo %d is dead\n",
+// 					curr_time - data->start_time, data->philo[i].id);
+// 				is_finish = 1;
+// 				i = 0;
+// 				while (i < data->nb_philo)
+// 				{
+// 					pthread_mutex_lock(&data->philo[i].m_dead);
+// 					data->philo[i++].dead = 1;
+// 					pthread_mutex_unlock(&data->philo[i].m_dead);
+// 				}
+// 			}
+// 			i++;
+// 		}
+// 	}
+// }
+
+// int	solo_philo(t_table *table)
+// {
+	
+// 	printf("%llu\t\tPhilos are full\n", curr_time - philo->data.start_time);
+// }
 
 int	init_philo(t_table *table)
 {
@@ -75,19 +81,18 @@ int	init_philo(t_table *table)
 		else
 			table->data.philo[i].fork_r = &table->data.philo[0].fork;
 		if (pthread_create(&table->data.philo[i].thread,
-				NULL, &routine, &(table->data.philo[i])))
+				0, &routine, &(table->data.philo[i])))
 			return (1);
 	}
-	i = -1;
-	// check_philo(&table->data);
-
 	return (0);
 }
 
 int	init_table(t_table *table, char **av)
 {
 	if (check_args(av, table))
-		return (error("Arguments are not valid"));
+		return (1);
+	// if (table->data.nb_philo == 1)
+	// 	return (solo_philo(table->data));
 	if (init_mutex(table))
 		return (error("Init mutex failed"));
 	table->data.full_philo = &table->full_philo;

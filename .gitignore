@@ -1,7 +1,7 @@
-02_push_swap/push_swap_tester
 *.o
 *.a
 *.d
+02_push_swap/push_swap_tester
 02_push_swap/push_swap
 02_so_long/so_long
 02_pipex/pipex
