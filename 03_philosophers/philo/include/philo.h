@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/02 15:12:36 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/06 15:48:33 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,10 @@ int					ft_isdigit(int c);
 void				eat(t_philo *philo);
 void				print_action(t_philo *philo, enum e_philo action);
 void				ft_usleep(unsigned long long time, t_philo *philo);
-void				join_threads(t_state data);
+void				join_threads(t_state *data);
 void				*routine_checker(void *data);
+int					solo_philo(t_table *table);
 int					access_value_i(int *ptr, int *new_value);
-unsigned long long	access_value_l(unsigned long long *ptr, unsigned long long *new_value);
+unsigned long long	access_value_l(unsigned long long *ptr,
+						unsigned long long *new_value);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/02 17:59:15 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:18:06 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,15 @@ int	init_mutex(t_table *table)
 // 	}
 // }
 
-// int	solo_philo(t_table *table)
-// {
-	
-// 	printf("%llu\t\tPhilos are full\n", curr_time - philo->data.start_time);
-// }
+int	solo_philo(t_table *table)
+{
+	unsigned long long	c;
+
+	c = get_time();
+	printf("%llu\t\t1 is thinking\n", c - table->data.start_time);
+	printf("%llu\t\t1 died\n", c - table->data.start_time);
+	return (0);
+}
 
 int	init_philo(t_table *table)
 {
@@ -80,10 +84,16 @@ int	init_philo(t_table *table)
 			table->data.philo[i].fork_r = &table->data.philo[i + 1].fork;
 		else
 			table->data.philo[i].fork_r = &table->data.philo[0].fork;
-		if (pthread_create(&table->data.philo[i].thread,
-				0, &routine, &(table->data.philo[i])))
-			return (1);
+		// if (pthread_create(&table->data.philo[i].thread,
+		// 		0, &routine, &(table->data.philo[i])))
+			// return (1);
 	}
+	
+	i = -1;
+	while (++i < table->data.nb_philo)
+		pthread_create(&table->data.philo[i].thread,
+				0, &routine, &(table->data.philo[i]));
+	join_threads(&table->data);
 	return (0);
 }
 
@@ -91,16 +101,17 @@ int	init_table(t_table *table, char **av)
 {
 	if (check_args(av, table))
 		return (1);
-	// if (table->data.nb_philo == 1)
-	// 	return (solo_philo(table->data));
 	if (init_mutex(table))
 		return (error("Init mutex failed"));
 	table->data.full_philo = &table->full_philo;
 	table->data.dead = &table->dead;
 	table->data.start_time = get_time();
+	table->data.value = 1;
 	table->data.philo = (t_philo *)malloc(sizeof(t_philo)
 			* table->data.nb_philo);
 	if (!table->data.philo)
 		return (1);
+	// if (table->data.nb_philo == 1)
+	// 	return (solo_philo(table));
 	return (0);
 }

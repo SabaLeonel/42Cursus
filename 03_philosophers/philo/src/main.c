@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/02 17:37:30 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:16:52 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 #include <pthread.h>
 #include <stdio.h>
 
+void	join_threads(t_state *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < data->nb_philo)
+		pthread_join(data->philo[i].thread, NULL);
+}
+
 void	free_all(t_state data)
 {
 	int	i;
 
 	i = -1;
-	pthread_join(data.thread_check, NULL);
 	while (++i < data.nb_philo)
 	{
-		pthread_join(data.philo[i].thread, NULL);
 		if (data.philo[i].checkfork)
 			pthread_mutex_destroy(&data.philo[i].fork);
 		if (data.philo[i].dead)
 			pthread_mutex_destroy(&data.philo[i].m_dead);
 	}
-	pthread_join(data.thread_check, NULL);
 	if (data.philo)
 		free (data.philo);
 	if (data.m_dead)
@@ -73,9 +79,7 @@ int	main(int argc, char **av)
 	memset(&table, 0, sizeof(t_table));
 	if (argc < 5 || argc > 6)
 		return (error("Invalid number of arguments"));
-	if (init_table(&table, av)
-		|| init_philo(&table)
-		|| check_dead(&table.data))
+	if (init_table(&table, av) || init_philo(&table))
 	{
 		free_all(table.data);
 		return (error("Bad arguments"));
