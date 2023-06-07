@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 07:05:11 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:10:23 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,33 @@ int	check_philo(t_state *data)
 	int					i;
 
 	i = -1;
+	data->value = 1;
 	while (++i < data->nb_philo)
 	{
 		curr_time = get_time();
-		if (access_value_i(&data->philo[i].dead, 0) == 1 
-			|| curr_time - access_value_l(&data->philo[i].time_lastmeal, 0) > data->tt_die )
+		if (access_value_i(&data->philo[i].dead, 0) == 1
+			|| curr_time - access_value_l(&data->philo[i].time_lastmeal, 0)
+			> data->tt_die)
 		{
-			print_action(&data->philo[i], DEAD);
-			// if (access_value_i(&data->philo[i + 1].dead, 0))
-			// 	return (1);
-			// printf("before value ; %i\n", i);
-			// access_value_i(&data->philo[i].dead, &data->value);
+			print_action(&data->philo[i], DEAD);			
 			i = -1;
 			while (++i < data->nb_philo)
 				access_value_i(&data->philo[i].dead, &data->value);
-			return (1);
+			// return (1);
 		}
-		// printf("before value ; %i\n", i);
-		// if (access_value_i(&data->philo[i].dead, 0))
-		// 		return (1);
+		if (access_value_i(&data->philo[i].dead, 0))
+			return (1);
 	}
 	return (0);
 }
 
-// int	check_dead(t_state *data)
-// {
-// 	if (pthread_create(&data->thread_check, NULL,
-// 			&routine_checker, (void *)data))
-// 		return (1);
-// 	// printf("\n\n\nPRINTCHECK DEAD\n");
-// 	return (0);
-// }
+int	check_dead(t_state *data)
+{
+	if (pthread_create(&data->thread_check, NULL,
+			&routine_checker, (void *)data))
+	{
+		perror("Cant create thread");
+		return (1);
+}
+	return (0);
+}

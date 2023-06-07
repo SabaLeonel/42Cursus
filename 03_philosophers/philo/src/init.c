@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/06 17:18:06 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:47:50 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,18 @@ int	init_philo(t_table *table)
 			table->data.philo[i].fork_r = &table->data.philo[i + 1].fork;
 		else
 			table->data.philo[i].fork_r = &table->data.philo[0].fork;
-		// if (pthread_create(&table->data.philo[i].thread,
-		// 		0, &routine, &(table->data.philo[i])))
-			// return (1);
+		if (pthread_create(&table->data.philo[i].thread,
+				0, &routine, &(table->data.philo[i])))
+			perror("Error creating thread");
 	}
-	
-	i = -1;
-	while (++i < table->data.nb_philo)
-		pthread_create(&table->data.philo[i].thread,
-				0, &routine, &(table->data.philo[i]));
-	join_threads(&table->data);
+	// i = -1;
+	// while (++i < table->data.nb_philo)
+	// {
+	// 	if (pthread_create(&table->data.philo[i].thread,
+	// 			0, &routine, &(table->data.philo[i])))
+	// 		perror("Error creating thread");
+	// }
+	// join_threads(&table->data);
 	return (0);
 }
 

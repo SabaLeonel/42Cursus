@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/06 17:16:52 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:21:50 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	free_all(t_state data)
 	int	i;
 
 	i = -1;
+	if (pthread_join(data.thread_check, NULL))
+		perror("Error joining thread");
 	while (++i < data.nb_philo)
 	{
 		if (data.philo[i].checkfork)
@@ -79,7 +81,8 @@ int	main(int argc, char **av)
 	memset(&table, 0, sizeof(t_table));
 	if (argc < 5 || argc > 6)
 		return (error("Invalid number of arguments"));
-	if (init_table(&table, av) || init_philo(&table))
+	if (init_table(&table, av) || init_philo(&table)
+		|| check_dead(&table.data))
 	{
 		free_all(table.data);
 		return (error("Bad arguments"));
