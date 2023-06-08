@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 21:18:01 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 15:49:24 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:42:01 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void	*routine_checker(void *data)
 	t_state	*philodata;
 
 	philodata = (t_state *)data;
-
 	while (!access_value_i(philodata->dead, 0))
 	{
-		if (check_philo(data))
+		if (check_philo(philodata))
 			break ;
-		 // if (is_full(data))
+		if (is_full(philodata))
+			break ;
 	}
 	philodata->value = 1;
 	access_value_i(philodata->dead, &philodata->value);
-	join_threads(data);
+	join_threads(philodata);
 	return (NULL);
 }

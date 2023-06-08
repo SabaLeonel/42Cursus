@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 16:21:50 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:14:56 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	free_all(t_state data)
 
 	i = -1;
 	if (pthread_join(data.thread_check, NULL))
-		perror("Error joining thread");
+		perror("Error: can't join thread");
 	while (++i < data.nb_philo)
 	{
+		pthread_join(data.philo[i].thread, NULL);
 		if (data.philo[i].checkfork)
 			pthread_mutex_destroy(&data.philo[i].fork);
 		if (data.philo[i].dead)

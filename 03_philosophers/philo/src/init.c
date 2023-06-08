@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:16:13 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 15:47:50 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:14:26 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,6 @@ int	init_mutex(t_table *table)
 // 	}
 // }
 
-int	solo_philo(t_table *table)
-{
-	unsigned long long	c;
-
-	c = get_time();
-	printf("%llu\t\t1 is thinking\n", c - table->data.start_time);
-	printf("%llu\t\t1 died\n", c - table->data.start_time);
-	return (0);
-}
-
 int	init_philo(t_table *table)
 {
 	int	i;
@@ -88,14 +78,6 @@ int	init_philo(t_table *table)
 				0, &routine, &(table->data.philo[i])))
 			perror("Error creating thread");
 	}
-	// i = -1;
-	// while (++i < table->data.nb_philo)
-	// {
-	// 	if (pthread_create(&table->data.philo[i].thread,
-	// 			0, &routine, &(table->data.philo[i])))
-	// 		perror("Error creating thread");
-	// }
-	// join_threads(&table->data);
 	return (0);
 }
 
@@ -113,7 +95,5 @@ int	init_table(t_table *table, char **av)
 			* table->data.nb_philo);
 	if (!table->data.philo)
 		return (1);
-	// if (table->data.nb_philo == 1)
-	// 	return (solo_philo(table));
 	return (0);
 }

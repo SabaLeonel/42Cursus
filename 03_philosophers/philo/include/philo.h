@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:23:06 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/06 15:48:33 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:06:07 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int					ft_atoi(const char *str);
 int					error(char *msg);
 void				*routine(void *philo);
 int					check_philo(t_state *data);
-int					is_full(t_philo *philo);
+int					is_full(t_state *data);
 int					check_args(char **av, t_table *table);
 int					check_dead(t_state *data);
 int					init_table(t_table *table, char **av);
@@ -94,6 +94,7 @@ void				ft_usleep(unsigned long long time, t_philo *philo);
 void				join_threads(t_state *data);
 void				*routine_checker(void *data);
 int					solo_philo(t_table *table);
+char				*get_msg(enum e_philo action, char *msg);
 int					access_value_i(int *ptr, int *new_value);
 unsigned long long	access_value_l(unsigned long long *ptr,
 						unsigned long long *new_value);

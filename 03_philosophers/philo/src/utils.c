@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:29:47 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 16:37:17 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:11:51 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	ft_usleep(unsigned long long time, t_philo *philo)
 	{
 		usleep(50);
 		if ((get_time() - current_t) >= time)
-			return ;
+			break ;
 	}
 }

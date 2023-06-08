@@ -55,6 +55,18 @@
 	"string_view": "c",
 	"vector": "c",
 	"__locale": "c",
-	"pthread.h": "c"
+	"pthread.h": "c",
+	"__bit_reference": "c",
+	"__functional_base": "c",
+	"algorithm": "c",
+	"bitset": "c",
+	"chrono": "c",
+	"__memory": "c",
+	"limits": "c",
+	"memory": "c",
+	"optional": "c",
+	"ratio": "c",
+	"system_error": "c",
+	"tuple": "c"
 }
 }

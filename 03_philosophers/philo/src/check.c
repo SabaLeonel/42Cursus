@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/07 17:10:23 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:11:56 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,21 @@ int	check_args(char **av, t_table *table)
 	return (0);
 }
 
-int	is_full(t_philo *philo)
+int	is_full(t_state *data)
 {
-	unsigned long long	curr_time;
-	// int					i;
+	int					i;
 
-	// i = -1;
-	// while (i < philo->data.philo
-	// 	&& access_value_i(&philo[i].))
-	curr_time = get_time();
-	pthread_mutex_lock(philo->data.m_eat);
-	if (++(*philo->data.full_philo) == philo->data.nb_eat)
+	i = 0;
+	while (i < data->nb_philo
+		&& access_value_i(&data->philo[i].nb_ate, 0) >= data->nb_eat
+		&& data->nb_eat > 0)
+		i++;
+	if (i == data->nb_philo)
 	{
-		pthread_mutex_lock(philo->data.m_print);
-		printf("%llu\t\tPhilos are full\n", curr_time - philo->data.start_time);
-		pthread_mutex_unlock(philo->data.m_print);
-		print_action(philo, FULL);
+		data->value = 1;
+		access_value_i(data->dead, &data->value);
 		return (1);
 	}
-	pthread_mutex_unlock(philo->data.m_eat);
 	return (0);
 }
 
@@ -72,25 +68,30 @@ int	check_philo(t_state *data)
 			|| curr_time - access_value_l(&data->philo[i].time_lastmeal, 0)
 			> data->tt_die)
 		{
-			print_action(&data->philo[i], DEAD);			
+			print_action(&data->philo[i], DEAD);
 			i = -1;
 			while (++i < data->nb_philo)
 				access_value_i(&data->philo[i].dead, &data->value);
-			// return (1);
-		}
-		if (access_value_i(&data->philo[i].dead, 0))
 			return (1);
+		}
 	}
 	return (0);
 }
 
 int	check_dead(t_state *data)
 {
+	data->value = 1;
+	printf("nb_philo: %d\n", data->nb_philo);
+	if (data->nb_philo == 1)
+	{
+		*data->dead = 1;
+		return (0);
+	}	
 	if (pthread_create(&data->thread_check, NULL,
 			&routine_checker, (void *)data))
 	{
-		perror("Cant create thread");
+		perror("Can't create thread");
 		return (1);
-}
+	}
 	return (0);
 }
