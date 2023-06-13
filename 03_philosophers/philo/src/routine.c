@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 21:18:01 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/08 16:42:01 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:26:36 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	eat(t_philo *philo)
 
 	pthread_mutex_lock(&philo->fork);
 	print_action(philo, FORK);
+	if (access_value_i(&philo->data.nb_philo, 0) == 1)
+		return ;
 	pthread_mutex_lock(philo->fork_r);
 	print_action(philo, FORK);
 	print_action(philo, EAT);
@@ -42,7 +44,8 @@ void	*routine(void *arg)
 	{
 		print_action(philo, THINK);
 		eat(philo);
-		if (access_value_i(philo->data.dead, NULL) == 1)
+		if (access_value_i(philo->data.dead, NULL) == 1
+			|| access_value_i(&philo->data.nb_philo, NULL) == 1)
 			break ;
 		print_action(philo, SLEEP);
 		ft_usleep(philo->data.tt_sleep, philo);

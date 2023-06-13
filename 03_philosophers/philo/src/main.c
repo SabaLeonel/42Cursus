@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:35:39 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/08 18:40:33 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:42:50 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,17 @@ void	free_all(t_state data)
 	i = -1;
 	if (pthread_join(data.thread_check, NULL))
 		perror("Error: can't join thread");
-	while (++i < data.nb_philo)
+	while (i++ < data.nb_philo)
 	{
-		printf("data.philo.thread = %p\n", data.philo[i].thread);
 		pthread_join(data.philo[i].thread, NULL);
 		if (data.philo[i].checkfork)
 			pthread_mutex_destroy(&data.philo[i].fork);
 		if (data.philo[i].dead)
 			pthread_mutex_destroy(&data.philo[i].m_dead);
-		free(&data.philo[i]);
 	}
 	pthread_join(data.thread_check, NULL);
 	if (data.philo)
-		free (data.philo);
+		free(data.philo);
 	if (data.m_dead)
 		pthread_mutex_destroy(data.m_dead);
 	if (data.m_eat)

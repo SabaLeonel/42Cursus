@@ -6,7 +6,7 @@
 /*   By: lsaba-qu <leonel.sabaquezada@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 14:51:41 by lsaba-qu          #+#    #+#             */
-/*   Updated: 2023/06/08 18:11:56 by lsaba-qu         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:58:12 by lsaba-qu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,8 @@ int	check_philo(t_state *data)
 
 int	check_dead(t_state *data)
 {
-	data->value = 1;
-	printf("nb_philo: %d\n", data->nb_philo);
-	if (data->nb_philo == 1)
-	{
-		*data->dead = 1;
-		return (0);
-	}	
 	if (pthread_create(&data->thread_check, NULL,
-			&routine_checker, (void *)data))
+			&routine_checker, (void *)data) != 0)
 	{
 		perror("Can't create thread");
 		return (1);

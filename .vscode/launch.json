@@ -5,10 +5,8 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/02_so_long/so_long",
-      "args": [
-        "${workspaceFolder}/02_so_long/maps/map_correct.ber"
-      ],
+	  "program": "${workspaceFolder}/03_philosophers/philo/philo",
+	  "args": ["1","800","200","200"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
