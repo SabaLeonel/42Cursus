@@ -1,15 +1,45 @@
- # 42cursus 💻
- 
-## Project List
-### Common Circle
+## 42's cursus 💻
 
-| **CIRCLE** | **PROJECT**                         | **LANGUAGE** | **TOPICS**                                                               | **Score**              | **Date of completion** |
-|:----------:|:-----------------------------------:|:------------:|:------------------------------------------------------------------------:|:----------------------:|:----------------------:|
-| 00         | [Libft](./00_libft)                 | C            | `Library` `Makefile`                                                     | [![lsaba-qu's 42 Libft Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2848830)](https://github.com/JaeSeoKim/badge42)               | 22-11-2022   |
-| 01         | [ft_printf](./01_ft_printf)         | C            | `Variadic` `arguments` `character parsing` `Library` `Makefile` `BigInt` | [![lsaba-qu's 42 ft_printf Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2891156)](https://github.com/JaeSeoKim/badge42)             | 06-12-2022   |
-|          | [get_next_line](./01_get_next_line) | C            | `file descriptor`  | [![lsaba-qu's 42 get_next_line Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2891157)](https://github.com/JaeSeoKim/badge42)                | 23-11-2023 |
-| 02         | [push_swap](./02_push_swap) | C            | `algorithm` `sort` `stack` | [![lsaba-qu's 42 push_swap Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/2921545)](https://github.com/JaeSeoKim/badge42)               | 15-03-2023 |
-|          | [so_long](./02_so_long) | C            | `2d` `game` `hook` `minilibx` | [![lsaba-qu's 42 so_long Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/3029724)](https://github.com/JaeSeoKim/badge42) | 06-04-2023 |
-|          | [pipex](./02_pipex) | C            | `pipe` `fork` `process`| [![lsaba-qu's 42 pipex Score](https://badge42.vercel.app/api/v2/clagug4zz00500fmo3pefahe6/project/3047589)](https://github.com/JaeSeoKim/badge42)| 28-04-2023 |
-| 03         | [philosophers](./03_philosophers/philo) | C            | `threads` `mutex` `routine` | pending | pending|
+### Common Core
+
+#### Rank 05
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| Inception | This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine. | ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=flat-square&logo=WordPress&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white) | Pending |
+| webserv | This project is here to make you write your own HTTP server. You will be able to test it with a real browser. HTTP is one of the most used protocol on internet. Knowing its arcane will be useful, even if you won't be working on a website. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+
+
+#### Rank 04
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| CPP Module 04 | Subtype polymorphism, abstract classes and interfaces in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |   Pending |
+| CPP Module 03 | Inheritance in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| CPP Module 02 | Polymorphism, overloads and orthodox canonical classes in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |  Pending |
+| CPP Module 01 | Understand the memory allocation, reference, pointers to members and the usage of the switch in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| CPP Module 00 | Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| NetPractice | NetPractice is a general practical exercise to let you discover networking. | | Completed |
+| Cub3d | Inspired by Wolfenstein 3D, this project explores ray-casting for dynamic maze navigation. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Pending |
+
+#### Rank 03
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| [philosophers](./03_philosophers/philo/) | Learn the fundamentals of process threading, including thread creation and mutex usage. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| [minishell](./03_minishell) | Create a basic shell and gain experience with processes and file descriptors. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+
+#### Rank 02
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| [so_long](./02_so_long) | 2D game designed to familiarize you with textures, sprites, and basic gameplay elements. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| [pipex](./02_pipex) | Manage pipes in a UNIX environment. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| [push_swap](./02_push_swap) | Efficiently sort data on a stack with limited instructions, requiring algorithm optimization. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+
+#### Rank 00 & 01
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| [get_next_line](./01_get_next_line) | Function that returns a line read from a file descriptor. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| Born2beroot | Create a server by following specific rules. |  | Completed |
+| [ft_printf](./01_ft_printf)  | Replicate printf with specific arguments | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| [Libft](./00_libft)  | Code a C library of common functions to use in future projects. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+
+
 

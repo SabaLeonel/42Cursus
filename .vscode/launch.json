@@ -5,8 +5,13 @@
       "name": "(lldb) Launch",
       "type": "cppdbg",
       "request": "launch",
-	  "program": "${workspaceFolder}/03_philosophers/philo/philo",
-	  "args": ["1","800","200","200"],
+      "program": "${workspaceFolder}/03_philosophers/philo/philo",
+      "args": [
+        "1",
+        "800",
+        "200",
+        "200"
+      ],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],
@@ -18,8 +23,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/leon/Documents/42Cursus",
-      "program": "/Users/leon/Documents/42Cursus/build/Debug/outDebug"
+      "cwd": "/Users/lsaba-qu/42Cursus/01_get_next_line",
+      "program": "/Users/lsaba-qu/42Cursus/01_get_next_line/build/Debug/outDebug"
     }
   ]
 }
