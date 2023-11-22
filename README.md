@@ -15,8 +15,8 @@
 | CPP Module 04 | Subtype polymorphism, abstract classes and interfaces in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |   Pending |
 | CPP Module 03 | Inheritance in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
 | CPP Module 02 | Polymorphism, overloads and orthodox canonical classes in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |  Pending |
-| [CPP Module 01](/CPP-Module-01) | Understand the memory allocation, reference, pointers to members and the usage of the switch in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
-| [CPP Module 00](./CPP-Module-00/)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
+| [CPP Module 01](https://github.com/sabaleonel/CPP-Module-01) | Understand the memory allocation, reference, pointers to members and the usage of the switch in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| [CPP Module 00](https://github.com/sabaleonel/CPP-Module-00)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
 | NetPractice | NetPractice is a general practical exercise to let you discover networking. | | Completed |
 | [Cub3d](https://github.com/42-Student-Teams/42-cub3D) | Inspired by Wolfenstein 3D, this project explores ray-casting for dynamic maze navigation. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Pending |
 
