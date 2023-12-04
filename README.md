@@ -13,7 +13,7 @@
 | Project   | Description                | Tech | Status     |
 | :-------: | :------------------------- | :--: | :--------  |
 | [CPP Module 04](https://github.com/sabaleonel/CPP-Module-04) | Subtype polymorphism, abstract classes and interfaces in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |   Pending |
-| CPP Module 03](https://github.com/sabaleonel/CPP-Module-03) | Inheritance in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| [CPP Module 03](https://github.com/sabaleonel/CPP-Module-03) | Inheritance in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
 | [CPP Module 02](https://github.com/sabaleonel/CPP-Module-02) | Polymorphism, overloads and orthodox canonical classes in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) |  Pending |
 | [CPP Module 01](https://github.com/sabaleonel/CPP-Module-01) | Understand the memory allocation, reference, pointers to members and the usage of the switch in CPP. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
 | [CPP Module 00](https://github.com/sabaleonel/CPP-Module-00)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
