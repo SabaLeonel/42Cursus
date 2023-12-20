@@ -24,7 +24,7 @@
 | Project   | Description                | Tech | Status     |
 | :-------: | :------------------------- | :--: | :--------  |
 | [philosophers](./03_philosophers/philo/) | Learn the fundamentals of process threading, including thread creation and mutex usage. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
-| [minishell](./03_minishell) | Create a basic shell and gain experience with processes and file descriptors. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
+| [minishell](https://github.com/42-Student-Teams/42-Minishell) | Create a basic shell and gain experience with processes and file descriptors. | ![c](https://img.shields.io/badge/C-grey?style=flat-square&logo=C&logoColor=white) | Completed |
 
 #### Rank 02
 | Project   | Description                | Tech | Status     |
