@@ -2,12 +2,18 @@
 
 ### Common Core
 
+#### Rank 06
+| Project   | Description                | Tech | Status     |
+| :-------: | :------------------------- | :--: | :--------  |
+| [Transcendence](https://github.com/42-Student-Teams/ft_transcendence) | Transcendence is a project by 42 school focused on web development and SPA. The goal is to create a web app for playing Pong and socializing with other users. | ![Javscript](https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square) ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)   | Pending |
+
+
 #### Rank 05
 | Project   | Description                | Tech | Status     |
 | :-------: | :------------------------- | :--: | :--------  |
-| Inception | This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine. | ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=flat-square&logo=WordPress&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white) | Pending |
+| Inception | This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine. | ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-%23117AC9.svg?style=flat-square&logo=WordPress&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white) | Completed |
 | [irc](https://github.com/42-Student-Teams/ft_irc) | IRC is a text-based chat protocol for instant group discussions or private messaging, connecting via clients to servers that form interconnected networks. | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
-| [CPP Module 09](https://github.com/sabaleonel/CPP-Module-09)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Pending |
+| [CPP Module 09](https://github.com/sabaleonel/CPP-Module-09)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
 | [CPP Module 08](https://github.com/sabaleonel/CPP-Module-08)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
 | [CPP Module 07](https://github.com/sabaleonel/CPP-Module-07)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
 | [CPP Module 06](https://github.com/sabaleonel/CPP-Module-06)| Time to dive into Object Oriented Programming! | ![c++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=C%2B%2B&logoColor=white) | Completed |
