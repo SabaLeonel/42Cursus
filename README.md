@@ -5,7 +5,7 @@
 #### Rank 06
 | Project   | Description                | Tech | Status     |
 | :-------: | :------------------------- | :--: | :--------  |
-| [Transcendence](https://github.com/42-Student-Teams/ft_transcendence) | Transcendence is a project by 42 school focused on web development and SPA. The goal is to create a web app for playing Pong and socializing with other users. | ![Javscript](https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square) ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)   | Pending |
+| [Transcendence](https://github.com/42-Student-Teams/ft_transcendence) | Transcendence is a project by 42 school focused on web development and SPA. The goal is to create a web app for playing Pong and socializing with other users. | ![Javscript](https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square) ![Docker](https://img.shields.io/badge/-Docker-46a2f1?style=flat-square&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)   | Completed |
 
 
 #### Rank 05
